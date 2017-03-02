@@ -1,4 +1,4 @@
-# Team Tam ![logo](Images/TeamLogo.png) 
+# Team Tam <img src='./Images/TeamLogo.png' width='100px' height='80px'>
 
 # Team Member
 * Kiptenai Kalya
