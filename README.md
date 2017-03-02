@@ -1,4 +1,4 @@
-# Team Tam
+# Team Tam ![logo](Images/TeamLogo.png) 
 
 # Team Member
 * Kiptenai Kalya
