@@ -1,16 +1,23 @@
-The problem we identified was the obesity problem. We think that the general health of people in
-Melbourne is a problem, and after some research, we found that obesity is one of the important factors
-that influences people's health. According to source 1, 63.4 percent of Australian
-were overweight or obese in 2014, which sees an increase from 56.3 percent in 1995, indicating the
-problem is getting worse. 
+We identified poor life-style as the major problem in Melbourne.
+The obesity rate in Melbourne is extremely high, according to huffinton post[1],
+there are 63.4 percent of Australian were overweight or obese in 2014.
+One possible cause of high obesity rate in Melbourne could be the lack of exercise
+in the majority population. This view is supported by an extensive
+research done by Standford that shown the rise in obesity is linked to the
+lack of exercise.
 
-One cause of the obesity problem is the lack of sport. Many people found it boring and exhausting to do
-exercises, but if the sport is a team sport, people might be more willing to be involved. The problem in
-team sport is that sometimes it is difficult to find enough people with same interest in one sport.
-Our website tries to resolve this by allowing people to find other people nearby who are willing to do
-the same sport, and therefore attract more people to get involved in sports, thus making people in
-Melbourne healthier.
+Our team aim to take on the challenge of engaging people in various sport activities,
+and thus promoting a healthy living style in Melbourne.
+
+We hypothesize that reason for the lack of willingness to paticipate in sport as follows:
+1. Hard to find people with similar interest in the same sport who are also free for group sports
+2. Difficulty to coordinate a suitable time slot for sport
+3. Steep learning curve for beginners
+
+One opportunity that we could explore would be to create a social web app that allow users
+to form groups for players in different level and sports.
 
 
 Source 1: http://www.huffingtonpost.com.au/2016/02/24/australia-obesity-statistics_n_9154422.html
 Source 2: http://www.myhealthycommunities.gov.au/Content/publications/downloads/NHPA_HC_Report_Overweight_and_Obesity_Report_October_2013.pdf
+Source 3: https://med.stanford.edu/news/all-news/2014/07/lack-of-exercise--not-diet--linked-to-rise-in-obesity--stanford-.html
