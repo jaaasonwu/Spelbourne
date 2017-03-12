@@ -15,12 +15,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Use view as static folder
+app.use(express.static(path.join(__dirname,'view')));
+
 // Start the server
 app.listen(PORT, function() {
     console.log("server started at port:", PORT);
 });
-
-// Index router
-app.get('/', function(req, res) {
-    res.end('Hello World\n');
-})
