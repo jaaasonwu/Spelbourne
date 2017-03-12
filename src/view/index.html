@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <meta name="google-signin-client_id" content="523892883118-akcfr1q4mg78ffrfttcil34emeuqkpd5.apps.googleusercontent.com">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <!-- Optional theme -->
@@ -12,9 +13,32 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <!-- Using AngularJS -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
         <title>Welcome</title>
     </head>
     <body>
         <p>Hello World!</p>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <script>
+            function onSignIn(googleUser) {
+                let id_token = googleUser.getAuthResponse().id_token;
+                $.post('/tokensignin', {idtoken: id_token}, function(data, success) {
+                    if (success != 'success') {
+                        console.log('AJAX to /tokensignin failed');
+                    }
+
+                    console.log('User id is:', data);
+                });
+            }
+        </script>
+        <a href="" herf="#" onclick="signOut();">Sign out</a>
+        <script>
+            function signOut() {
+                let auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function() {
+                    console.log("User sign out");
+                });
+            }
+        </script>
     </body>
 </html>
