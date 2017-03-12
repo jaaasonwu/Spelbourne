@@ -27,7 +27,9 @@
                         console.log('AJAX to /tokensignin failed');
                     }
 
-                    console.log('User id is:', data);
+                    console.log('User id is:', data.userid);
+                    console.log('User name is:', data.username);
+                    console.log('User email is:', data.email);
                 });
             }
         </script>

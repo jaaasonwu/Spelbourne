@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // Use view as static folder
-app.use(express.static(path.join(__dirname,'view')));
+app.use(express.static(path.join(__dirname,'views')));
 
 // Start the server
 app.listen(PORT, function() {
@@ -42,7 +42,13 @@ app.post('/tokensignin', function(req, res) {
 
             let payload = login.getPayload();
             let userid = payload['sub'];
-            res.send(userid);
+            let username = payload['name'];
+            let email = payload['email'];
+            res.send({
+                userid: userid,
+                username: username,
+                email: email
+            });
         }
     );
 });
