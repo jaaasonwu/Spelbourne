@@ -5,3 +5,10 @@
 * Jiacheng Wu
 * Raymond Lam
 * Haoyu Zhai
+
+## File Structure
+All codes should be in the folder 'src' <br>
+* src/view holds for ejs template
+* src/public holds for resources used for frontend(jquery,bootstrap etc.)
+* src/lib holds for all js files used for backend except routing
+* src/routes holds for all js files used for routing
