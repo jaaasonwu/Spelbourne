@@ -1,0 +1,18 @@
+Brainstorm ideas
+Heirarcy of grids
+Home->Find out What's popular near you
+		->Join your friends
+		->Invite friends
+		->What's going on near x(Discover local events around melbourne)
+
+
+Popular near you
+Event description, Large iTunes album style photos of events
+Map showing where it is located,
+Times, Reviews, 
+Past events.
+
+Join your friends
+Discover what your friends are doing 
+Facebook, gmail
+-> login to view planned events. & previous events attended if any 
