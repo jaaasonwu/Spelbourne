@@ -26,7 +26,7 @@ module.exports = function (passport) {
     // Sign up strategy
     passport.use(
         'local-signup',
-        strategies.signupStrategy
+        strategies.localStrategy
     );
 
     // Local login
