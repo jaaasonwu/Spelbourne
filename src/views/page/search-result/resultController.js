@@ -5,14 +5,14 @@ angular.module('mainApp').controller('resultController', ['$scope', '$http', fun
     // create a message to display in our view
     $scope.eventList = [
         {
-            img : "",
+            img : "/images/tennis.jpg",
             type : "tennis",
             place : "erc",
             desc : "good event",
             skLevel : "master"
         },
         {
-            img : "",
+            img : "/images/tennis.jpg",
             type : "tennis",
             place : "erc",
             desc : "good event",

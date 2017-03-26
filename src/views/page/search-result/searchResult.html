@@ -1,14 +1,14 @@
 <div ng-repeat="event in eventList">
-  <div class="row">
-    <div class="col-md-3 col-sm-3"><img src="{{event.img}}"></div>
+  <div class="row eventBody">
+    <div class="col-md-3 col-sm-3"><img class="eventImg " src="{{event.img}}"></div>
     <div class="col-md-6 col-sm-6">
-      <h2>{{event.type +' @ '+event.place}}</h2>
+      <h2 class="eventTitle">{{event.type +' @ '+event.place}}</h2>
       <p>{{event.desc}}</p>
       <p>Skill Level: {{event.skLevel}}</p>
     </div>
     <div class="col-md-3 col-sm-3">
-      <button class="btn btn-large">View Event</button>
-      <button class="btn btn-large">Join Event</button>
+      <button class="btn btn-large" id="viewBtn">View Event</button>
+      <button class="btn btn-large" id="joinBtn">Join Event</button>
     </div>
   </div>
 </div>
