@@ -6,14 +6,7 @@ module.exports = function (app, passport) {
     app.get('/', function (req, res) {
         res.render('index.ejs');
     });
-
-    // Login page
-    app.get('/login', function (req, res) {
-        res.render('login.ejs', {
-            message: req.flash('loginMessage')
-        });
-    });
-
+    
     // Process the login form
     app.post('/login', passport.authenticate('local-login', {
         successRedirect: '/profile',

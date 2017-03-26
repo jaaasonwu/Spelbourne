@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html ng-app="mainApp">
 <head>
     <meta charset="utf-8">
+
+    <!-- Angularjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.min.js"></script>
     <meta name="google-signin-client_id"
           content="523892883118-akcfr1q4mg78ffrfttcil34emeuqkpd5.apps.googleusercontent.com">
     <!-- Latest compiled and minified CSS -->
@@ -16,30 +21,21 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <!-- Using AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <style>
-        body {
-            padding-top: 80px;
-        }
-    </style>
-    <title>Welcome</title>
+
+    <!-- Our custom script -->
+    <script src='app.js'></script>
+    <script src='page/contact/contactController.js'></script>
+    <script src='page/welcome/welcomeController.js'></script>
+
+     <base href="/">
 </head>
-<body>
-<div class="container">
+</body ng-app = "mainApp">
+    <a href="/">Main</a>
+    <a href="/contact">Contact</a>
 
-    <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-        <a href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span>Facebook</a>
-        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
+    <div id="main">
+         <div ng-view></div>
     </div>
-
-</div>
 </body>
 </html>
