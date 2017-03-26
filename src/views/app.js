@@ -1,5 +1,5 @@
 // create the module and name it scotchApp
-var scotchApp = angular.module('mainApp', ['ngRoute']);
+var scotchApp = angular.module('mainApp', ['ngRoute', 'angular.filter']);
 
 // configure our routes
 scotchApp.config(function ($routeProvider, $locationProvider) {
@@ -15,7 +15,11 @@ scotchApp.config(function ($routeProvider, $locationProvider) {
         .when('/login', {
             templateUrl : 'page/login/login.html',
         })
-        .otherwise({ redirectTo: '/' });;
-        
+        .when('/result',{
+            templateUrl : 'page/search-result/searchResult.html',
+            controller : 'resultController'
+        })
+        .otherwise({ redirectTo: '/' });
+
     $locationProvider.html5Mode(true);
 });
