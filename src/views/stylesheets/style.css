@@ -47,7 +47,7 @@ body {
         min-height: 100px;
     }
     .logoImg{
-        height: 50px;
+        height: 100px;
     }
 }
 /* To fit the logo image to the nav bar*/
@@ -89,4 +89,13 @@ body {
 .carousel-image{
     /*background-size: cover;*/
     width: 100%;
+}
+
+.jumbotron {
+    background-color: rgba(109, 152, 182, 0.28);
+
+}
+
+.panel-group .panel+.panel {
+    margin-top: 0;
 }
