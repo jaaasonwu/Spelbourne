@@ -3,10 +3,10 @@
  */
 module.exports = function (app, passport) {
     // Home page
-    app.get('/', function (req, res) {
+    app.get('/*', function (req, res) {
         res.render('index.ejs');
     });
-    
+
     // Sign up page, show sign up form
     app.get('/signup', function (req, res) {
         res.render('signup.ejs', {
