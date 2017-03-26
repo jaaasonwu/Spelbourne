@@ -1,10 +1,14 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("/images/women.jpg");
 }
 
 a {
   color: #00B7FF;
+}
+
+#backgroundImg img {
+    width: 10px
 }
 
 @media screen and (min-width:768px){
@@ -19,5 +23,14 @@ a {
     .navbar>.container .navbar-brand-centered,
     .navbar>.container-fluid .navbar-brand-centered {
         margin-left: -80px;
+        /* To make the text in the middle of the block*/
+        padding: 14px;
     }
+    .logoImg{
+        height: 50px;
+    }
+}
+/* To fit the logo image to the nav bar*/
+.navbar-brand{
+    padding : 0;
 }
