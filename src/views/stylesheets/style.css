@@ -47,11 +47,19 @@ body {
 .eventBody{
     margin : 10px;
     border : 1px solid black;
+    background-color: #FDF6F6;
 }
 
 .eventTitle{
     margin-top : 10px;
 }
+
+.eventList {
+    background-color: rgba(109, 152, 182, 0.28);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 #joinBtn{
     margin: 10px;

@@ -1,14 +1,31 @@
-<div ng-repeat="event in eventList">
-  <div class="row eventBody">
-    <div class="col-md-3 col-sm-3"><img class="eventImg " src="{{event.img}}"></div>
-    <div class="col-md-6 col-sm-6">
-      <h2 class="eventTitle">{{event.type +' @ '+event.place}}</h2>
-      <p>{{event.desc}}</p>
-      <p>Skill Level: {{event.skLevel}}</p>
-    </div>
-    <div class="col-md-3 col-sm-3">
-      <button class="btn btn-large" id="viewBtn">View Event</button>
-      <button class="btn btn-large" id="joinBtn">Join Event</button>
+<div class="filter row form-group">
+  <div class="col-md-3 col-sm-3">
+    <label for="typeSelect">Activity Type:</label>
+    <select ng-model="typeSelect" ng-options="type for type in types" class="form-control" id="typeSelect" ></select>
+  </div>
+  <div class="col-md-3 col-sm-3">
+    <label for="dateSelect">Activity Date:</label>
+    <input ng-model="dateSelect" type="date" class="form-control" id="dateSelect">
+  </div>
+  <div class="col-md-3 col-sm-3">
+    <label for="skillSelect">Skill Level:</label>
+    <select ng-model="skillSelect" ng-options="skill for skill in skills" class="form-control" id="skillSelect" ></select>
+  </div>
+</div>
+<p>{{dateSelect}}</p>
+<div class="eventList">
+  <div ng-repeat="event in eventList">
+    <div class="row eventBody">
+      <div class="col-md-3 col-sm-3"><img class="eventImg" src="{{event.img}}"></div>
+      <div class="col-md-6 col-sm-6">
+        <h2 class="eventTitle">{{event.type +' @ '+event.place}}</h2>
+        <p>{{event.desc}}</p>
+        <p>Skill Level: {{event.skLevel}}</p>
+      </div>
+      <div class="col-md-3 col-sm-3">
+        <button class="btn btn-large" id="viewBtn">View Event</button>
+        <button class="btn btn-large" id="joinBtn">Join Event</button>
+      </div>
     </div>
   </div>
 </div>
