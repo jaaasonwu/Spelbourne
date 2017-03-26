@@ -7,13 +7,6 @@ module.exports = function (app, passport) {
         res.render('index.ejs');
     });
     
-    // Process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile',
-        failureRedirect: '/login',
-        failureFlash: true
-    }));
-
     // Sign up page, show sign up form
     app.get('/signup', function (req, res) {
         res.render('signup.ejs', {

@@ -1,7 +1,6 @@
-/**
- * Created by zhai7 on 3/26/2017.
- */
-angular.module('mainApp').controller('resultController', ['$scope', '$http', function($scope, $http) {
+var app = angular.module('mainApp');
+
+app.controller('resultController', ['$scope', '$http', '$location', 'eventService', function($scope, $http, $location,  eventService) {
     // create a message to display in our view
     $scope.eventList = [
         {
@@ -18,5 +17,10 @@ angular.module('mainApp').controller('resultController', ['$scope', '$http', fun
             desc : "good event",
             skLevel : "master"
         }
-    ]
+    ];
+
+    $scope.viewEvent = function (event) {
+        eventService.setEvent(event);
+        $location.path("/event")
+    }
 }]);
