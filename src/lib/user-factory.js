@@ -18,7 +18,7 @@ let createLocalUser = function(email, password, done) {
 
         return done(null, newUser);
     });
-}
+};
 
 // Create user with facebook account
 let createFacebookUser = function(profile, token, done) {
@@ -38,7 +38,7 @@ let createFacebookUser = function(profile, token, done) {
 
         return done(null, newUser);
     });
-}
+};
 // Create user with google account
 let createGoogleUser = function(profile, token, done) {
     // Crate a new user
@@ -57,11 +57,11 @@ let createGoogleUser = function(profile, token, done) {
 
         return done(null, newUser);
     });
-}
+};
 
 // Export all user creation functions
 module.exports = {
     createLocalUser : createLocalUser,
     createFacebookUser : createFacebookUser,
     createGoogleUser : createGoogleUser
-}
+};
