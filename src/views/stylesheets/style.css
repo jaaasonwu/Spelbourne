@@ -37,7 +37,13 @@ body {
 .navbar-brand{
     padding : 0;
 }
-
+.panel {
+    margin: 4.310344827586206896551724137931%;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 4.310344827586206896551724137931%;
+    cursor: pointer;
+}
 .eventImg{
     width : 100%;
     height : 100%;
