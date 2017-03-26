@@ -4,13 +4,19 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: transparent;
 }
 
+#welcome {
+    background: transparent;
+}
 #backgroundImg img {
     width: 10px
 }
 
+#main {
+    background:transparent;
+}
 @media screen and (min-width:768px){
     .navbar-brand-centered {
         position: absolute;
@@ -18,7 +24,8 @@ a {
         display: block;
         width: 160px;
         text-align: center;
-        background-color: #eee;
+        background:transparent;
+        /*background-color: #eee;*/
     }
     .navbar>.container .navbar-brand-centered,
     .navbar>.container-fluid .navbar-brand-centered {
