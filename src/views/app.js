@@ -15,7 +15,11 @@ scotchApp.config(function ($routeProvider, $locationProvider) {
         .when('/login', {
             templateUrl : 'page/login/login.html',
         })
-        .otherwise({ redirectTo: '/' });;
+        .when('/result',{
+            templateUrl : 'page/search-result/searchResult.html',
+            controller : 'resultController'
+        })
+        .otherwise({ redirectTo: '/' });
 
     $locationProvider.html5Mode(true);
 });
