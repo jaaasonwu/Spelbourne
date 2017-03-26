@@ -3,9 +3,9 @@
     <h2> What's Hot/ Suggestion </h2>
     <div class="panel-group">
         <div class="row" ng-repeat= "eventCol in events | groupBy:4">
-            <div class="col-xs-3 letter-box panel panel-default"     ng-repeat="event in eventCol">
+            <div class="col-xs-3 letter-box panel panel-primary"     ng-repeat="event in eventCol">
                 <div class="panel-heading">
-                    {{event.sport}} 
+                    {{event.sport}}
                 </div>
                 <div class="panel-body">
                     <p> {{event.location}} </p>

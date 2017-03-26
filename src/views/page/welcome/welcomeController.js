@@ -28,6 +28,11 @@ angular.module('mainApp').controller('welcomeController', ['$scope', '$http', fu
             sport: "Tennis",
             location: "Melbourne park",
             time: "7 am"
+        },
+        {
+           sport: "BasketBall",
+           location: "Lygon Street",
+           time: "8 pm"
         }
     ];
 }]);
