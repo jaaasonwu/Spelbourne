@@ -1,6 +1,7 @@
-var app = angular.module('mainApp');
+"use strict";
 
-myApp.service("eventService", function() {
+var app = angular.module('eventService',[]);
+app.service("eventService", function() {
     var event = null;
     var setEvent = function (newEvent) {
         event = newEvent;
