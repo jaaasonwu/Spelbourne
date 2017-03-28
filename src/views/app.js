@@ -1,25 +1,31 @@
-// create the module and name it scotchApp
-var scotchApp = angular.module('mainApp', ['ngRoute', 'angular.filter']);
+define(['angularAMD', 'angular-route'], function (angularAMD) {
+    // create the module and name it scotchApp
+    var app = angular.module('mainApp', ['ngRoute']);
+    // configure our routes
+    app.config(function ($routeProvider, $locationProvider) {
+        $routeProvider
+            // Router for welcome page
+            .when('/', angularAMD.route({
+                templateUrl : 'page/welcome/welcome.html',
+                controller : 'welcomeController',
+                controllerUrl: 'page/welcome/welcomeController'
+            }))
+            .when('/login', angularAMD.route({
+                templateUrl : 'page/login/login.html',
+            }))
+            .when('/result', angularAMD.route({
+                templateUrl : 'page/search-result/searchResult.html',
+                controller : 'resultController',
+                controllerUrl: 'page/search-result/resultController'
+            }))
+            .when('/event', angularAMD.route({
+                templateUrl : 'page/event/event.html',
+                controller : 'eventController',
+                controllerUrl: 'page/event/eventController'
+            }))
+            .otherwise({ redirectTo: '/' });
 
-// configure our routes
-scotchApp.config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-        // Router for welcome page
-        .when('/', {
-            templateUrl : 'page/welcome/welcome.html',
-        })
-        // Route for contact page
-        .when('/contact', {
-            templateUrl : 'page/contact/contact.html',
-        })
-        .when('/login', {
-            templateUrl : 'page/login/login.html',
-        })
-        .when('/result',{
-            templateUrl : 'page/search-result/searchResult.html',
-            controller : 'resultController'
-        })
-        .otherwise({ redirectTo: '/' });
-
-    $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode(true);
+    });
+    return angularAMD.bootstrap(app);
 });
