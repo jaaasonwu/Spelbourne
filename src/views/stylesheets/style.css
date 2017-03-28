@@ -82,6 +82,13 @@ body {
     background-color: #FA8B60;
 }
 
+.btn-spl{
+    width: 100px;
+    background-color: #FA8B60;
+}
+
+
+
 .carousel-inner {
     height: 100%;
 }
@@ -97,5 +104,29 @@ body {
 }
 
 .panel-group .panel+.panel {
-    margin-top: 0;
+    /*margin: 5px*/
+    margin-top:0;
+}
+
+.panel {
+    border: 10px solid rgba(109, 152, 182, 0.28);
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.panel-heading{
+    height: 70px;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+
+.container {
+    width: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#loginComponent{
+    padding-top: 100px;
 }
