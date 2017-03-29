@@ -7,60 +7,59 @@ body {
     width: 10px
 }
 
-@media screen and (min-width:768px){
-    .navbar {
-        margin-bottom: 0;
-        background-color: rgba(85, 151, 116, 0.3);
-        border: 0;
-    }
-    .navbar-default{
-        background-image: none;
-        min-height: 100px;
-    }
-    .navbar-brand-centered {
-        position: absolute;
-        left: 50%;
-        display: block;
-        width: 160px;
-        min-height: 100px;
-        text-align: center;
-        font-size: 30px;
-        display:-webkit-box;
-        -webkit-box-pack:center;
-        -webkit-box-align:center;
-        /*background-color: #eee;*/
-    }
-    .navbar-right {
-        height: 100px;
-        padding-right: 20px;
-        display:-webkit-box;
-        -webkit-box-pack:center;
-        -webkit-box-align:center;
-    }
-    .navbar>.container .navbar-brand-centered,
-    .navbar>.container-fluid .navbar-brand-centered {
-        margin-left: -80px;
-        /* To make the text in the middle of the block*/
-        padding: 14px;
-    }
-    .collapse{
-        min-height: 100px;
-    }
-    .logoImg{
-        height: 100px;
-    }
+.navbar {
+    margin-bottom: 0;
+    background-color: rgba(85, 151, 116, 0.3);
+    border: 0;
+}
+.navbar-default{
+    background-image: none;
+    min-height: 100px;
+}
+.navbar-default .navbar-brand {
+    color: #FA8B60;
+    font-family: Verdana;
+}
+.navbar-default .navbar-nav>li>a{
+    color: #FA8B60;
+}
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    min-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /*background-color: #eee;*/
+}
+.navbar-right {
+    height: 100px;
+    padding-right: 20px;
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+.navbar>.container .navbar-brand-centered,
+.navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+    /* To make the text in the middle of the block*/
+    padding: 14px;
+}
+.collapse{
+    min-height: 100px;
+}
+.logoImg{
+    height: 100px;
 }
 /* To fit the logo image to the nav bar*/
 .navbar-brand{
     padding : 0;
 }
-.panel {
-    margin: 4.310344827586206896551724137931%;
-    margin-left: 0;
-    margin-top: 0;
-    padding: 4.310344827586206896551724137931%;
-    cursor: pointer;
-}
+
 .eventImg{
     width : 100%;
     height : 100%;
@@ -143,4 +142,15 @@ body {
 
 #loginComponent{
     padding-top: 100px;
+}
+
+#search-input {
+    margin-left: 20%;
+    margin-right: 20%;
+    position:absolute;
+    top:0%;
+}
+
+.filter{
+    padding-top: 20px;
 }
