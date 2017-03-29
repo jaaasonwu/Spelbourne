@@ -3,23 +3,9 @@
  */
 module.exports = function (app, passport) {
     // Home page
-    app.get('/', function (req, res) {
+    app.get('/*', function (req, res) {
         res.render('index.ejs');
     });
-
-    // Login page
-    app.get('/login', function (req, res) {
-        res.render('login.ejs', {
-            message: req.flash('loginMessage')
-        });
-    });
-
-    // Process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/profile',
-        failureRedirect: '/login',
-        failureFlash: true
-    }));
 
     // Sign up page, show sign up form
     app.get('/signup', function (req, res) {

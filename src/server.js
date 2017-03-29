@@ -41,12 +41,13 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login session
 app.use(flash()); // use connect-flash for flash message
 
+// Use view as static folder
+app.use(express.static(path.join(__dirname, 'views')));
+
 // Routes
 routes(app,passport);
 
 
-// Use view as static folder
-app.use(express.static(path.join(__dirname, 'views')));
 
 // Start the server
 app.listen(port, function () {

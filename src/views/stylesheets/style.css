@@ -1,0 +1,80 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-image: url("/images/women.jpg");*/
+}
+
+#welcome {
+    background: transparent;
+}
+#backgroundImg img {
+    width: 10px
+}
+
+#main {
+    background:transparent;
+}
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background:transparent;
+        /*background-color: #eee;*/
+    }
+    .navbar>.container .navbar-brand-centered,
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -80px;
+        /* To make the text in the middle of the block*/
+        padding: 14px;
+    }
+    .logoImg{
+        height: 50px;
+    }
+}
+/* To fit the logo image to the nav bar*/
+.navbar-brand{
+    padding : 0;
+}
+.panel {
+    margin: 4.310344827586206896551724137931%;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 4.310344827586206896551724137931%;
+    cursor: pointer;
+}
+.eventImg{
+    width : 100%;
+    height : 100%;
+    max-width: 200px;
+}
+
+.eventBody{
+    margin : 10px;
+    border : 1px solid black;
+    background-color: #FDF6F6;
+}
+
+.eventTitle{
+    margin-top : 10px;
+}
+
+.eventList {
+    background-color: rgba(109, 152, 182, 0.28);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+#joinBtn{
+    margin: 10px;
+    width: 100px;
+    background-color: #FA8B60;
+}
+
+#viewBtn{
+    width: 100px;
+    margin: 10px;
+    background-color: #FA8B60;
+}
