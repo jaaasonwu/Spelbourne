@@ -100,8 +100,6 @@ body {
     background-color: #FA8B60;
 }
 
-
-
 .carousel-inner {
     height: 100%;
 }
@@ -153,4 +151,11 @@ body {
 
 .filter{
     padding-top: 20px;
+    margin-right: -5px;
+    margin-left: -5px;
 }
+
+.filter-label{
+    font-size: large;
+}
+
