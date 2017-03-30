@@ -1,6 +1,15 @@
-<div class="jumbotron text-center">
-	<h1> {{event.type}} </h1>
-	<p> {{event.place}} </p>
-	<p> {{event.desc}} </p>
-	<p> {{event.skLevel}} </p>
+<div class="container">
+	<div class="row" id="event">
+		<h1 id="eventName"> {{event.type}} </h1>
+		<div class="jumbotron" id="showEvent">
+			<h2>Description:</h2>
+			<p>Activity Name:  {{event.place}} </p>
+			<p>Date and Time:  {{event.place}} </p>
+			<p>Location: {{event.desc}} </p>
+		</div>
+	</div>
+	<div class="row">
+		<button type="submit" class="btn btn-lg">Join Event</button>
+		<button type="submit" class="btn btn-lg">Invite Friends</button>
+	</div>
 </div>
