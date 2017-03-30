@@ -17,7 +17,8 @@ requirejs.config({
         'angularAMD': ['angular'],
         'angular-resource': ['angular'],
         'angular-filter': ["angular"],
-        'bootstrap': ['jQuery']
+        'bootstrap': ['jQuery'],
+        'jQuery': []
     },
     deps: ['app']
 });

@@ -29,6 +29,7 @@ let localStrategy = new LocalStrategy(
 
                     // check to see if there's already a user with that email
                     if (existingUser){
+                        console.log('That email is already taken');
                         return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
                     }
 
@@ -186,11 +187,13 @@ let loginStrategy = new LocalStrategy(
 
                 // if no user is found, return the message
                 if (!user) {
+                    console.log('No user found');
                     return done(null, false, req.flash('loginMessage', 'No user found'));
                 }
 
                 // if the user user is found but the password is wrong
                 if (!user.validPassword(password)) {
+                    console.log('password invalid')
                     return done(null, false, req.flash('loginMessage', 'Wrong password'));
                 }
 

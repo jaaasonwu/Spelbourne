@@ -3,7 +3,10 @@
  */
 module.exports = function (app, passport) {
     // Home page
-    app.get('/*', function (req, res) {
+    app.get('/',function(req,res){
+        res.render('index.ejs');
+    });
+    app.get('/:page', function (req, res) {
         res.render('index.ejs');
     });
 
@@ -14,9 +17,16 @@ module.exports = function (app, passport) {
         });
     });
 
+    // Process the login form
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect: '/', // redirect to the secure
+        failureRedirect: '/login', // redirect back to the sign up
+        failureFlash: true // allow flash messages
+    }));
+
     // Process the signup form
     app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/profile', // redirect to the secure
+        successRedirect: '/', // redirect to the secure
         failureRedirect: '/signup', // redirect back to the sign up
         failureFlash: true // allow flash messages
     }));
@@ -28,6 +38,14 @@ module.exports = function (app, passport) {
         res.render('profile.ejs', {
             user: req.user // get the user out of session and pass to template
         });
+    });
+
+    app.get('/auth/admin',function(req,res){
+       if (req.isAuthenticated()){
+           res.send({loggedIn : true, user : req.user});
+       } else {
+           res.send({loggedIn : false});
+       }
     });
 
     // Facebook routes
