@@ -95,7 +95,7 @@ body {
 }
 
 .btn-spl {
-    width: 100px;
+    width: 120px;
     background-color: #FA8B60;
 }
 
@@ -131,7 +131,7 @@ body {
     -webkit-box-align:center;
 }
 
-.container {
+#events-container {
     width: auto;
     margin-left: 5%;
     margin-right: 5%;
@@ -160,4 +160,13 @@ body {
 
 #eventName {
     font-weight: bold;
+}
+
+#showEvent {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.eventDes {
+    font-weight: bold !important;
 }

@@ -4,10 +4,36 @@
         <div class="jumbotron" id="showEvent">
             <div class="container">
                 <div class="col-md-9">
-                    <p>Location:  {{event.place}} </p>
-                    <p>Skill Level:  {{event.skLevel}} </p>
-                    <h3>Description:</h3>
-                    <p>{{event.desc}} </p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Location: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.place}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Skill Level: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.skLevel}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Description: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.desc}}
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <img src="{{event.img}}">
@@ -16,7 +42,7 @@
         </div>
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-lg">Join Event</button>
+        <button type="submit" class="btn btn-lg btn-spl">Join Event</button>
         <button type="submit" class="btn btn-lg">Invite Friends</button>
     </div>
 </div>
