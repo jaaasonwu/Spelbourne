@@ -10,9 +10,6 @@ body {
   width: 120px;
   background-color: #FA8B60; }
 
-.carousel-inner {
-  height: 100%; }
-
 .carousel-image {
   /*background-size: cover;*/
   width: 100%; }
@@ -20,34 +17,24 @@ body {
 .collapse {
   min-height: 100px; }
 
-.eventImg {
-  width: 100%;
-  height: 100%;
-  max-width: 200px; }
-
-.eventBody {
-  margin: 10px;
-  border: 1px solid black;
-  background-color: #FDF6F6; }
-
-#events-container {
-  width: auto;
-  margin-left: 5%;
-  margin-right: 5%; }
-
-.eventTitle {
-  margin-top: 10px; }
-
-#eventName {
-  font-weight: bold; }
-
-.eventDes {
-  font-weight: bold !important; }
-
 .eventList {
   background-color: rgba(109, 152, 182, 0.28);
   padding-top: 10px;
   padding-bottom: 10px; }
+  .eventList .eventBody {
+    margin: 10px;
+    border: 1px solid black;
+    background-color: #FDF6F6; }
+  .eventList .eventImg {
+    width: 100%;
+    height: 100%;
+    max-width: 200px; }
+  .eventList #events-container {
+    width: auto;
+    margin-left: 5%;
+    margin-right: 5%; }
+  .eventList .eventTitle {
+    margin-top: 10px; }
 
 .filter {
   padding-top: 20px;
@@ -82,23 +69,20 @@ body {
     color: #FA8B60;
     font-family: Verdana;
     padding: 0; }
-  .navbar-default .navbar-nav > li > a {
-    color: #FA8B60; }
   .navbar-default .navbar-brand-centered {
     position: absolute;
-    left: 50%;
+    left: 40%;
     display: block;
-    width: 160px;
+    width: 300px;
     min-height: 100px;
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
-    margin-left: -80px;
-    /* To make the text in the middle of the block*/
-    padding: 14px;
-    /*background-color: #eee;*/ }
+    padding: 14px; }
+    .navbar-default .navbar-brand-centered a {
+      color: #FA8B60; }
   .navbar-default .navbar-right {
     height: 100px;
     padding-right: 20px;
@@ -110,18 +94,18 @@ body {
   /*margin: 5px*/
   margin-top: 0; }
 
-.panel {
+.welcome-panel .panel {
   border: 10px solid rgba(109, 152, 182, 0.28);
   padding-left: 0;
   padding-right: 0; }
 
-.panel-heading {
+.welcome-panel .panel-heading {
   height: 70px;
   display: -webkit-box;
   -webkit-box-pack: center;
   -webkit-box-align: center; }
 
-.panelTitle {
+.welcome-panel .panelTitle {
   font-weight: bold; }
 
 #search-input {
@@ -131,11 +115,17 @@ body {
   width: 60%;
   top: 2%; }
 
-#showEvent, #createEventJumbo {
+.eventBox, #showEvent, #createEventJumbo {
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 10px;
   padding-bottom: 10px; }
+
+#showEvent .eventName {
+  font-weight: bold; }
+
+#showEvent .eventDes {
+  font-weight: bold !important; }
 
 #viewBtn {
   width: 100px;

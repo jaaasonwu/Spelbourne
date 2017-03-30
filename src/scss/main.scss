@@ -14,10 +14,6 @@ body {
     background-color: #FA8B60;
 }
 
-.carousel-inner {
-    height: 100%;
-}
-
 .carousel-image {
     /*background-size: cover;*/
     width: 100%;
@@ -27,40 +23,33 @@ body {
     min-height: 100px;
 }
 
-.eventImg {
-    width: 100%;
-    height: 100%;
-    max-width: 200px;
-}
-
-.eventBody {
-    margin: 10px;
-    border: 1px solid black;
-    background-color: #FDF6F6;
-}
-
-#events-container {
-    width: auto;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.eventTitle {
-    margin-top: 10px;
-}
-
-#eventName {
-    font-weight: bold;
-}
-
-.eventDes {
-    font-weight: bold !important;
-}
 
 .eventList {
     background-color: rgba(109, 152, 182, 0.28);
     padding-top: 10px;
     padding-bottom: 10px;
+
+    .eventBody {
+        margin: 10px;
+        border: 1px solid black;
+        background-color: #FDF6F6;
+    }
+
+    .eventImg {
+        width: 100%;
+        height: 100%;
+        max-width: 200px;
+    }
+
+    #events-container {
+        width: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .eventTitle {
+        margin-top: 10px;
+    }
 }
 
 .filter {
@@ -105,25 +94,22 @@ body {
         padding: 0;
     }
 
-    .navbar-nav > li > a {
-        color: #FA8B60;
-    }
-
     .navbar-brand-centered {
         position: absolute;
-        left: 50%;
+        left: 40%;
         display: block;
-        width: 160px;
+        width: 300px;
         min-height: 100px;
         text-align: center;
-        font-size: 30px;
+        font-size: 40px;
         display: -webkit-box;
         -webkit-box-pack: center;
         -webkit-box-align: center;
-        margin-left: -80px;
-        /* To make the text in the middle of the block*/
         padding: 14px;
-        /*background-color: #eee;*/
+
+        a {
+            color: #FA8B60;
+        }
     }
 
     .navbar-right {
@@ -140,21 +126,23 @@ body {
     margin-top: 0;
 }
 
-.panel {
-    border: 10px solid rgba(109, 152, 182, 0.28);
-    padding-left: 0;
-    padding-right: 0;
-}
+.welcome-panel {
+    .panel {
+        border: 10px solid rgba(109, 152, 182, 0.28);
+        padding-left: 0;
+        padding-right: 0;
+    }
 
-.panel-heading {
-    height: 70px;
-    display: -webkit-box;
-    -webkit-box-pack: center;
-    -webkit-box-align: center;
-}
+    .panel-heading {
+        height: 70px;
+        display: -webkit-box;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    }
 
-.panelTitle {
-    font-weight: bold;
+    .panelTitle {
+        font-weight: bold;
+    }
 }
 
 #search-input {
@@ -165,11 +153,25 @@ body {
     top: 2%;
 }
 
-#showEvent, #createEventJumbo {
+.eventBox {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 10px;
     padding-bottom: 10px;
+}
+#showEvent {
+    @extend .eventBox;
+    .eventName {
+        font-weight: bold;
+    }
+
+    .eventDes {
+        font-weight: bold !important;
+    }
+}
+
+#createEventJumbo {
+    @extend .eventBox;
 }
 
 #viewBtn {
