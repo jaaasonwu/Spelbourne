@@ -1,53 +1,49 @@
-<div class="container">
-    <h1> Create  Event </h1>
+<div class="col-sm-6 col-sm-offset-3">
     <div class="form" id="createEvent">
         <form>
-            <div class="container">
-                <div class="jumbotron" id="createEventJumbo">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="selectedSport">Sports Category: </label>
-                            </div>
-                            <div class="col-md-9">
-                                <select class="form-control" ng-model="selectedSport" ng-options="x for x in sportsCategory"></select>
-                            </div>
-                        </div>
+            <h1> Create  Event </h1>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="selectedSport">Sports Category: </label>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="dateSelect">Date: </label>
-                            </div>
-                            <div class="col-md-9">
-                                <input id="dateSelected" class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="selectedStartTime"> Starting Time: </label>
-                            </div>
-                            <div class="col-md-9">
-                                <select class="form-control" ng-model="selectedStartTime" ng-options="x for x in startTime"></select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <label for="selectedDuration"> Druation: </label>
-                            </div>
-                            <div class="col-md-9">
-                                <select class="form-control" ng-model="selectedDuration" ng-options="x for x in duration"></select>
-                            </div>
-                        </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="selectedSport" ng-options="x for x in sportsCategory"></select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-lg btn-spl">Create</button>
             </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="dateSelect">Date: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="dateSelected" class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="selectedStartTime"> Starting Time: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="selectedStartTime" ng-options="x for x in startTime"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="selectedDuration"> Druation: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="selectedDuration" ng-options="x for x in duration"></select>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lg btn-spl">Create</button>
         </form>
 
         {{selectedSport}}
