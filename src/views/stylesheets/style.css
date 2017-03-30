@@ -110,7 +110,7 @@ body {
 
 .jumbotron {
     background-color: rgba(109, 152, 182, 0.28);
-
+    padding-top: 10px;
 }
 
 .panel-group .panel+.panel {
@@ -156,10 +156,6 @@ body {
 
 .filter-label {
     font-size: large;
-}
-
-#showEvent {
-    padding-top: 20px;
 }
 
 #eventName {
