@@ -12,7 +12,7 @@ body {
     background-color: rgba(85, 151, 116, 0.3);
     border: 0;
 }
-.navbar-default{
+.navbar-default {
     background-image: none;
     min-height: 100px;
 }
@@ -20,7 +20,7 @@ body {
     color: #FA8B60;
     font-family: Verdana;
 }
-.navbar-default .navbar-nav>li>a{
+.navbar-default .navbar-nav>li>a {
     color: #FA8B60;
 }
 .navbar-brand-centered {
@@ -49,30 +49,30 @@ body {
     /* To make the text in the middle of the block*/
     padding: 14px;
 }
-.collapse{
+.collapse {
     min-height: 100px;
 }
-.logoImg{
+.logoImg {
     height: 100px;
 }
 /* To fit the logo image to the nav bar*/
-.navbar-brand{
+.navbar-brand {
     padding : 0;
 }
 
-.eventImg{
+.eventImg {
     width : 100%;
     height : 100%;
     max-width: 200px;
 }
 
-.eventBody{
+.eventBody {
     margin : 10px;
     border : 1px solid black;
     background-color: #FDF6F6;
 }
 
-.eventTitle{
+.eventTitle {
     margin-top : 10px;
 }
 
@@ -82,21 +82,20 @@ body {
     padding-bottom: 10px;
 }
 
-
-#joinBtn{
+#joinBtn {
     margin: 10px;
     width: 100px;
     background-color: #FA8B60;
 }
 
-#viewBtn{
+#viewBtn {
     width: 100px;
     margin: 10px;
     background-color: #FA8B60;
 }
 
-.btn-spl{
-    width: 100px;
+.btn-spl {
+    width: 120px;
     background-color: #FA8B60;
 }
 
@@ -104,14 +103,14 @@ body {
     height: 100%;
 }
 
-.carousel-image{
+.carousel-image {
     /*background-size: cover;*/
     width: 100%;
 }
 
 .jumbotron {
     background-color: rgba(109, 152, 182, 0.28);
-
+    padding-top: 10px;
 }
 
 .panel-group .panel+.panel {
@@ -125,20 +124,20 @@ body {
     padding-right: 0;
 }
 
-.panel-heading{
+.panel-heading {
     height: 70px;
     display:-webkit-box;
     -webkit-box-pack:center;
     -webkit-box-align:center;
 }
 
-.container {
+#events-container {
     width: auto;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-#loginComponent{
+#loginComponent {
     padding-top: 100px;
 }
 
@@ -146,17 +145,29 @@ body {
     margin-left: 20%;
     margin-right: 20%;
     position:absolute;
-    top:0%;
     width : 60%;
+    top:2%;
 }
 
-.filter{
+.filter {
     padding-top: 20px;
     margin-right: -5px;
     margin-left: -5px;
 }
 
-.filter-label{
+.filter-label {
     font-size: large;
 }
 
+#eventName {
+    font-weight: bold;
+}
+
+#showEvent {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.eventDes {
+    font-weight: bold !important;
+}

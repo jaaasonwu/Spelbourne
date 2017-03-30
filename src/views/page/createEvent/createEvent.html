@@ -1,0 +1,29 @@
+<div class="container">
+    <h1> Create  Event </h1>
+    <div class="form" id="createEvent">
+        <form>
+            <div class="container jumbotron">
+                <h2> Event details </h2>
+                <div class="form-group">
+                    <label for="selectedSport">Sports Category: </label>
+                    <select ng-model="selectedSport" ng-options="x for x in sportsCategory"></select>
+                </div>
+                <div class="form-group">
+                    <label for="dateSelect">Date: </label>
+                    <input id="dateSelected" class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
+                </div>
+                <div class="form-group">
+                    <label for="selectedStartTime"> Starting Time: </label>
+                    <select ng-model="selectedStartTime" ng-options="x for x in startTime"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="selectedDuration"> Druation: </label>
+                    <select ng-model="selectedDuration" ng-options="x for x in duration"></select>
+                </div>
+            </div>
+        </form>
+
+        {{selectedSport}}
+    </div>
+</div>
