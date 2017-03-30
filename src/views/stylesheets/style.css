@@ -162,9 +162,11 @@ body {
     font-weight: bold;
 }
 
-#showEvent {
+#showEvent, #createEventJumbo {
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .eventDes {
