@@ -44,7 +44,14 @@
 
     </nav>
     <!--for test-->
-    <a href="/result">Result</a>
+    <a href="/result">Result</a><button onclick="admin()">Admin</button>
+    <script>
+        function admin(){
+            $.get('/auth/admin',function(data){
+                console.log(data);
+            })
+        }
+    </script>
     <div id="main">
         <div ng-view></div>
     </div>
