@@ -1,0 +1,23 @@
+<h1> Create  Event </h1>
+
+<div class="form" id="createEvent">
+    <form>
+        <h2> Specify Event Details </h2>
+        <div class="container">
+            <label>Sports Category: </label>
+            <select ng-model="selectedSport" ng-options="x for x in sportsCategory"></select>
+
+            <label for="dateSelect">Date:</label>
+            <input ng-model="dateSelect" type="date" class="form-control" id="dateSelect"></select>
+
+            <br>
+            <label> Druation: </label>
+            <select ng-model="selectedDuration" ng-options="x for x in duration"></select>
+            <br>
+            <label> Booking Time: </label>
+            <select ng-model="selectedStartTime" ng-options="x for x in startTime"></select>
+        </div>
+    </form>
+
+    {{selectedSport}}
+</div>

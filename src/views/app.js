@@ -14,14 +14,19 @@ define(['angularAMD', 'angular-route'], function (angularAMD) {
                 templateUrl : 'page/login/login.html',
             }))
             .when('/result', angularAMD.route({
-                templateUrl : 'page/search-result/searchResult.html',
+                templateUrl : 'page/searchResult/searchResult.html',
                 controller : 'resultController',
-                controllerUrl: 'page/search-result/resultController'
+                controllerUrl: 'page/searchResult/resultController'
             }))
             .when('/event', angularAMD.route({
                 templateUrl : 'page/event/event.html',
                 controller : 'eventController',
                 controllerUrl: 'page/event/eventController'
+            }))
+            .when('/createEvent', angularAMD.route({
+                templateUrl : 'page/createEvent/createEvent.html',
+                controller : 'createEventController',
+                controllerUrl: 'page/createEvent/createEventController'
             }))
             .otherwise({ redirectTo: '/' });
 

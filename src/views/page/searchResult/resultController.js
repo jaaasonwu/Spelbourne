@@ -4,7 +4,7 @@
 define(['app', 'page/services/eventService.js'], function (app) {
     app.controller('resultController', ['$scope', '$http', '$location', 'eventService', function ($scope, $http, $location, eventService) {
         // What sports type we have
-        $scope.types      = [
+        $scope.types = [
             "none",
             "tennis",
             "basketball",
@@ -16,7 +16,7 @@ define(['app', 'page/services/eventService.js'], function (app) {
         // Default is any
         $scope.skillSelect = "any";
         // Different skill levels
-        $scope.skills      = [
+        $scope.skills = [
             "any",
             "starter",
             "intermediate",

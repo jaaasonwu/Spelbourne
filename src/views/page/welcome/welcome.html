@@ -7,18 +7,23 @@
             </div>
         </div>
     </div>
-		<div id="search-input">
-				<div class="input-group col-md-12">
-						<input type="text" class="form-control input-lg" placeholder="Buscar"/>
-						<span class="input-group-btn">
-								<a href="/result">
-										<button class="btn btn-spl btn-lg" type="button">
-											<i class="glyphicon glyphicon-search"></i>
-										</button>
-								</a>
-						</span>
-				</div>
-		</div>
+    <div id="search-input">
+        <div class="input-group col-md-12">
+            <input type="text" class="form-control input-lg" placeholder="Buscar"/>
+            <span class="input-group-btn">
+                <a href="/result">
+                    <button class="btn btn-spl btn-lg" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </a>
+                <a href="/createEvent">
+                    <button class="btn btn-lg" type="button">
+                        Create Event
+                    </button>
+                </a>
+            </span>
+        </div>
+    </div>
 </div>
 
 <div class="jumbotron text-center" id="welcome" ng-controller = "welcomeController">
@@ -27,7 +32,7 @@
     <div class="container">
         <div class="panel-group">
             <div class="row" ng-repeat= "eventCol in events | groupBy:4">
-                <div class="col-md-4 letter-box panel panel-default"     ng-repeat="event in eventCol">
+                <div class="col-md-4 letter-box panel panel-default" ng-repeat="event in eventCol">
                     <div class="panel-heading">
                         <h3>{{event.sport}}</h3>
                     </div>
