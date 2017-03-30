@@ -72,51 +72,39 @@ body {
 #loginComponent {
   padding-top: 100px; }
 
-.navbar {
+.navbar-default {
   margin-bottom: 0;
   background-color: rgba(85, 151, 116, 0.3);
-  border: 0; }
-
-.navbar-default {
+  border: 0;
   background-image: none;
   min-height: 100px; }
-
-.navbar-default .navbar-brand {
-  color: #FA8B60;
-  font-family: Verdana; }
-
-.navbar-default .navbar-nav > li > a {
-  color: #FA8B60; }
-
-.navbar-brand-centered {
-  position: absolute;
-  left: 50%;
-  display: block;
-  width: 160px;
-  min-height: 100px;
-  text-align: center;
-  font-size: 30px;
-  display: -webkit-box;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  /*background-color: #eee;*/ }
-
-.navbar-right {
-  height: 100px;
-  padding-right: 20px;
-  display: -webkit-box;
-  -webkit-box-pack: center;
-  -webkit-box-align: center; }
-
-.navbar > .container .navbar-brand-centered,
-.navbar > .container-fluid .navbar-brand-centered {
-  margin-left: -80px;
-  /* To make the text in the middle of the block*/
-  padding: 14px; }
-
-/* To fit the logo image to the nav bar*/
-.navbar-brand {
-  padding: 0; }
+  .navbar-default .navbar-brand {
+    color: #FA8B60;
+    font-family: Verdana;
+    padding: 0; }
+  .navbar-default .navbar-nav > li > a {
+    color: #FA8B60; }
+  .navbar-default .navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    min-height: 100px;
+    text-align: center;
+    font-size: 30px;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    margin-left: -80px;
+    /* To make the text in the middle of the block*/
+    padding: 14px;
+    /*background-color: #eee;*/ }
+  .navbar-default .navbar-right {
+    height: 100px;
+    padding-right: 20px;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center; }
 
 .panel-group .panel + .panel {
   /*margin: 5px*/
