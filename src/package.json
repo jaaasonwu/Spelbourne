@@ -5,9 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js & ./bin/watch-css",
-    "build-css": "./bin/build-css",
-    "watch-css": "./bin/watch-css"
+    "start": "concurrently \"node server.js\" \"npm run watch-css\"",
+    "build-css": "node-sass --include-path scss scss/main.scss views/stylesheets/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
+    "concurrently": "^3.4.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
