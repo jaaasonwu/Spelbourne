@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
-$orange: rgba(244, 119, 15, 0.8);
+$orange: rgba(244, 119, 15, 1);
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
 $buttonOrange: #FA8B60;
@@ -148,13 +148,6 @@ body {
     }
 }
 
-.center {
-    margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
-}
-
 .welcomeTitle {
     vertical-align: middle;
     text-align: center;
@@ -165,12 +158,6 @@ body {
     height: auto;
     margin-bottom: 0px;
     // bottom: 100%;
-
-    .container {
-        @@extend .center;
-        // margin-left: 15%;
-        // margin-right: 20%;
-    }
 }
 .welcome-panel {
     .card {
@@ -242,6 +229,11 @@ body {
     .eventDes {
         font-weight: bold !important;
     }
+
+}
+.eventDesImg {
+    height: 180px;
+    // width: 180px;
 }
 
 #createEventJumbo {
