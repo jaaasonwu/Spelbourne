@@ -4,6 +4,7 @@ $orange: rgba(244, 119, 15, 0.8);
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
 $buttonOrange: #FA8B60;
+$green: #32C532;
 
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -67,11 +68,6 @@ body {
 
 .filter-label {
     font-size: large;
-}
-
-.jumbotron {
-    background-color: rgba(109, 152, 182, 0.28);
-    padding-top: 10px;
 }
 
 #joinBtn {
@@ -152,19 +148,33 @@ body {
     }
 }
 
+.center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+
 .welcomeTitle {
     vertical-align: middle;
     text-align: center;
 }
 
-.welcome-panel {
+#welcome {
+    background-color: $green;
+    height: auto;
+    margin-bottom: 0px;
+    // bottom: 100%;
 
-
-    .card + .card {
-        /*margin: 5px*/
-        margin-top: 0;
+    .container {
+        @@extend .center;
+        // margin-left: 15%;
+        // margin-right: 20%;
     }
+}
+.welcome-panel {
     .card {
+        background-color: $white;
         height: 180px;
         width: 330px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -174,9 +184,14 @@ body {
         // transition:all cubic-bezier(0.4, 0.460, 0.450, 0.940) 0.5s;
     }
 
-
     .cardBox {
-        padding: 30px;
+        height: 180px;
+        width: 330px;
+        padding: 15px;
+        .card-block {
+            height: 150px;
+            width: 275px;
+        }
         .sports-icon {
             height: 30px;
             width: 30px;
@@ -195,15 +210,12 @@ body {
             font-weight: bold;
             padding-left: 30px;
         }
-        transition:all 0.5s;
+        // transition:all 0.5s;
 
     }
 
     .cardBox:hover {
-        padding: 20px;
-        .sports-icon {
-            padding-right: 10px;
-        }
+        padding: 10px;
     }
 }
 

@@ -5,7 +5,7 @@ define(['app', 'angular-filter'], function (app) {
         $scope.message = 'How are you my friend';
 
         $scope.events = [
-            [{
+            {
                 sport: "Tennis",
                 location: "Melbourne park",
                 time: "7 am",
@@ -23,8 +23,8 @@ define(['app', 'angular-filter'], function (app) {
                 location: "Melbourne park",
                 time: "7 am",
                 icon: "images/sportsicon/golf.svg"
-            }],
-            [{
+            },
+            {
                 sport: "Running",
                 location: "Melbourne park",
                 time: "7 am",
@@ -41,7 +41,7 @@ define(['app', 'angular-filter'], function (app) {
                location: "Lygon Street",
                time: "8 pm",
                icon: "images/sportsicon/basketball.svg"
-           }]
+           }
         ];
     }]);
 });

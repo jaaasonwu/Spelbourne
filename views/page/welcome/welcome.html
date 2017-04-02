@@ -31,12 +31,10 @@
     <h2 class="welcomeTitle"> What's Hot/ Suggestion </h2>
     <div class="container" id="events-container">
         <div class="welcome-panel">
-            <div ng-repeat= "eventCol in events">
-                <div class="card-deck row">
-
-                    <div class="cardBox col-md-4" ng-repeat="event in eventCol">
+            <div class="card-deck">
+                <div class="col-md-4 col-sm-6" ng-repeat="event in events">
+                    <div class="cardBox ">
                         <div class="card card-block">
-
                             <h3 class="card-title">
                                 <img class="sports-icon" ng-src="{{event.icon}}"></img>{{event.sport}}
                             </h3>
