@@ -8,32 +8,39 @@ define(['app', 'angular-filter'], function (app) {
             [{
                 sport: "Tennis",
                 location: "Melbourne park",
-                time: "7 am"
+                time: "7 am",
+                icon: "images/sportsicon/tennisball.svg"
             },
             {
                 sport: "Swimming",
                 location: "Melbourne park",
-                time: "7 am"
+                time: "7 am",
+                icon: "images/sportsicon/swimming.svg"
+
             },
             {
                 sport: "Golf",
                 location: "Melbourne park",
-                time: "7 am"
+                time: "7 am",
+                icon: "images/sportsicon/golf.svg"
             }],
             [{
                 sport: "Running",
                 location: "Melbourne park",
-                time: "7 am"
+                time: "7 am",
+                icon: "images/sportsicon/running.svg"
             },
             {
                 sport: "Tennis",
                 location: "Melbourne park",
-                time: "7 am"
+                time: "7 am",
+                icon: "images/sportsicon/tennisball.svg"
             },
             {
                sport: "BasketBall",
                location: "Lygon Street",
-               time: "8 pm"
+               time: "8 pm",
+               icon: "images/sportsicon/basketball.svg"
            }]
         ];
     }]);

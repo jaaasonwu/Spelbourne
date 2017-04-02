@@ -149,28 +149,51 @@ body {
 
 .welcome-panel {
 
+
     .card + .card {
         /*margin: 5px*/
         margin-top: 0;
     }
     .card {
+        height: 180px;
+        width: 330px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
+        transition: 0.05s;
         border-radius: 50px;
         border: 10px solid rgba(109, 152, 182, 0);
+        // transition:all cubic-bezier(0.4, 0.460, 0.450, 0.940) 0.5s;
     }
+
+
     .cardBox {
         padding: 30px;
+        .sports-icon {
+            height: 30px;
+            width: 30px;
+            padding-right: 10px;
+
+        }
+
+        .card-text {
+            height: 100px;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            padding-left: 30px;
+        }
+        transition:all 0.5s;
+
     }
 
-    .card-text {
-        height: 100px;
-        vertical-align: middle;
-        text-align: center;
-    }
-
-    .card-title {
-        font-weight: bold;
+    .cardBox:hover {
+        padding: 20px;
+        .sports-icon {
+            padding-right: 10px;
+        }
     }
 }
 

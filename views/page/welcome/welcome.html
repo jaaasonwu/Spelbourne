@@ -36,7 +36,10 @@
 
                     <div class="cardBox col-md-4" ng-repeat="event in eventCol">
                         <div class="card card-block">
-                            <h3 class="card-title">{{event.sport}}</h3>
+
+                            <h3 class="card-title">
+                                <img class="sports-icon" ng-src="{{event.icon}}"></img>{{event.sport}}
+                            </h3>
                             <div class="card-text">
                                 <p> {{event.location}} </p>
                                 <p> {{event.time}} </p>
