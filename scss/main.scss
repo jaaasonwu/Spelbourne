@@ -111,6 +111,15 @@ body {
         padding: 0;
     }
 
+    .navbar-right {
+        position: absolute;
+        right: 5%;
+        >li > a {
+            color: $black;
+            font-size: 20px;
+        }
+    }
+
     .navbar-brand-centered {
         position: absolute;
         left: 40%;
