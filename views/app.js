@@ -1,6 +1,6 @@
-define(['angularAMD', 'angular-route', 'jQuery'], function (angularAMD) {
+define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js'], function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute']);
+    var app = angular.module('mainApp', ['ngRoute', 'eventService']);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
