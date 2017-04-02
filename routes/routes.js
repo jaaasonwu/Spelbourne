@@ -152,9 +152,9 @@ module.exports = function (app, passport) {
     });
 
     // Logout page
-    app.get('/logout', function (req, res) {
+    app.get('/auth/logout', function (req, res) {
         req.logout();
-        res.redirect('/');
+        res.end();
     })
 };
 
