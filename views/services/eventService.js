@@ -1,6 +1,6 @@
 "use strict";
 
-define(['angularAMD'],function(angularAMD){
+define(['angularAMD'],function(){
     var app = angular.module('eventService',[]);
     app.service("eventService", function() {
         var event = null;

@@ -1,6 +1,6 @@
-define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js'], function (angularAMD) {
+define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js', 'services/adminService.js'], function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute', 'eventService']);
+    var app = angular.module('mainApp', ['ngRoute', 'eventService', 'adminService']);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -38,6 +38,10 @@ define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js'], fu
             .otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode(true);
+    })
+        // initialize code
+        .run(function(adminService){
+        adminService.getAdmin();
     });
     return angularAMD.bootstrap(app);
 });
