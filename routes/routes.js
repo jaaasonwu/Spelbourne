@@ -10,26 +10,47 @@ module.exports = function (app, passport) {
         res.render('index.ejs');
     });
 
-    // Sign up page, show sign up form
-    app.get('/signup', function (req, res) {
-        res.render('signup.ejs', {
-            message: req.flash('signupMessage')
-        });
+    // Process the login form
+
+    app.post('/login', function(req,res,next){
+       passport.authenticate('local-login',function(err, user, info){
+           // server error
+           if (err){
+               console.log(err);
+               return next(err);
+           }
+           // login failure
+           if (!user){
+               res.status(401).send({success: false, msg: req.flash('loginMessage')});
+           }else{
+               // establish login session
+               req.logIn(user,function(err){
+                  res.status(200).send({success: true})
+               });
+           }
+       })(req,res,next);
     });
 
-    // Process the login form
-    app.post('/login', passport.authenticate('local-login', {
-        successRedirect: '/', // redirect to the secure
-        failureRedirect: '/login', // redirect back to the sign up
-        failureFlash: true // allow flash messages
-    }));
-
     // Process the signup form
-    app.post('/signup', passport.authenticate('local-signup', {
-        successRedirect: '/', // redirect to the secure
-        failureRedirect: '/signup', // redirect back to the sign up
-        failureFlash: true // allow flash messages
-    }));
+    app.post('/signup', function(req,res,next){
+        passport.authenticate('local-signup',function(err, user, info){
+            // server error
+            if (err){
+                console.log(err);
+                return next(err);
+            }
+            // signup failure
+            if (!user){
+                res.status(401).send({success: false, msg: req.flash('signupMessage')});
+            }else{
+                // establish login session
+                req.logIn(user,function(err){
+                    res.status(200).send({success: true})
+                });
+            }
+        })(req,res,next);
+    });
+
 
     // Profile page
     // we will want this protected so you have to be logged in to visit

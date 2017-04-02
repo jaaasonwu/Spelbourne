@@ -79,6 +79,12 @@ body {
 
 #loginComponent {
     padding-top: 100px;
+
+    .errMsg {
+        font-size : 1.8em;
+        color : red;
+        font-weight: bold;
+    }
 }
 
 .navbar-default {
@@ -179,3 +185,5 @@ body {
     margin: 10px;
     background-color: #FA8B60;
 }
+
+

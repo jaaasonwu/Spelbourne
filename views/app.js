@@ -12,9 +12,13 @@ define(['angularAMD', 'angular-route', 'jQuery'], function (angularAMD) {
             }))
             .when('/login', angularAMD.route({
                 templateUrl : 'page/login/login.html',
+                controller : 'loginController',
+                controllerUrl : 'page/login/loginController'
             }))
             .when('/signup', angularAMD.route({
-                templateUrl : 'page/signup/signup.html'
+                templateUrl : 'page/signup/signup.html',
+                controller : 'signupController',
+                controllerUrl : 'page/signup/signupController'
             }))
             .when('/result', angularAMD.route({
                 templateUrl : 'page/searchResult/searchResult.html',
