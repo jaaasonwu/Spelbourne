@@ -38,9 +38,13 @@
                 <a href="/"  class="navbar-brand"><img class="logoImg" src="images/logo.png"></a>
 
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" ng-if="!username">
                 <li><a href="/signup">SignUp</a></li>
                 <li><a href="/login">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if="username">
+                <li>{{username}}</li>
+                <li><a href="" ng-click="logOut()">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
 

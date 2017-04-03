@@ -1,6 +1,6 @@
-define(['angularAMD', 'angular-route', 'jQuery'], function (angularAMD) {
+define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js', 'services/adminService.js'], function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute']);
+    var app = angular.module('mainApp', ['ngRoute', 'eventService', 'adminService']);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -12,9 +12,13 @@ define(['angularAMD', 'angular-route', 'jQuery'], function (angularAMD) {
             }))
             .when('/login', angularAMD.route({
                 templateUrl : 'page/login/login.html',
+                controller : 'loginController',
+                controllerUrl : 'page/login/loginController'
             }))
             .when('/signup', angularAMD.route({
-                templateUrl : 'page/signup/signup.html'
+                templateUrl : 'page/signup/signup.html',
+                controller : 'signupController',
+                controllerUrl : 'page/signup/signupController'
             }))
             .when('/result', angularAMD.route({
                 templateUrl : 'page/searchResult/searchResult.html',
@@ -34,6 +38,11 @@ define(['angularAMD', 'angular-route', 'jQuery'], function (angularAMD) {
             .otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode(true);
+    })
+        // initialize code
+        .run(function($rootScope, adminService){
+        adminService.getAdmin();
+        $rootScope.logOut = adminService.logOut;
     });
     return angularAMD.bootstrap(app);
 });
