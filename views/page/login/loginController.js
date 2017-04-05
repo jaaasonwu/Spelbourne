@@ -1,6 +1,3 @@
-/**
- * Created by zhai7 on 4/2/2017.
- */
 define(['app'], function (app) {
     app.controller('loginController', ['$scope', '$http', '$location', 'adminService',
         function ($scope, $http, $location, adminService) {

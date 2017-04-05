@@ -40,7 +40,7 @@ define(['angularAMD', 'angular-route', 'jQuery', 'services/eventService.js', 'se
         $locationProvider.html5Mode(true);
     })
         // initialize code
-        .run(function($rootScope, adminService){
+        .run(function($rootScope, adminService) {
         adminService.getAdmin();
         $rootScope.logOut = adminService.logOut;
     });

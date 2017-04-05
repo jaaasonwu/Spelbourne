@@ -1,6 +1,3 @@
-/**
- * Created by zhai7 on 3/26/2017.
- */
 define(['app'], function (app) {
     app.controller('resultController', ['$scope', '$http', '$location', 'eventService',
         function ($scope, $http, $location, eventService) {
