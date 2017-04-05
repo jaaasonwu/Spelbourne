@@ -8,7 +8,7 @@
                         <label for="selectedSport">Sports Category: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="selectedSport" ng-options="x for x in sportsCategory"></select>
+                        <select class="form-control" ng-model="data.selectedSport" ng-options="x for x in sportsCategory"></select>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                         <label for="dateSelect">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <input id="dateSelected" class="form-control" type="datetime-local" value="2011-08-19T13:45:00">
+                        <input id="dateSelected" class="form-control" type="datetime-local" ng-model="data.eventDate">
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                         <label for="selectedStartTime"> Starting Time: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="selectedStartTime" ng-options="x for x in startTime"></select>
+                        <select class="form-control" ng-model="data.selectedStartTime" ng-options="x for x in startTime"></select>
                     </div>
                 </div>
             </div>
@@ -36,16 +36,32 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedDuration"> Druation: </label>
+                        <label for="data.selectedDuration"> Druation: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="selectedDuration" ng-options="x for x in duration"></select>
+                        <select class="form-control" ng-model="data.selectedDuration" ng-options="x for x in duration"></select>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-lg btn-search">Create</button>
+
+
+            <div class="form-group">
+                <div class="row">
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Friends">
+                    Friends Only
+                  </label><br/>
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Public">
+                    Public
+                  </label><br/>
+                </div>
+            </div>
+            <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
+
         </form>
 
-        {{selectedSport}}
+        {{data}}
+
     </div>
 </div>
