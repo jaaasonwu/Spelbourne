@@ -1,72 +1,70 @@
-/**
- * Created by zhai7 on 3/13/2017.
- */
-module.exports = function (app, passport) {
+module.exports = function (app, passport, eventService) {
     // Home page
-    app.get('/',function(req,res){
+    app.get('/',function(req, res) {
         res.render('index.ejs');
     });
+
     app.get('/:page', function (req, res) {
         res.render('index.ejs');
     });
 
-    // Process the login form
+    app.post('/createEvent', function(req, res) {
+        let event = req.body;
+        eventService.createEvent(event.location, event.organizerID, event.participants, event.description,
+                event.createEventDate, event.eventDate, event.endDate, event.visibility);
+        res.end();
+    });
 
-    app.post('/login', function(req,res,next){
-       passport.authenticate('local-login',function(err, user, info){
-           // server error
-           if (err){
-               console.log(err);
-               return next(err);
-           }
-           // login failure
-           if (!user){
-               res.status(401).send({success: false, msg: req.flash('loginMessage')});
-           }else{
-               // establish login session
-               req.logIn(user,function(err){
-                  res.status(200).send({success: true})
-               });
-           }
-       })(req,res,next);
+    // Process the login form
+    app.post('/login', function(req, res, next) {
+        let authenticateStrategy = passport.authenticate('local-login', function(err, user, info) {
+            // server error
+            if (err) {
+                console.log(err);
+                return next(err);
+            }
+            // login failure
+            if (!user) {
+                res.status(401).send({success: false, msg: req.flash('loginMessage')});
+            } else {
+                // establish login session
+                req.logIn(user, function(err) {
+                    res.status(200).send({success: true})
+                });
+            }
+        });
+
+        authenticateStrategy(req, res, next);
     });
 
     // Process the signup form
-    app.post('/signup', function(req,res,next){
-        passport.authenticate('local-signup',function(err, user, info){
+    app.post('/signup', function(req, res, next) {
+        let signupStrategy = passport.authenticate('local-signup', function(err, user, info) {
             // server error
-            if (err){
+            if (err) {
                 console.log(err);
                 return next(err);
             }
             // signup failure
-            if (!user){
+            if (!user) {
                 res.status(401).send({success: false, msg: req.flash('signupMessage')});
-            }else{
+            } else {
                 // establish login session
-                req.logIn(user,function(err){
+                req.logIn(user, function(err) {
                     res.status(200).send({success: true})
                 });
             }
-        })(req,res,next);
-    });
-
-
-    // Profile page
-    // we will want this protected so you have to be logged in to visit
-    // we will use route middleware to verify this (the isLoggedIn)
-    app.get('/profile', isLoggedIn, function (req, res) {
-        res.render('profile.ejs', {
-            user: req.user // get the user out of session and pass to template
         });
+        signupStrategy(req,res,next);
     });
+
 
     app.get('/auth/admin',function(req,res){
-       if (req.isAuthenticated()){
-           res.send({loggedIn : true, user : req.user});
-       } else {
-           res.send({loggedIn : false});
-       }
+        if (req.isAuthenticated()){
+            res.send({loggedIn : true, user : req.user});
+        } else {
+            res.send({loggedIn : false});
+        }
     });
 
     // Facebook routes
@@ -85,15 +83,15 @@ module.exports = function (app, passport) {
 
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
-        passport.authenticate('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
+    passport.authenticate('google', {
+        successRedirect : '/profile',
+        failureRedirect : '/'
+    }));
     // Authorize (logged in, connect other social account)
 
     // Locally
     app.get('/connect/local', function(req, res){
-       res.render('connect-local.ejs',{message: req.flash('loginMessage')});
+        res.render('connect-local.ejs',{message: req.flash('loginMessage')});
     });
     app.post('/connect/local', passport.authenticate('local-signup', {
         successRedirect : '/profile', // redirect to the secure profile section
@@ -106,10 +104,10 @@ module.exports = function (app, passport) {
 
     // handle the callback after facebook has authorized the user
     app.get('/connect/facebook/callback',
-        passport.authorize('facebook', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
+    passport.authorize('facebook', {
+        successRedirect : '/profile',
+        failureRedirect : '/'
+    }));
 
     // Google
     // send to google to do the authentication
@@ -117,10 +115,10 @@ module.exports = function (app, passport) {
 
     // the callback after google has authorized the user
     app.get('/connect/google/callback',
-        passport.authorize('google', {
-            successRedirect : '/profile',
-            failureRedirect : '/'
-        }));
+    passport.authorize('google', {
+        successRedirect : '/profile',
+        failureRedirect : '/'
+    }));
 
     // Unlink accounts
     // local -----------------------------------

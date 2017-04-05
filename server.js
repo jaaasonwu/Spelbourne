@@ -13,6 +13,7 @@ const flash        = require('connect-flash');
 const db = require('./lib/db.js');
 const routes = require('./routes/routes.js');
 const ppConfig = require('./lib/passport.js');
+const eventService = require("./lib/eventService.js");
 
 // Default port to 8888 or use env PORT
 const port = process.env.PORT || 8888;
@@ -45,7 +46,7 @@ app.use(flash()); // use connect-flash for flash message
 app.use(express.static(path.join(__dirname, 'views')));
 
 // Routes
-routes(app,passport);
+routes(app, passport, eventService);
 
 
 

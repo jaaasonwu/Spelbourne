@@ -1,7 +1,7 @@
-define(['angularAMD'], function(){
+define(['angularAMD'], function() {
     var app = angular.module('adminService',[]);
-    app.service('adminService',['$rootScope','$http',function($rootScope, $http){
-        var getAdmin = function(){
+    app.service('adminService', ['$rootScope','$http',function($rootScope, $http) {
+        var getAdmin = function() {
             $http.get('/auth/admin')
                 .then(
                     // success callback
@@ -9,7 +9,7 @@ define(['angularAMD'], function(){
                         console.log(res.data);
                         if (res.data.loggedIn){
                             $rootScope.username = res.data.user.local.email;
-                        }else {
+                        } else {
                             $rootScope.username = undefined;
                         }
                     },
@@ -20,16 +20,17 @@ define(['angularAMD'], function(){
                     }
                 );
         };
-        var logOut = function(){
+
+        var logOut = function() {
             $http.get('/auth/logout')
                 .then(
                     // success callback
-                    function(res){
+                    function(res) {
                         console.log('logout success');
                         getAdmin();
                     },
                     // failure callback
-                    function(res){
+                    function(res) {
                         console.log('logout failure');
                     }
                 )
