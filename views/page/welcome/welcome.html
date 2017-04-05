@@ -32,11 +32,11 @@
     <div class="container" id="events-container">
         <div class="welcome-panel">
             <div class="card-deck">
-                <div class="col-md-4 col-sm-6" ng-repeat="event in events">
+                <div class="col-md-4 grow" ng-repeat="event in events">
                     <div class="cardBox ">
                         <div class="card card-block">
                             <h3 class="card-title">
-                                <img class="sports-icon" ng-src="{{event.icon}}"></img>{{event.sport}}
+                                <img class="sports-icon" ng-src="{{event.icon}}">{{event.sport}}
                             </h3>
                             <div class="card-text">
                                 <p> {{event.location}} </p>
