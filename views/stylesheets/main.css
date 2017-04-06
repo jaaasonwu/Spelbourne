@@ -42,8 +42,8 @@ body {
 
 .filter {
   padding-top: 20px;
-  margin-right: -5px;
-  margin-left: -5px;
+  margin-right: 0;
+  margin-left: 0;
   background-color: rgba(109, 152, 182, 0.28);
   padding-bottom: 20px; }
 
