@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node server.js\" \"npm run watch-css\"",
+    "start": "concurrently \"node server.js\" \"npm run build-css\" \"npm run watch-css\"",
     "build-css": "node-sass --include-path scss scss/main.scss views/stylesheets/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
