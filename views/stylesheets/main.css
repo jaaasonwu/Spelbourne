@@ -9,7 +9,11 @@ body {
 
 .btn-search {
   width: 120px;
-  background-color: #FA8B60; }
+  background-color: #f4770f;
+  color: black; }
+
+.btn {
+  color: black; }
 
 .carousel-image {
   /*background-size: cover;*/
@@ -46,14 +50,10 @@ body {
 .filter-label {
   font-size: large; }
 
-.jumbotron {
-  background-color: rgba(109, 152, 182, 0.28);
-  padding-top: 10px; }
-
 #joinBtn {
   margin: 10px;
   width: 100px;
-  background-color: #FA8B60; }
+  background-color: #f4770f; }
 
 #loginComponent {
   padding-top: 100px; }
@@ -64,7 +64,7 @@ body {
 
 .navbar-default {
   margin-bottom: 0;
-  background-color: rgba(244, 119, 15, 0.8);
+  background-color: #f4770f;
   border: 0;
   background-image: none;
   min-height: 100px; }
@@ -115,21 +115,20 @@ body {
   vertical-align: middle;
   text-align: center; }
 
-.welcome-panel .card + .card {
-  /*margin: 5px*/
-  margin-top: 0; }
+#welcome {
+  background-color: white;
+  height: auto;
+  margin-bottom: 0px; }
 
 .welcome-panel .card {
-  height: 180px;
-  width: 330px;
+  background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.05s;
-  border-radius: 50px;
-  border: 10px solid rgba(109, 152, 182, 0); }
+  border-radius: 10px;
+  border: 10px solid transparent; }
 
 .welcome-panel .cardBox {
-  padding: 30px;
-  transition: all 0.5s; }
+  padding: 15px; }
   .welcome-panel .cardBox .sports-icon {
     height: 30px;
     width: 30px;
@@ -140,13 +139,14 @@ body {
     text-align: center;
     font-size: 30px; }
   .welcome-panel .cardBox .card-title {
-    font-weight: bold;
-    padding-left: 30px; }
+    text-align: center;
+    font-weight: bold; }
 
-.welcome-panel .cardBox:hover {
-  padding: 20px; }
-  .welcome-panel .cardBox:hover .sports-icon {
-    padding-right: 10px; }
+.grow {
+  transition: all .2s ease-in-out; }
+
+.grow:hover {
+  transform: scale(1.1); }
 
 #search-input {
   margin-left: 20%;
@@ -167,7 +167,10 @@ body {
 #showEvent .eventDes {
   font-weight: bold !important; }
 
+.eventDesImg {
+  height: 180px; }
+
 #viewBtn {
   width: 100px;
   margin: 10px;
-  background-color: buttonOrange; }
+  background-color: #f4770f; }
