@@ -1,0 +1,65 @@
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="form" id="createEvent">
+        <form>
+            <h1> Create  Event </h1>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="selectedSport">Sports Category: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="data.selectedSport" ng-options="x for x in sportsCategory"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="dateSelect">Date: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="dateSelected" class="form-control" type="datetime-local" ng-model="data.eventDate">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="selectedStartTime"> Starting Time: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="data.selectedStartTime" ng-options="x for x in startTime"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="data.selectedDuration"> Druation: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="form-control" ng-model="data.selectedDuration" ng-options="x for x in duration"></select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Friends">
+                    Friends Only
+                  </label><br/>
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Public">
+                    Public
+                  </label><br/>
+                </div>
+            </div>
+            <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
+
+        </form>
+
+    </div>
+</div>

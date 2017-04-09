@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!-- Angularjs -->
+    <meta name="google-signin-client_id"
+          content="523892883118-akcfr1q4mg78ffrfttcil34emeuqkpd5.apps.googleusercontent.com">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- jQuery library -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.3/require.min.js" data-main="config"></script>
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <base href="/">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-brand navbar-brand-centered">
+                <b>
+                    Spelbourne
+                </b>
+            </div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-brand-centered">
+            <ul class="nav navbar-nav">
+                <a href="/"  class="navbar-brand"><img class="logoImg" src="images/logo.png"></a>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if="!username">
+                <li><a href="/signup">SignUp</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" ng-if="username">
+                <li>{{username}}</li>
+                <li><a href="" ng-click="logOut()">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </nav>
+    <div id="main">
+        <div ng-view></div>
+    </div>
+</body>
+</html>

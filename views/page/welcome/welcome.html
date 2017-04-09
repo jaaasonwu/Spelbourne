@@ -1,0 +1,51 @@
+<div class="carousel slide main-carousel" id="carousel-index">
+    <div class="carousel-inner">
+        <div class="item active">
+            <img class="carousel-image" alt="" src="images/banner.jpg">
+            <div class="carousel-caption">
+                <h1>Discover Events in Melbourne! </h1>
+            </div>
+        </div>
+    </div>
+    <div id="search-input">
+        <div class="input-group col-md-12">
+            <input type="text" class="form-control input-lg" placeholder="Location"/>
+            <span class="input-group-btn">
+                <a href="/result">
+                    <button class="btn btn-search btn-lg" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </a>
+                <a href="/createEvent">
+                    <button class="btn btn-lg" type="button">
+                        Create Event
+                    </button>
+                </a>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="welcome" class="jumbotron" ng-controller = "welcomeController">
+
+    <h2 class="welcomeTitle"> What's Hot/ Suggestion </h2>
+    <div class="container" id="events-container">
+        <div class="welcome-panel">
+            <div class="card-deck">
+                <div class="col-md-4 grow" ng-repeat="event in events">
+                    <div class="cardBox ">
+                        <div class="card card-block">
+                            <h3 class="card-title">
+                                <img class="sports-icon" ng-src="{{event.icon}}">{{event.sport}}
+                            </h3>
+                            <div class="card-text">
+                                <p> {{event.location}} </p>
+                                <p> {{event.time}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

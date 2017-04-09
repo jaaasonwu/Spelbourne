@@ -39,3 +39,6 @@ jspm_packages
 # ignore idea
 .idea
 *.iml
+
+# runtime compiled css
+views/stylesheets/main.css
