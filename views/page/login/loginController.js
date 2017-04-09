@@ -3,7 +3,7 @@ define(['app'], function (app) {
         function ($scope, $http, $location, adminService) {
             $scope.logIn = function () {
                 console.log('clicked');
-                $http.post('/login', {email: $scope.email, password: $scope.password})
+                $http.post('/auth/login', {email: $scope.email, password: $scope.password})
                     .then(
                         // success callback
                         function (res) {
@@ -16,6 +16,9 @@ define(['app'], function (app) {
                             $scope.errMsg = res.data.msg[0];
                         }
                     )
+            }
+            $scope.google = function(){
+                $http.get('/auth/google');
             }
         }]);
 });

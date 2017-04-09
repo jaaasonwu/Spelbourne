@@ -23,11 +23,11 @@ define(['app'], function (app) {
 
 
         // Variables to bind to the front end
-        $scope.selectedSport = ""
-        $scope.selectedStartTime = ""
-        $scope.selectedDuration = ""
+        $scope.selectedSport = "";
+        $scope.selectedStartTime = "";
+        $scope.selectedDuration = "";
         $scope.createEvent = function () {
-            $http.post('/createEvent', $scope.data)
+            $http.post('/event/createEvent', $scope.data)
             .then(
                 // success callback
                 function (res) {
