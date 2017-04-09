@@ -9,7 +9,7 @@ module.exports = function (app, passport) {
     app.use('/',index);
     app.use('/user',user);
     app.use('/auth',auth(passport));
-    app.use('/connect',connect);
+    app.use('/connect',connect(passport));
     app.use('/unlink',unlink);
     app.use('/event',event);
 };
