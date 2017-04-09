@@ -1,17 +1,17 @@
-const auth = require('./auth.js');
-const connect = require('./connect.js');
-const unlink = require('./unlink.js');
-const index = require('./index.js');
-const event = require('./event.js');
-const user = require('./user.js');
+const auth = require('./authRouter.js');
+const connect = require('./connectRouter.js');
+const unlink = require('./linkingRouter.js');
+const index = require('./pageRouter.js');
+const event = require('./eventRouter.js');
+const user = require('./userRouter.js');
 
 module.exports = function (app, passport) {
-    app.use('/',index);
-    app.use('/user',user);
-    app.use('/auth',auth(passport));
-    app.use('/connect',connect);
-    app.use('/unlink',unlink);
-    app.use('/event',event);
+    app.use('/', index);
+    app.use('/user', user);
+    app.use('/auth', auth(passport));
+    app.use('/connect', connect(passport));
+    app.use('/unlink', unlink);
+    app.use('/event', event);
 };
 
 // route middleware to make sure a user is logged in
