@@ -42,6 +42,7 @@ body {
         margin: 10px;
         border: 1px solid black;
         background-color: #FDF6F6;
+        border-radius: 10px;
     }
 
     .eventImg {
@@ -142,11 +143,15 @@ body {
 
         b {
             color: $white;
+            a {
+                all: inherit;
+            }
         }
 
         b:hover {
             color: $black;
         }
+        
     }
 
     .navbar-right {
