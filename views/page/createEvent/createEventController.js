@@ -22,8 +22,6 @@ define(['app'], function (app) {
             date = [];
             for (i = 0; i < 12; i++) {
                 var point = dt.toLocaleTimeString('en-US');
-                console.log(point);
-                console.log(dt);
                 date.push(point);
                 dt.setMinutes(dt.getMinutes() + step);
             }
@@ -37,7 +35,12 @@ define(['app'], function (app) {
             "Soccer",
             "Basketball"
         ];
+        $scope.skillLevel = [
+            "Intermediate",
+            "Beginner",
+            "Expert"
 
+        ];
         $scope.myDate = new Date();
         $scope.startTime = generate_time_step(30);
 
@@ -50,7 +53,8 @@ define(['app'], function (app) {
             startTime: $scope.startTime[0],
             duration: $scope.duration[0],
             visibility: "Friends",
-            sportType: $scope.sportsCategory[0]
+            sportType: $scope.sportsCategory[0],
+            skillLevel: $scope.skillLevel[0]
         };
 
         $scope.createEvent = function () {
