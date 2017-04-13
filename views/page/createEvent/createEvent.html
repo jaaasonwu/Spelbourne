@@ -5,30 +5,41 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedSport">Sports Category: </label>
+                        <label for="data.sportType">Sports Category: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="data.selectedSport" ng-options="x for x in sportsCategory"></select>
+
+                        <select id="data.sportType" class="form-control"
+                                ng-model="data.sportType"
+                                ng-options="x for x in sportsCategory">
+                        </select>
+
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="dateSelect">Date: </label>
+                        <label for="startDate">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <input id="dateSelected" class="form-control" type="datetime-local" ng-model="data.eventDate">
+                        <md-datepicker ng-model="data.startDate" md-placeholder="Enter date">
+
+                        </md-datepicker>
                     </div>
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedStartTime"> Starting Time: </label>
+                        <label for="startTime"> Starting Time: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="data.selectedStartTime" ng-options="x for x in startTime"></select>
+                        <select id="startTime" class="form-control"
+                                ng-model="data.startTime"
+                                ng-options="x for x in startTime">
+                        </select>
                     </div>
                 </div>
             </div>
@@ -36,17 +47,54 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="data.selectedDuration"> Druation: </label>
+                        <label for="duration"> Duration: </label>
                     </div>
                     <div class="col-md-9">
-                        <select class="form-control" ng-model="data.selectedDuration" ng-options="x for x in duration"></select>
+                        <select id="duration" class="form-control"
+                                ng-model="data.duration"
+                                ng-options="x for x in duration">
+                        </select>
                     </div>
                 </div>
             </div>
 
-
             <div class="form-group">
                 <div class="row">
+                    <div class="col-md-3">
+                        <label for="descriptionTextarea">Description</label>
+                    </div>
+                    <div class="col-md-9">
+                        <textarea id="descriptionTextarea" class="form-control"
+                                  ng-model="data.description"
+                                  placeholder="Enter the event description here">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="locationInput">Location</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input id="locationInput" class="form-control controls"
+                               ng-model="data.location"
+                               type="text" placeholder="Search Box"
+                               onkeypress="return event.keyCode != 13;"
+                        >
+                        </input>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-app="app" ng-controller="createEventController">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row visibility-selector">
                   <label>
                     <input type="radio" ng-model="data.visibility" value="Friends">
                     Friends Only
@@ -58,8 +106,6 @@
                 </div>
             </div>
             <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
-
         </form>
-
     </div>
 </div>
