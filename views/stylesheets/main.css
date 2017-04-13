@@ -28,7 +28,8 @@ body {
   .eventList .eventBody {
     margin: 10px;
     border: 1px solid black;
-    background-color: #FDF6F6; }
+    background-color: #FDF6F6;
+    border-radius: 10px; }
   .eventList .eventImg {
     width: 100%;
     height: 100%;
@@ -102,6 +103,12 @@ body {
     padding: 14px; }
     .navbar-default .navbar-brand-centered b {
       color: white; }
+      .navbar-default .navbar-brand-centered b a {
+        color: inherit;
+        text-decoration: none; }
+      .navbar-default .navbar-brand-centered b a:hover {
+        color: inherit;
+        text-decoration: none; }
     .navbar-default .navbar-brand-centered b:hover {
       color: black; }
   .navbar-default .navbar-right {
@@ -175,3 +182,21 @@ body {
   width: 100px;
   margin: 10px;
   background-color: #f4770f; }
+
+.visibility-selector {
+  padding-left: 15px; }
+
+#map {
+  height: 300px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px; }
+
+.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,
+.md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,
+.md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator,
+.md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
+  background: #f4770f; }
+
+.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
+  color: #f4770f; }
