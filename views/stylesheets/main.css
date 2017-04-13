@@ -168,7 +168,8 @@ body {
   font-weight: bold !important; }
 
 .eventDesImg {
-  height: 180px; }
+  height: 180px;
+  width: 270px; }
 
 #viewBtn {
   width: 100px;
