@@ -12,7 +12,7 @@ const flash        = require('connect-flash');
 // Local file requirement
 const db = require('./lib/db.js');
 const routes = require('./routes/routes.js');
-const ppConfig = require('./lib/passport.js');
+const ppConfig = require('./lib/auth/passport.js');
 
 // Default port to 8888 or use env PORT
 const port = process.env.PORT || 8888;

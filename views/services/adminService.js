@@ -8,9 +8,7 @@ define(['angularAMD'], function() {
                     function(res){
                         console.log(res.data);
                         if (res.data.loggedIn){
-                            var user = res.data.user;
-                            var account = user.local || user.google || user.facebook;
-                            $rootScope.username = account.email;
+                            $rootScope.username = res.data.user.email;
                         } else {
                             $rootScope.username = undefined;
                         }

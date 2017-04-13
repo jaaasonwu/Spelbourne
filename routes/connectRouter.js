@@ -14,6 +14,7 @@ module.exports = function (passport) {
         failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
         failureFlash: true // allow flash messages
     }));
+    
     // Facebook
     // Send to facebook to do the authentication
     route.get('/facebook', passport.authorize('facebook', {scope: 'email'}));
