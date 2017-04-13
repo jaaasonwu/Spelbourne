@@ -23,7 +23,7 @@
                         <label for="startDate">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <md-datepicker ng-model="date.startDate" md-placeholder="Enter date">
+                        <md-datepicker ng-model="data.startDate" md-placeholder="Enter date">
 
                         </md-datepicker>
                     </div>
@@ -38,7 +38,8 @@
                     <div class="col-md-9">
                         <select id="startTime" class="form-control"
                                 ng-model="data.startTime"
-                                ng-options="x for x in startTime"></select>
+                                ng-options="x for x in startTime">
+                        </select>
                     </div>
                 </div>
             </div>
@@ -51,7 +52,8 @@
                     <div class="col-md-9">
                         <select id="duration" class="form-control"
                                 ng-model="data.duration"
-                                ng-options="x for x in duration"></select>
+                                ng-options="x for x in duration">
+                        </select>
                     </div>
                 </div>
             </div>
