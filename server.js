@@ -8,6 +8,8 @@ const logger       = require('morgan');
 const mongoose     = require('mongoose');
 const passport     = require('passport');
 const flash        = require('connect-flash');
+const favicon      = require('serve-favicon')
+
 
 // Local file requirement
 const db = require('./lib/db.js');
@@ -16,6 +18,7 @@ const ppConfig = require('./lib/auth/passport.js');
 
 // Default port to 8888 or use env PORT
 const port = process.env.PORT || 8888;
+const iconPath = path.join(__dirname,'views/images/logo.png');
 
 // Connect to DB
 mongoose.connect(db.url);
@@ -34,6 +37,9 @@ app.use(cookieParser());
 // Using ejs
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'));
+
+// config favicon
+app.use(favicon(iconPath));
 
 // Passport initialization
 app.use(session({ secret: 'teamtamisthebestteamforever'}));
