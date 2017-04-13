@@ -63,21 +63,7 @@
                     </div>
                 </div>
             </div>
-
-
-            <div class="form-group">
-                <div class="row visibility-selector">
-                  <label>
-                    <input type="radio" ng-model="data.visibility" value="Friends">
-                    Friends Only
-                  </label><br/>
-                  <label>
-                    <input type="radio" ng-model="data.visibility" value="Public">
-                    Public
-                  </label><br/>
-                </div>
-            </div>
-
+            
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
@@ -96,6 +82,19 @@
             <div class="row">
                 <div ng-app="app" ng-controller="createEventController">
                     <div id="map"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row visibility-selector">
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Friends">
+                    Friends Only
+                  </label><br/>
+                  <label>
+                    <input type="radio" ng-model="data.visibility" value="Public">
+                    Public
+                  </label><br/>
                 </div>
             </div>
             <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
