@@ -84,11 +84,16 @@
                         <label for="locationInput">Location</label>
                     </div>
                     <div class="col-md-9">
-                        <textarea id="locationInput" class="form-control"
-                                  ng-model="data.location"
-                                  placeholder="Search for location">
-                        </textarea>
+                        <input id="locationInput" class="form-control controls"
+                               ng-model="data.location"
+                               type="text" placeholder="Search Box">
+                        </input>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div ng-app="app" ng-controller="createEventController">
+                    <div id="map"></div>
                 </div>
             </div>
             <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
