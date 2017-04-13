@@ -5,33 +5,39 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedSport">Sports Category: </label>
+                        <label for="data.sportType">Sports Category: </label>
                     </div>
                     <div class="col-md-9">
-                        <select id="selectedSport" class="form-control"
-                                ng-model="data.selectedSport"
-                                ng-options="x for x in sportsCategory"></select>
+
+                        <select id="data.sportType" class="form-control"
+                                ng-model="data.sportType"
+                                ng-options="x for x in sportsCategory">
+                        </select>
+
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="dateSelect">Date: </label>
+                        <label for="startDate">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <input id="dateSelect" class="form-control" type="date" ng-model="data.eventDate">
+                        <md-datepicker ng-model="date.startDate" md-placeholder="Enter date">
+
+                        </md-datepicker>
                     </div>
+
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedStartTime"> Starting Time: </label>
+                        <label for="startTime"> Starting Time: </label>
                     </div>
                     <div class="col-md-9">
-                        <select id="selectedStartTime" class="form-control"
-                                ng-model="data.selectedStartTime"
+                        <select id="startTime" class="form-control"
+                                ng-model="data.startTime"
                                 ng-options="x for x in startTime"></select>
                     </div>
                 </div>
@@ -40,11 +46,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="selectedDuration"> Duration: </label>
+                        <label for="duration"> Duration: </label>
                     </div>
                     <div class="col-md-9">
-                        <select id="selectedDuration" class="form-control"
-                                ng-model="data.selectedDuration"
+                        <select id="duration" class="form-control"
+                                ng-model="data.duration"
                                 ng-options="x for x in duration"></select>
                     </div>
                 </div>

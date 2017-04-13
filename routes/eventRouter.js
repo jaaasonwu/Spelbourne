@@ -4,10 +4,14 @@ const eventService = require('../lib/events/eventService.js');
 
 route.post('/createEvent', function(req, res) {
     if (req.isAuthenticated()) {
-        let event = req.body;
+        let e = req.body;
         organizerID = req.user._id;
-        eventService.createEvent(event.location, organizerID, event.participants, event.description,
-                event.createEventDate, event.eventDate, event.endDate, event.visibility);
+        createEventDate = new Date(e.createEventDate);
+        startTime = new Date(e.createEventDate);
+        startDate = new Date(e.startDate);
+        duration = new Date(e.duration);
+        eventService.createEvent(e.location, e.description, startDate,
+                organizerID, createEventDate, startTime, duration, e.visibility, e.sportType);
         res.end();
     };
     res.end();

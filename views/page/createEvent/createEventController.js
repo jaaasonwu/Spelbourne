@@ -8,24 +8,21 @@ define(['app'], function (app) {
             "Soccer",
             "Basketball"
         ];
+        $scope.myDate = new Date();
         $scope.startTime = ["9:00", "9:30", "10:00"];
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
 
         $scope.data = {
             location: "",
-            description: "",
-            eventDate: "",
-            endDate: "",
+            description: "Enter your description",
+            startDate: "",
+            startTime: $scope.startTime[0],
+            duration: $scope.startTime[0],
             visibility: "Friends",
-            selectedSport: $scope.sportsCategory[0]
+            sportType: $scope.sportsCategory[0]
         };
 
-
-        // Variables to bind to the front end
-        $scope.selectedSport = "";
-        $scope.selectedStartTime = "";
-        $scope.selectedDuration = "";
         $scope.createEvent = function () {
             $http.post('/event/createEvent', $scope.data)
             .then(
@@ -46,6 +43,6 @@ define(['app'], function (app) {
             mapTypeId: google.maps.MapTypeId.TERRAIN
         }
 
-        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        // $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
     }]);
 });
