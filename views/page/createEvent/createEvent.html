@@ -86,7 +86,9 @@
                     <div class="col-md-9">
                         <input id="locationInput" class="form-control controls"
                                ng-model="data.location"
-                               type="text" placeholder="Search Box">
+                               type="text" placeholder="Search Box"
+                               onkeypress="return event.keyCode != 13;"
+                        >
                         </input>
                     </div>
                 </div>
