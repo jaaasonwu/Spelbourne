@@ -61,7 +61,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="descriptionTextarea">Description</label>
+                        <label for="descriptionTextarea">Description: </label>
                     </div>
                     <div class="col-md-9">
                         <textarea id="descriptionTextarea" class="form-control"
@@ -75,7 +75,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="locationInput">Location</label>
+                        <label for="locationInput">Location: </label>
                     </div>
                     <div class="col-md-9">
                         <input id="locationInput" class="form-control controls"
@@ -94,15 +94,16 @@
             </div>
 
             <div class="form-group">
-                <div class="row visibility-selector">
-                  <label>
-                    <input type="radio" ng-model="data.visibility" value="Friends">
-                    Friends Only
-                  </label><br/>
-                  <label>
-                    <input type="radio" ng-model="data.visibility" value="Public">
-                    Public
-                  </label><br/>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Visibility: </label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="radio" ng-model="data.visibility" value="Friends">
+                            Friends Only<br/>
+                        <input type="radio" ng-model="data.visibility" value="Public">
+                            Public<br/>
+                    </div>
                 </div>
             </div>
             <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>

@@ -22,8 +22,6 @@ define(['app'], function (app) {
             date = [];
             for (i = 0; i < 12; i++) {
                 var point = dt.toLocaleTimeString('en-US');
-                console.log(point);
-                console.log(dt);
                 date.push(point);
                 dt.setMinutes(dt.getMinutes() + step);
             }
