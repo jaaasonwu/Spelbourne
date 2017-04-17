@@ -3,7 +3,8 @@
 $orange: rgba(244, 119, 15, 1);
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
-$background-blue: rgba(109, 152, 182, 0.28);
+$fade-blue: rgba(109, 152, 182, 0.28);
+$item-color: #FDF6F6;
 
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -38,12 +39,12 @@ body {
 .eventList {
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #FDF6F6;
+    background-color: $item-color;
 
     .eventBody {
         margin: 10px;
         border: 0 solid black;
-        background-color: $background-blue;
+        background-color: $fade-blue;
         border-radius: 10px;
     }
 
