@@ -41,7 +41,11 @@ define(['app'], function (app) {
 
         $scope.myDate = new Date();
         $scope.startTime = generate_time_step(30);
-
+        $scope.skillLevel = [
+            'Beginner',
+            'Intermediate',
+            'Expert'
+        ];
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
 
         $scope.data = {
@@ -51,9 +55,19 @@ define(['app'], function (app) {
             startTime: $scope.startTime[0],
             duration: $scope.duration[0],
             visibility: "Friends",
-            sportType: $scope.sportsCategory[0]
+            sportType: $scope.sportsCategory[0],
+            skillLevel: $scope.skillLevel[0]
         };
+        $scope.formValidate = function(isValid){
+            if($scope.createEventForm.$valid){
+                $scope.createEvent();
+                alert('Event Created');
+            }
+            else{
+                alert('Complete form before submission');
+            }
 
+        };
         $scope.createEvent = function () {
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
