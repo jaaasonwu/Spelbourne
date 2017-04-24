@@ -50,7 +50,7 @@ define(['app'], function (app) {
 
         $scope.data = {
             location: "",
-            description: "Enter your description",
+            description: "",
             startDate: new Date(),
             startTime: $scope.startTime[0],
             duration: $scope.duration[0],
