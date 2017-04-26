@@ -36,28 +36,50 @@ define(['app'], function (app) {
             "Basketball"
         ];
 
+        // Different skill levels
+        $scope.skillLevels = [
+            "Any",
+            "Starter",
+            "Intermediate",
+            "Master"
+        ];
+
         $scope.myDate = new Date();
         $scope.startTime = generate_time_step(30);
-
+        $scope.skillLevel = [
+            'Beginner',
+            'Intermediate',
+            'Expert'
+        ];
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
 
         $scope.data = {
             location: "",
-            description: "Enter your description",
+            description: "",
             startDate: new Date(),
             startTime: $scope.startTime[0],
             duration: $scope.duration[0],
             visibility: "Friends",
-            sportType: $scope.sportsCategory[0]
+            sportType: $scope.sportsCategory[0],
+            skillLevel: $scope.skillLevels[0]
         };
 
+        $scope.formValidate = function(isValid){
+            if($scope.createEventForm.$valid){
+                $scope.createEvent();
+                alert('Event Created');
+            }
+            else{
+                alert('Complete form before submission');
+            }
+
+        };
         $scope.createEvent = function () {
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 
             // Convert duration to seconds
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
-            console.log(clone_data);
             clone_data = JSON.stringify(clone_data);
             $http.post('/event/createEvent', clone_data)
             .then(
@@ -72,6 +94,10 @@ define(['app'], function (app) {
             );
         };
 
+        $scope.change = function () {
+            console.log("COME");
+        };
+
         var mapOptions = {
             zoom: 14,
             center: new google.maps.LatLng(-37.7964, 144.9612),
@@ -82,7 +108,8 @@ define(['app'], function (app) {
         $scope.search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
         $scope.search.addListener('places_changed', function() {
             var places = $scope.search.getPlaces();
-
+            $scope.data.location = places[0].formatted_address;
+            console.log($scope.data);
             if (places.length == 0) {
                 return;
             }
@@ -115,7 +142,7 @@ define(['app'], function (app) {
                     title: place.name,
                     position: place.geometry.location
                 }));
-
+                $scope.data.location = place.name;
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
