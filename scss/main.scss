@@ -3,6 +3,8 @@
 $orange: rgba(244, 119, 15, 1);
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
+$fade-blue: rgba(109, 152, 182, 0.28);
+$item-color: #FDF6F6;
 
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -41,11 +43,12 @@ body {
 .eventList {
     padding-top: 10px;
     padding-bottom: 10px;
+    background-color: $item-color;
 
     .eventBody {
         margin: 10px;
-        border: 1px solid black;
-        background-color: #FDF6F6;
+        border: 0 solid black;
+        background-color: $fade-blue;
         border-radius: 10px;
     }
 
@@ -70,7 +73,8 @@ body {
     padding-top: 20px;
     margin-right: 0;
     margin-left: 0;
-    background-color: rgba(109, 152, 182, 0.28);
+    margin-bottom: 0;
+    background-color: white;
     padding-bottom: 20px;
 }
 
