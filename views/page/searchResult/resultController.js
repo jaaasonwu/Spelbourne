@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-    app.controller('resultController', ['$scope', '$http', '$location', 'eventService',
+    app.controller('resultController', ['$scope', '$http', '$location',
         function ($scope, $http, $location, eventService) {
             // What sports type we have
             $scope.types = [
@@ -35,8 +35,9 @@ define(['app'], function (app) {
             );
 
             $scope.viewEvent = function (event) {
-                eventService.setEvent(event);
-                $location.path("/event")
+                console.log(event._id);
+
+                $location.path("/viewEvent/" + event._id);
             };
         }]);
 });
