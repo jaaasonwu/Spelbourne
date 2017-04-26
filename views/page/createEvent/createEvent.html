@@ -35,21 +35,6 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="data.sportType">Skill level: </label>
-                    </div>
-                    <div class="col-md-9">
-
-                        <select id="data.sportType" class="form-control"
-                                ng-model="data.sportType"
-                                ng-options="x for x in sportsCategory">
-                        </select>
-
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
                         <label for="startDate">Date: </label>
                     </div>
                     <div class="col-md-9">
@@ -101,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
@@ -117,11 +102,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div ng-app="app" ng-controller="createEventController">
-                    <div id="map"></div>
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="row">
@@ -135,6 +115,9 @@
                             Public<br/>
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div id="map"></div>
             </div>
             <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
         </form>
