@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-sm-offset-3">
     <div class="form" id="createEvent">
         <form>
-            <h1> Create  Event </h1>
+            <h1> Create Event </h1>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
@@ -50,12 +50,20 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="startDate">Date: </label>
+                        <label for="dateSelect">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <md-datepicker ng-model="data.startDate" md-placeholder="Enter date">
+                        <div class="input-group">
+                            <input type="text" id="dateSelect" class="form-control" uib-datepicker-popup="{{format[0]}}"
+                                   ng-model="myDate" is-open="dp.opened" datepicker-options="dateOptions"
+                                   ng-required="true"
+                                   close-text="Close" alt-input-formats="format[1]"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="dp.click()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
 
-                        </md-datepicker>
+                        </div>
                     </div>
 
                 </div>
@@ -101,7 +109,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
@@ -130,9 +138,9 @@
                     </div>
                     <div class="col-md-9">
                         <input type="radio" ng-model="data.visibility" value="Friends">
-                            Friends Only<br/>
+                        Friends Only<br/>
                         <input type="radio" ng-model="data.visibility" value="Public">
-                            Public<br/>
+                        Public<br/>
                     </div>
                 </div>
             </div>
