@@ -45,7 +45,7 @@ define(['app'], function (app) {
         ];
 
         $scope.myDate = new Date();
-        
+
         $scope.startTime = generate_time_step(30);
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
@@ -71,7 +71,7 @@ define(['app'], function (app) {
             }
 
         };
-        $scope.createEvent = function () {
+        $scope.createEvent = function (event) {
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 

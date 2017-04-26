@@ -39,5 +39,23 @@ define(['app'], function (app) {
 
                 $location.path("/viewEvent/" + event._id);
             };
+
+            $scope.joinEvent = function (event) {
+                // Clone the data
+                var data = {"eventID": event._id}
+                console.log(data);
+
+                $http.post('/event/joinEvent', data)
+                .then(
+                    // success callback
+                    function (res) {
+                        console.log("SUCCESS");
+                    },
+                    // failure callback
+                    function (res) {
+                        console.log(res);
+                    }
+                );
+            };
         }]);
 });
