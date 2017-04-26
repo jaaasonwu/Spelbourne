@@ -88,7 +88,7 @@ define(['app'], function (app) {
         $scope.search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
         $scope.search.addListener('places_changed', function() {
             var places = $scope.search.getPlaces();
-
+            console.log(places);
             if (places.length == 0) {
                 return;
             }

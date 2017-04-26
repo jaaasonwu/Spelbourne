@@ -15,9 +15,13 @@ body {
 }
 
 .btn-search {
-    width: 120px;
+    width: 150px;
     background-color: $orange;
     color: black;
+}
+
+#createEventBtn {
+    width: 150px;
 }
 
 .btn {
@@ -226,14 +230,6 @@ body {
 }
 .grow:hover {
     transform: scale(1.1);
-}
-
-#search-input {
-    margin-left: 20%;
-    margin-right: 20%;
-    position: absolute;
-    width: 60%;
-    top: 40%;
 }
 
 .eventBox {
