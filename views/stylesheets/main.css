@@ -24,11 +24,12 @@ body {
 
 .eventList {
   padding-top: 10px;
-  padding-bottom: 10px; }
+  padding-bottom: 10px;
+  background-color: #FDF6F6; }
   .eventList .eventBody {
     margin: 10px;
-    border: 1px solid black;
-    background-color: #FDF6F6;
+    border: 0 solid black;
+    background-color: rgba(109, 152, 182, 0.28);
     border-radius: 10px; }
   .eventList .eventImg {
     width: 100%;
@@ -45,7 +46,8 @@ body {
   padding-top: 20px;
   margin-right: 0;
   margin-left: 0;
-  background-color: rgba(109, 152, 182, 0.28);
+  margin-bottom: 0;
+  background-color: white;
   padding-bottom: 20px; }
 
 .filter-label {
@@ -71,13 +73,13 @@ body {
   min-height: 100px; }
   .navbar-default .logoImg {
     height: 88px;
-    width: 198px;
+    width: 88px;
     transition: all cubic-bezier(0.4, 0.46, 0.45, 0.94) 0.5s;
     left: 10%;
     position: absolute; }
   .navbar-default .logoImg:hover {
     height: 96.8px;
-    width: 217.8px; }
+    width: 96.8px; }
   .navbar-default .navbar-brand {
     color: white;
     font-family: Verdana;
