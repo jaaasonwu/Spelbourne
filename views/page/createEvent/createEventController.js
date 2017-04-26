@@ -33,7 +33,9 @@ define(['app'], function (app) {
             "Tennis",
             "Swimming",
             "Soccer",
-            "Basketball"
+            "Basketball",
+            "Golf",
+            "Running"
         ];
 
         // Different skill levels

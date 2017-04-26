@@ -165,7 +165,7 @@ body {
         b:hover {
             color: $black;
         }
-        
+
     }
 
     .navbar-right {
@@ -175,7 +175,14 @@ body {
         -webkit-box-pack: center;
         -webkit-box-align: center;
     }
+
+    @media screen and (max-width: 800px) {
+      .navbar-brand-centered{
+        visibility: hidden;
+      }
+    }
 }
+
 
 .welcomeTitle {
     vertical-align: middle;
