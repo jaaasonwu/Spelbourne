@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-sm-offset-3">
-    <div class="form" id="createEvent">
-        <form>
+    <div class="form" id="createEvent" >
+        <form role="form" name="createEventForm" novalidate >
             <h1> Create  Event </h1>
             <div class="form-group">
                 <div class="row">
@@ -11,24 +11,22 @@
 
                         <select id="data.sportType" class="form-control"
                                 ng-model="data.sportType"
-                                ng-options="x for x in sportsCategory">
+                                ng-options="x for x in sportsCategory" required>
                         </select>
-
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
-                        <label for="data.sportType">Skill level: </label>
+                        <label for="data.skillLevel">Skill Level: </label>
                     </div>
                     <div class="col-md-9">
 
                         <select id="data.skillLevel" class="form-control"
                                 ng-model="data.skillLevel"
-                                ng-options="x for x in skillLevel">
+                                ng-options="x for x in skillLevels">
                         </select>
-
                     </div>
                 </div>
             </div>
@@ -38,7 +36,7 @@
                         <label for="startDate">Date: </label>
                     </div>
                     <div class="col-md-9">
-                        <md-datepicker ng-model="data.startDate" md-placeholder="Enter date">
+                        <md-datepicker ng-model="data.startDate" md-placeholder="Enter date" required>
 
                         </md-datepicker>
                     </div>
@@ -53,7 +51,7 @@
                     <div class="col-md-9">
                         <select id="startTime" class="form-control"
                                 ng-model="data.startTime"
-                                ng-options="x for x in startTime">
+                                ng-options="x for x in startTime" required>
                         </select>
                     </div>
                 </div>
@@ -67,7 +65,7 @@
                     <div class="col-md-9">
                         <select id="duration" class="form-control"
                                 ng-model="data.duration"
-                                ng-options="x for x in duration">
+                                ng-options="x for x in duration" required>
                         </select>
                     </div>
                 </div>
@@ -79,29 +77,15 @@
                         <label for="descriptionTextarea">Description: </label>
                     </div>
                     <div class="col-md-9">
-                        <textarea id="descriptionTextarea" class="form-control"
+                        <textarea id="descriptionTextarea" name="description" class="form-control"
                                   ng-model="data.description"
-                                  placeholder="Enter the event description here">
+                                  placeholder="Enter the event description here" ng-minlength="10" ng-required="true">
                         </textarea>
+                        <span style="color:red" ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength " class="help-block">Description is too short.</span>
                     </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="locationInput">Location: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <input id="locationInput" class="form-control controls"
-                               ng-model="data.location"
-                               type="text" placeholder="Search Box"
-                               onkeypress="return event.keyCode != 13;"
-                        >
-                        </input>
-                    </div>
-                </div>
-            </div>
 
             <div class="form-group">
                 <div class="row">
@@ -119,7 +103,27 @@
             <div class="row">
                 <div id="map"></div>
             </div>
-            <button ng-click="createEvent()" type="submit" class="btn btn-lg btn-search">Create</button>
         </form>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="locationInput">Location: </label>
+                </div>
+                <div class="col-md-9">
+                    <input id="locationInput" ng-change="change()" class="form-control controls"
+                           ng-model="data.location"
+                           type="text" placeholder="Search Box"
+                           onkeypress="return event.keyCode != 13;"
+                    >
+                    </input>
+                </div>
+            </div>
+        </div>
+        
+        <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
+            class="btn btn-lg btn-search">
+            Create
+        </button>
     </div>
 </div>
