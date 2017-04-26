@@ -6,6 +6,11 @@ define(['app'], function (app) {
             // success callback
             function (res) {
                 $scope.event = res.data;
+                $http.get('/icon/' + $scope.event.sportType).then(
+                    function(path) {
+                        $scope.event.img = path.data;
+                    }
+                )
                 console.log(res.data);
             },
             // failure callback

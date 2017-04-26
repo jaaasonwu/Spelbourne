@@ -50,7 +50,6 @@ define(['app'], function (app) {
                     $scope.eventList.forEach(function(event) {
                         $http.get('/icon/' + event.sportType).then(
                             function(path) {
-                                console.log(path.data);
                                 event.img = path.data;
                             }
                         )
