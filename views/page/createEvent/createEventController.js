@@ -43,9 +43,23 @@ define(['app'], function (app) {
             "Intermediate",
             "Master"
         ];
-
+        // configuration for date picker
+        $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
+        //default date
         $scope.myDate = new Date();
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            maxDate: new Date(2020, 5, 22),
+            minDate: new Date(),
+            startingDay: 1
+        };
 
+        $scope.dp = {
+            opened: false,
+            click: function(){
+                this.opened = !this.opened;
+            }
+        };
         $scope.startTime = generate_time_step(30);
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
