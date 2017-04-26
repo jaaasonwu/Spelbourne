@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 $orange: rgba(244, 119, 15, 1);
+$light-orange: #FFAF6C;
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
 $fade-blue: rgba(109, 152, 182, 0.28);
-$item-color: #FDF6F6;
+$item-color: #EFEFEF;
 
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -18,7 +19,7 @@ body {
 
 .btn-search {
     width: 150px;
-    background-color: $orange;
+    background-color: $light-orange;
     color: black;
 }
 
@@ -48,8 +49,8 @@ body {
     .eventBody {
         margin: 10px;
         border: 0 solid black;
-        background-color: $fade-blue;
-        border-radius: 10px;
+        background-color: white;
+        //border-radius: 10px;
     }
 
     .eventImg {
@@ -85,7 +86,7 @@ body {
 #joinBtn {
     margin: 10px;
     width: 100px;
-    background-color: $orange;
+    background-color: $light-orange;
 }
 
 #loginComponent {
@@ -265,7 +266,7 @@ body {
 #viewBtn {
     width: 100px;
     margin: 10px;
-    background-color: $orange;
+    background-color: $light-orange;
 }
 
 .visibility-selector {
