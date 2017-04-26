@@ -155,7 +155,7 @@
                     </div>
                 </div>
             </div>
-            <button ng-click="createEvent()" type="submit"
+            <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
                     class="btn btn-lg btn-search">Create</button>
         </form>
     </div>
