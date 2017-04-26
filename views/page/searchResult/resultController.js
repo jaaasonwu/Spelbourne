@@ -1,6 +1,24 @@
 define(['app'], function (app) {
     app.controller('resultController', ['$scope', '$http', '$location', 'eventService',
         function ($scope, $http, $location, eventService) {
+            // configuration for date picker
+            $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
+            //default date
+            $scope.dateSelect = new Date();
+            $scope.dateOptions = {
+                formatYear: 'yy',
+                maxDate: new Date(2020, 5, 22),
+                minDate: new Date(),
+                startingDay: 1
+            };
+
+            $scope.dp = {
+                opened: false,
+                click: function(){
+                    this.opened = !this.opened;
+                }
+            };
+
             // What sports type we have
             $scope.types = [
                 "None",

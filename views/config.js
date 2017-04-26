@@ -3,16 +3,17 @@
 requirejs.config({
     baseUrl: "",
     paths: {
-        'angular': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min",
-        'angular-route': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route",
-        'angular-resource': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min",
-        'angular-filter': "//cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.15/angular-filter",
-        'jQuery': "//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min",
-        'bootstrap': "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min",
-        'angularAMD':"//cdn.jsdelivr.net/angular.amd/0.2/angularAMD.min",
-        'ngMaterial': "//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min",
-        'angular-animate': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min",
-        'angular-aria': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min"
+        'angular': "/dependency/angular/angular.min",
+        'angular-route': "/dependency/angular/angular-route",
+        'angular-resource': "/dependency/angular/angular-resource.min",
+        'angular-filter': "/dependency/angular/angular-filter",
+        'jQuery': "/dependency/jquery/jquery.min",
+        'bootstrap': "/dependency/bootstrap/js/bootstrap",
+        'angularAMD':"/dependency/angular/angularAMD.min",
+        'ngMaterial': "/dependency/angular/angular-material.min",
+        'angular-animate': "/dependency/angular/angular-animate.min",
+        'angular-aria': "/dependency/angular/angular-aria.min",
+        'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3"
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -20,6 +21,7 @@ requirejs.config({
         'angularAMD': ['angular'],
         'angular-resource': ['angular'],
         'angular-filter': ["angular"],
+        'angular-ui': ['angular','angular-animate'],
         'bootstrap': ['jQuery'],
         'jQuery': [],
         'ngMaterial': ["angular", 'angular-animate', 'angular-aria'],
