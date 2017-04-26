@@ -3,10 +3,12 @@ define(['app'], function (app) {
         function ($scope, $http, $location, eventService) {
             // What sports type we have
             $scope.types = [
-                "None",
                 "Tennis",
                 "Basketball",
-                "Soccer"
+                "Soccer",
+                "Golf",
+                "Swimming",
+                "Running"
             ];
             // Default is none
             $scope.typeSelect = $scope.types[0];
@@ -22,11 +24,19 @@ define(['app'], function (app) {
                 "Master"
             ];
 
+
             $scope.events = $http.get('/event/getEventList').then(
                 // success callback
                 function (res) {
                     $scope.eventList = res.data;
-                    console.log(res.data);
+                    $scope.eventList.forEach(function(event) {
+                        $http.get('/icon/' + event.sportType).then(
+                            function(path) {
+                                console.log(path.data);
+                                event.img = path.data;
+                            }
+                        )
+                    })
                 },
                 // failure callback
                 function (res) {
