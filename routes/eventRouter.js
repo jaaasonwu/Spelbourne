@@ -8,8 +8,10 @@ route.post('/createEvent', function(req, res) {
         organizerID = req.user._id;
         createEventDate = new Date();
         startDate = new Date(e.startDate);
+
         eventService.createEvent(e.location, e.description, startDate,
-                organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType);
+                organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType
+                , e.skillLevel);
         res.end();
     } else {
         res.status(500).end();
@@ -19,6 +21,16 @@ route.post('/createEvent', function(req, res) {
 route.get('/getEvent/:eventID', function(req, res) {
     let eventID = req.params.eventID;
     eventService.getEvent(eventID, function (err, data) {
+        if (err) {
+            res.status(500).send("No such event");
+            return;
+        }
+        res.send(data);
+    });
+});
+
+route.get('/getEventList', function(req, res) {
+    eventService.getEventList(function (err, data) {
         if (err) {
             res.status(500).send("No such event");
             return;
