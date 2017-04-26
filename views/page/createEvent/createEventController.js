@@ -45,12 +45,9 @@ define(['app'], function (app) {
         ];
 
         $scope.myDate = new Date();
+        
         $scope.startTime = generate_time_step(30);
-        $scope.skillLevel = [
-            'Beginner',
-            'Intermediate',
-            'Expert'
-        ];
+
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
 
         $scope.data = {
