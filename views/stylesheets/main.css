@@ -8,9 +8,12 @@ body {
   width: 10px; }
 
 .btn-search {
-  width: 120px;
-  background-color: #f4770f;
+  width: 150px;
+  background-color: #FFAF6C;
   color: black; }
+
+#createEventBtn {
+  width: 150px; }
 
 .btn {
   color: black; }
@@ -25,16 +28,15 @@ body {
 .eventList {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #FDF6F6; }
+  background-color: #EFEFEF; }
   .eventList .eventBody {
     margin: 10px;
     border: 0 solid black;
-    background-color: rgba(109, 152, 182, 0.28);
-    border-radius: 10px; }
+    background-color: white; }
   .eventList .eventImg {
-    width: 100%;
-    height: 100%;
-    max-width: 200px; }
+    width: 100px;
+    padding: 10px;
+    vertical-align: middle; }
   .eventList #events-container {
     width: auto;
     margin-left: 5%;
@@ -56,7 +58,7 @@ body {
 #joinBtn {
   margin: 10px;
   width: 100px;
-  background-color: #f4770f; }
+  background-color: #FFAF6C; }
 
 #loginComponent {
   padding-top: 100px; }
@@ -119,6 +121,9 @@ body {
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center; }
+  @media screen and (max-width: 800px) {
+    .navbar-default .navbar-brand-centered {
+      visibility: hidden; } }
 
 .welcomeTitle {
   vertical-align: middle;
@@ -157,13 +162,6 @@ body {
 .grow:hover {
   transform: scale(1.1); }
 
-#search-input {
-  margin-left: 20%;
-  margin-right: 20%;
-  position: absolute;
-  width: 60%;
-  top: 40%; }
-
 .eventBox, #showEvent, #createEventJumbo {
   padding-left: 10px;
   padding-right: 10px;
@@ -177,13 +175,13 @@ body {
   font-weight: bold !important; }
 
 .eventDesImg {
-  height: 180px;
-  width: 270px; }
+  height: 200px;
+  width: 200px; }
 
 #viewBtn {
   width: 100px;
   margin: 10px;
-  background-color: #f4770f; }
+  background-color: #FFAF6C; }
 
 .visibility-selector {
   padding-left: 15px; }
