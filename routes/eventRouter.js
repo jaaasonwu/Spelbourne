@@ -18,6 +18,25 @@ route.post('/createEvent', function(req, res) {
     }
 });
 
+route.post('/joinEvent', function(req, res) {
+    if (req.isAuthenticated()) {
+        let e = req.body;
+        let eventID = e.eventID;
+        console.log(eventID);
+        userID = req.user._id;
+        eventService.joinEvent(eventID, userID, function (err) {
+            if (err) {
+                res.status(500).end();
+            } else {
+                res.end();
+            }
+        });
+
+    } else {
+        res.status(500).end();
+    }
+});
+
 route.get('/getEvent/:eventID', function(req, res) {
     let eventID = req.params.eventID;
     eventService.getEvent(eventID, function (err, data) {

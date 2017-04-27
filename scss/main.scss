@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
 $orange: rgba(244, 119, 15, 1);
+$light-orange: #FFAF6C;
 $black: rgba(0, 0, 0, 1);
 $white: rgba(255, 255, 255, 1);
 $fade-blue: rgba(109, 152, 182, 0.28);
-$item-color: #FDF6F6;
+$item-color: #EFEFEF;
 
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -17,9 +18,13 @@ body {
 }
 
 .btn-search {
-    width: 120px;
-    background-color: $orange;
+    width: 150px;
+    background-color: $light-orange;
     color: black;
+}
+
+#createEventBtn {
+    width: 150px;
 }
 
 .btn {
@@ -44,14 +49,14 @@ body {
     .eventBody {
         margin: 10px;
         border: 0 solid black;
-        background-color: $fade-blue;
-        border-radius: 10px;
+        background-color: white;
+        //border-radius: 10px;
     }
 
     .eventImg {
-        width: 100%;
-        height: 100%;
-        max-width: 200px;
+        width: 100px;
+        padding: 10px;
+        vertical-align: middle;
     }
 
     #events-container {
@@ -81,7 +86,7 @@ body {
 #joinBtn {
     margin: 10px;
     width: 100px;
-    background-color: $orange;
+    background-color: $light-orange;
 }
 
 #loginComponent {
@@ -160,7 +165,7 @@ body {
         b:hover {
             color: $black;
         }
-        
+
     }
 
     .navbar-right {
@@ -170,7 +175,14 @@ body {
         -webkit-box-pack: center;
         -webkit-box-align: center;
     }
+
+    @media screen and (max-width: 800px) {
+      .navbar-brand-centered{
+        visibility: hidden;
+      }
+    }
 }
+
 
 .welcomeTitle {
     vertical-align: middle;
@@ -232,14 +244,6 @@ body {
     transform: scale(1.1);
 }
 
-#search-input {
-    margin-left: 20%;
-    margin-right: 20%;
-    position: absolute;
-    width: 60%;
-    top: 40%;
-}
-
 .eventBox {
     padding-left: 10px;
     padding-right: 10px;
@@ -258,8 +262,8 @@ body {
 
 }
 .eventDesImg {
-    height: 180px;
-    width: 270px;
+    height: 200px;
+    width: 200px;
 }
 
 #createEventJumbo {
@@ -269,7 +273,7 @@ body {
 #viewBtn {
     width: 100px;
     margin: 10px;
-    background-color: $orange;
+    background-color: $light-orange;
 }
 
 .visibility-selector {

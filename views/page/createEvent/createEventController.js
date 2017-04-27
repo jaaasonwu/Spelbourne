@@ -33,7 +33,9 @@ define(['app'], function (app) {
             "Tennis",
             "Swimming",
             "Soccer",
-            "Basketball"
+            "Basketball",
+            "Golf",
+            "Running"
         ];
 
         // Different skill levels
@@ -105,10 +107,6 @@ define(['app'], function (app) {
             );
         };
 
-        $scope.change = function () {
-            console.log("COME");
-        };
-
         var mapOptions = {
             zoom: 14,
             center: new google.maps.LatLng(-37.7964, 144.9612),
@@ -119,8 +117,7 @@ define(['app'], function (app) {
         $scope.search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
         $scope.search.addListener('places_changed', function() {
             var places = $scope.search.getPlaces();
-            $scope.data.location = places[0].formatted_address;
-            console.log($scope.data);
+
             if (places.length == 0) {
                 return;
             }

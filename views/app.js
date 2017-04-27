@@ -1,6 +1,6 @@
-define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' , 'ngMaterial', 'services/eventService.js', 'services/adminService.js'], function (angularAMD) {
+define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' , 'ngMaterial', 'services/adminService.js'], function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'ngMaterial', 'eventService', 'adminService']);
+    var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'ngMaterial', 'adminService']);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
@@ -25,10 +25,10 @@ define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' , 'ng
                 controller : 'resultController',
                 controllerUrl: 'page/searchResult/resultController'
             }))
-            .when('/event', angularAMD.route({
-                templateUrl : 'page/event/event.html',
-                controller : 'eventController',
-                controllerUrl: 'page/event/eventController'
+            .when('/viewEvent/:eventID', angularAMD.route({
+                templateUrl : 'page/viewEvent/viewEvent.html',
+                controller : 'viewEventController',
+                controllerUrl: 'page/viewEvent/viewEventController'
             }))
             .when('/createEvent', angularAMD.route({
                 templateUrl : 'page/createEvent/createEvent.html',
