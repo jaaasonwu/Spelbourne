@@ -14,7 +14,7 @@ route.post('/createEvent', function(req, res) {
                 , e.skillLevel);
         res.end();
     } else {
-        res.status(500).end();
+        res.status(401).end();
     }
 });
 
@@ -33,7 +33,7 @@ route.post('/joinEvent', function(req, res) {
         });
 
     } else {
-        res.status(500).end();
+        res.status(401).end();
     }
 });
 
