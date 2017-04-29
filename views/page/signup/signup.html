@@ -18,8 +18,18 @@
         </div>
 
         <button type="submit" class="btn btn-search btn-lg" ng-click="signUp()">Signup</button>
-        <a target="_self" href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google</a>
-        <a target="_self" href="/auth/facebook" class="btn btn-primary"><span class="fa fa-facebook"></span> Facebook</a>
+        <button class="googleSignIn">
+            <a target="_self" href="/auth/google" class="signInAnchor">
+                <img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
+                Google
+            </a>
+        </button>
+        <button class="facebookSignIn">
+            <a target="_self" href="/auth/facebook" class="signInAnchor">
+                <img class="facebookBrand" src="/images/FB-Logo-white.png">
+                Facebook
+            </a>
+        </button>
     </form>
 
     <hr>

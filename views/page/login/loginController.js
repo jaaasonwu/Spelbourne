@@ -1,6 +1,12 @@
 define(['app'], function (app) {
-    app.controller('loginController', ['$scope', '$http', '$location', 'adminService',
-        function ($scope, $http, $location, adminService) {
+    app.controller('loginController', ['$scope', '$http', '$location','$rootScope', 'adminService', '$routeParams',
+        function ($scope, $http, $location, adminService, $routeParams, $rootScope) {
+            // you can't go to login page or sign up page once you logged in
+            if ($rootScope.username){
+                $location.path('/');
+            }
+
+            $scope.ret = $routeParams.ret || '/';
             $scope.logIn = function () {
                 console.log('clicked');
                 $http.post('/auth/login', {email: $scope.email, password: $scope.password})
@@ -8,17 +14,15 @@ define(['app'], function (app) {
                         // success callback
                         function (res) {
                             console.log(res);
-                            adminService.getAdmin();
-                            $location.path('/');
+                            adminService.getAdmin(function(){
+                                $location.path($scope.ret);
+                            });
                         },
                         // failure callback
                         function (res) {
                             $scope.errMsg = res.data.msg[0];
                         }
                     )
-            }
-            $scope.google = function(){
-                $http.get('/auth/google');
-            }
+            };
         }]);
 });

@@ -12,9 +12,10 @@ route.post('/createEvent', function(req, res) {
         eventService.createEvent(e.location, e.description, startDate,
                 organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType
                 , e.skillLevel);
-        res.end();
+        res.json({success: true});
     } else {
-        res.status(401).end();
+        // 401 means unauthorized
+        res.status(401).json({success: false, msg: '401'});
     }
 });
 
