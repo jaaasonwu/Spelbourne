@@ -1,4 +1,6 @@
 const express = require('express');
+const base64url = require('base64url');
+const configAuth = require('../lib/auth/auth');
 
 module.exports = function (passport) {
     let route = express.Router();
@@ -56,9 +58,17 @@ module.exports = function (passport) {
 
     // Facebook routes
     // route for facebook authentication and login
-    route.get('/facebook', passport.authenticate('facebook', {scope: 'email'}));
+    route.get('/facebook', function(req, res){
+        passport.authenticate('facebook',
+            {
+                scope: 'email',
+                state: base64url(JSON.stringify({ret :req.query.ret}))
+            }
+        )(req, res);
+    });
 
     route.get('/facebook/callback', function (req, res, next) {
+        let state = JSON.parse(base64url.decode(req.query.state));
         let facebookStrategy = passport.authenticate('facebook', function (err, user, info) {
             if (err) {
                 console.log(err);
@@ -70,7 +80,7 @@ module.exports = function (passport) {
             } else {
                 // establish login session
                 req.logIn(user, function (err) {
-                    res.redirect('/');
+                    res.redirect(state.ret);
                 });
             }
         });
@@ -78,10 +88,17 @@ module.exports = function (passport) {
     });
 
     // Google routes
-    route.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+    route.get('/google', function(req,res){
+        passport.authenticate('google',
+            {
+                scope: ['profile', 'email'],
+                state: base64url(JSON.stringify({ret: req.query.ret}))
+            })(req, res);
+    });
 
     // the callback after google has authenticated the user
     route.get('/google/callback', function (req, res, next) {
+        let state = JSON.parse(base64url.decode(req.query.state));
         let googleStrategy = passport.authenticate('google', function (err, user, info) {
             if (err) {
                 console.log(err);
@@ -93,7 +110,7 @@ module.exports = function (passport) {
             } else {
                 // establish login session
                 req.logIn(user, function (err) {
-                    res.redirect('/');
+                    res.redirect(state.ret);
                 });
             }
         });

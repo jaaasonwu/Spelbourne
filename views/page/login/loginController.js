@@ -1,7 +1,12 @@
 define(['app'], function (app) {
-    app.controller('loginController', ['$scope', '$http', '$location', 'adminService', '$routeParams',
-        function ($scope, $http, $location, adminService, $routeParams) {
-            var ret = $routeParams.ret || '/';
+    app.controller('loginController', ['$scope', '$http', '$location','$rootScope', 'adminService', '$routeParams',
+        function ($scope, $http, $location, adminService, $routeParams, $rootScope) {
+            // you can't go to login page or sign up page once you logged in
+            if ($rootScope.username){
+                $location.path('/');
+            }
+
+            $scope.ret = $routeParams.ret || '/';
             $scope.logIn = function () {
                 console.log('clicked');
                 $http.post('/auth/login', {email: $scope.email, password: $scope.password})
@@ -10,7 +15,7 @@ define(['app'], function (app) {
                         function (res) {
                             console.log(res);
                             adminService.getAdmin(function(){
-                                $location.path(ret);
+                                $location.path($scope.ret);
                             });
                         },
                         // failure callback
