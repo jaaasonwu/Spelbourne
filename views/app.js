@@ -40,9 +40,10 @@ define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' , 'ng
         $locationProvider.html5Mode(true);
     })
         // initialize code
-        .run(function($rootScope, adminService) {
+        .run(function($rootScope, adminService, $location) {
         adminService.getAdmin();
         $rootScope.logOut = adminService.logOut;
+        $rootScope.location = $location;
     });
     return angularAMD.bootstrap(app);
 });

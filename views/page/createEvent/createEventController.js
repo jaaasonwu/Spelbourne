@@ -3,7 +3,7 @@ define(['app'], function (app) {
     function($scope, $http , $location, $rootScope, adminService) {
         // Check if the user is authenticated
         if ($rootScope.username === undefined) {
-            $location.path('/login');
+            $location.path('/login').search({ret: '/createEvent'});
         }
 
         var convertUTCDateToLocalDate = function (date) {
@@ -105,7 +105,7 @@ define(['app'], function (app) {
                     if (res.data.msg && res.data.msg === '401'){
                         // the user need to login again
                         adminService.getAdmin();
-                        $location.path('/login');
+                        $location.path('/login').search({ret: '/createEvent'});
                     }
                 }
             );

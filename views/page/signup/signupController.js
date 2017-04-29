@@ -1,6 +1,7 @@
 define(['app'], function (app) {
-    app.controller('signupController', ['$scope', '$http', '$location', 'adminService',
-        function ($scope, $http, $location, adminService) {
+    app.controller('signupController', ['$scope', '$http', '$location', 'adminService', '$routeParams',
+        function ($scope, $http, $location, adminService, $routeParams) {
+            var ret = $routeParams.ret || '/';
             $scope.signUp = function () {
                 var profile = {
                     phone: "1234",
@@ -13,7 +14,7 @@ define(['app'], function (app) {
                         function (res) {
                             console.log(res);
                             adminService.getAdmin();
-                            $location.path('/');
+                            $location.path(ret);
                         },
                         // failure callback
                         function (res) {
