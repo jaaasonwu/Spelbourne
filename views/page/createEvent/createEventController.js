@@ -1,8 +1,8 @@
 define(['app'], function (app) {
-    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope',
-    function($scope, $http , $location, $rootScope) {
+    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService',
+    function($scope, $http , $location, $rootScope, adminService) {
         // Check if the user is authenticated
-        if ($rootScope.username == undefined) {
+        if ($rootScope.username === undefined) {
             $location.path('/login');
         }
 
@@ -102,7 +102,11 @@ define(['app'], function (app) {
                 },
                 // failure callback
                 function (res) {
-                    console.log(res);
+                    if (res.data.msg && res.data.msg === '401'){
+                        // the user need to login again
+                        adminService.getAdmin();
+                        $location.path('/login');
+                    }
                 }
             );
         };

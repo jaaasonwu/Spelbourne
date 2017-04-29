@@ -1,6 +1,11 @@
 define(['app'], function (app) {
-    app.controller('loginController', ['$scope', '$http', '$location', 'adminService',
-        function ($scope, $http, $location, adminService) {
+    app.controller('loginController', ['$scope', '$http', '$location', 'adminService', '$routeParams',
+        function ($scope, $http, $location, adminService, $routeParams) {
+            var ret = '/';
+            if ($routeParams.ret){
+                ret = $routeParams.ret;
+                console.log(ret);
+            }
             $scope.logIn = function () {
                 console.log('clicked');
                 $http.post('/auth/login', {email: $scope.email, password: $scope.password})
