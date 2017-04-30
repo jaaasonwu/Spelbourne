@@ -116,15 +116,15 @@ define(['app'], function (app) {
             mapTypeId: 'roadmap'
         }
 
-        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        $scope.search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
-        $scope.search.addListener('places_changed', function() {
-            var places = $scope.search.getPlaces();
+        let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
+        search.addListener('places_changed', function() {
+            let places = search.getPlaces();
 
             if (places.length == 0) {
                 return;
             }
-            var markers = [];
+            let markers = [];
 
             // Clear out the old markers.
             markers.forEach(function(marker) {
@@ -132,13 +132,13 @@ define(['app'], function (app) {
             });
 
             // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
+            let bounds = new google.maps.LatLngBounds();
             places.forEach(function(place) {
                 if (!place.geometry) {
                     console.log("Returned place contains no geometry");
                     return;
                 }
-                var icon = {
+                let icon = {
                     url: place.icon,
                     size: new google.maps.Size(71, 71),
                     origin: new google.maps.Point(0, 0),
@@ -148,12 +148,13 @@ define(['app'], function (app) {
 
                 // Create a marker for each place.
                 markers.push(new google.maps.Marker({
-                    map: $scope.map,
+                    map: map,
                     icon: icon,
                     title: place.name,
                     position: place.geometry.location
                 }));
                 $scope.data.location = place.name;
+                $scope.data.locationId = place.place_id;
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
@@ -161,7 +162,7 @@ define(['app'], function (app) {
                     bounds.extend(place.geometry.location);
                 }
             });
-            $scope.map.fitBounds(bounds);
+            map.fitBounds(bounds);
         });
     }]);
 });
