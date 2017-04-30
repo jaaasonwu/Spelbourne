@@ -54,11 +54,31 @@ define(['angularAMD'], function () {
             $window.location.href='/auth/facebook';
         };
 
+        var signUp = function(profile, email, password, successCallback, failureCallback){
+            $http.post('/auth/signup', {email: email, password: password, profile: profile})
+                .then(
+                    // success callback
+                    successCallback,
+                    // failure callback
+                    failureCallback
+                )
+        };
+
+        var logIn = function(email, password, successCallback, failureCallback){
+            $http.post('/auth/login', {email: email, password: password})
+                .then(
+                    successCallback,
+                    failureCallback
+                );
+        };
+
         return {
             getAdmin: getAdmin,
             logOut: logOut,
             google: google,
-            facebook: facebook
+            facebook: facebook,
+            signUp: signUp,
+            logIn: logIn
         }
     }])
 });
