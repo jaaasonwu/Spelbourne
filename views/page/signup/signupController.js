@@ -21,6 +21,8 @@ define(['app'], function (app) {
                 $scope.errMsg = res.data.msg[0];
             };
             $scope.signUp = adminService.signUp;
+            $scope.google = adminService.google;
+            $scope.facebook = adminService.facebook;
         }]
     );
 });
