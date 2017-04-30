@@ -15,15 +15,20 @@
 			<label>Password</label>
 			<input type="password" class="form-control" name="password" ng-model="password">
 		</div>
-		<button type="submit" class="btn btn-lg btn-signIn" ng-click="logIn()">Login</button>
-		<button class="googleSignIn" ng-click="google()">
-			<img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
-				Google
-		</button>
-		<button class="facebookSignIn" ng-click="facebook()">
-			<img class="facebookBrand" src="/images/FB-Logo-white.png">
-			Facebook
-		</button>
+		<div class="loginButtonArea">
+			<button type="submit" class="btn btn-lg btn-signIn" ng-click="logIn()">Login</button>
+		</div>
+		<div class="third-party-login">
+			Sign In With:
+			<button class="googleSignIn" ng-click="google()">
+				<img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
+					Google
+			</button>
+			<button class="facebookSignIn" ng-click="facebook()">
+				<img class="facebookBrand" src="/images/FB-Logo-white.png">
+					Facebook
+			</button>
+		</div>
 	</form>
 
 	<hr>
