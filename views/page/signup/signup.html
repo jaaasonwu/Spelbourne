@@ -2,34 +2,35 @@
 
     <h1><span class="fa fa-sign-in"></span> Signup</h1>
 
-    <!-- LOGIN FORM -->
-    <form>
+    <!-- SIGN UP FORM -->
+    <form name="signUpForm">
         <div class="errMsg" ng-if="errMsg">
             {{errMsg}}
         </div>
         <div class="form-group">
             <label>Email</label>
-            <input type="text" class="form-control" name="email" ng-model="email">
-            <span style="color:red" ng-show="loginForm.email.$dirty && loginForm.email.$valid">Enter a valid Email</span>
+            <input type="email" class="form-control" name="email" ng-model="email" required>
+            <span style="color:red" ng-show="signUpForm.email.$dirty && signUpForm.email.$invalid">Enter a valid Email</span>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" name="password" ng-model="password">
+            <input type="password" class="form-control" name="password" ng-model="password" required>
         </div>
 
-        <button type="submit" class="btn btn-search btn-lg" ng-click="signUp()">Signup</button>
-        <button class="googleSignIn">
-            <a target="_self" href="/auth/google" class="signInAnchor">
+        <div class="loginButtonArea">
+            <button type="submit" class="btn btn-lg btn-signIn" ng-click="signUp()" ng-disabled="signUpForm.$invalid">Sign Up</button>
+        </div>
+        <div class="third-party-login">
+            Sign In With:
+            <button class="googleSignIn" ng-click="google()">
                 <img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
                 Google
-            </a>
-        </button>
-        <button class="facebookSignIn">
-            <a target="_self" href="/auth/facebook" class="signInAnchor">
+            </button>
+            <button class="facebookSignIn" ng-click="facebook()">
                 <img class="facebookBrand" src="/images/FB-Logo-white.png">
                 Facebook
-            </a>
-        </button>
+            </button>
+        </div>
     </form>
 
     <hr>
