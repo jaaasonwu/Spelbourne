@@ -1,6 +1,6 @@
 define(['app'], function (app) {
-    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService',
-    function($scope, $http , $location, $rootScope, adminService) {
+    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService', 'eventService',
+    function($scope, $http , $location, $rootScope, adminService, eventService) {
         // Check if the user is authenticated
         if ($rootScope.username === undefined) {
             $location.path('/login').search({ret: '/createEvent'});
@@ -87,6 +87,7 @@ define(['app'], function (app) {
             }
 
         };
+
         $scope.createEvent = function () {
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
@@ -94,13 +95,11 @@ define(['app'], function (app) {
             // Convert duration to seconds
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
             clone_data = JSON.stringify(clone_data);
-            $http.post('/event/createEvent', clone_data)
-            .then(
-                // success callback
+            eventService.createEvent(
+                clone_data,
                 function (res) {
                     $location.path('/');
                 },
-                // failure callback
                 function (res) {
                     if (res.data && res.data.msg && res.data.msg === '401') {
                         // the user need to login again
@@ -108,7 +107,7 @@ define(['app'], function (app) {
                         $location.path('/login').search({ret: '/createEvent'});
                     }
                 }
-            );
+            )
         };
 
         var mapOptions = {
