@@ -12,20 +12,19 @@ define(['app'], function (app) {
                     imagePath:"img/",
                     name: "YOLO"
                 };
-                $http.post('/auth/signup', {email: $scope.email, password: $scope.password, profile: profile})
-                    .then(
-                        // success callback
-                        function (res) {
-                            console.log(res);
-                            adminService.getAdmin(function(){
-                                $location.path($scope.ret);
-                            });
-                        },
-                        // failure callback
-                        function (res) {
-                            $scope.errMsg = res.data.msg[0];
-                        }
-                    )
+
+                adminService.signup(
+                    {email: $scope.email, password: $scope.password, profile: profile},
+                    function (res) {
+                        console.log(res);
+                        adminService.getAdmin(function(){
+                            $location.path($scope.ret);
+                        });
+                    },
+                    function (res) {
+                        $scope.errMsg = res.data.msg[0];
+                    }
+                );
             }
         }]
     );

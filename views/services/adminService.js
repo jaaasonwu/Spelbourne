@@ -54,11 +54,16 @@ define(['angularAMD'], function () {
             $window.location.href='/auth/facebook';
         };
 
+        var signup = function (data, success, failure) {
+            $http.post('/auth/signup', data).then(success, failure);
+        };
+
         return {
             getAdmin: getAdmin,
             logOut: logOut,
             google: google,
-            facebook: facebook
+            facebook: facebook,
+            signup
         }
     }])
 });
