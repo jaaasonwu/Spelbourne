@@ -1,7 +1,7 @@
 define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' ,
-            'ngMaterial', 'services/adminService.js', 'services/eventService'], function (angularAMD) {
+            'ngMaterial', 'services/adminService.js', 'services/eventService', 'services/userService'], function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'ngMaterial', 'adminService', 'eventService']);
+    var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'ngMaterial', 'adminService', 'eventService', 'userService']);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider

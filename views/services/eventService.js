@@ -32,6 +32,7 @@ define(['angularAMD'], function () {
                 failure
             );
         };
+        
         return {
             getEvent: getEvent,
             getIcon: getIcon,
