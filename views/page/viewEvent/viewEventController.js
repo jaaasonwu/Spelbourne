@@ -1,12 +1,14 @@
 define(['app'], function (app) {
-    app.controller("viewEventController", ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    app.controller("viewEventController", ['$scope', '$http', '$routeParams', 'eventService',
+                function($scope, $http, $routeParams, eventService) {
         eventID = $routeParams.eventID;
 
-        $http.get('/event/getEvent/' + eventID).then(
-            // success callback
+        eventService.getEvent(
+            eventID,
             function (res) {
                 $scope.event = res.data;
-                $http.get('/icon/' + $scope.event.sportType).then(
+                eventService.getIcon(
+                    $scope.event.sportType,
                     function(path) {
                         $scope.event.img = path.data;
                     }
@@ -48,7 +50,7 @@ define(['app'], function (app) {
             },
             // failure callback
             function (res) {
-                console.log(res.data.msg[0]);
+                console.log(res);
             }
         );
     }]);
