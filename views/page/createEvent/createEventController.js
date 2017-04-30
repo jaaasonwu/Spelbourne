@@ -102,7 +102,7 @@ define(['app'], function (app) {
                 },
                 // failure callback
                 function (res) {
-                    if (res.data.msg && res.data.msg === '401'){
+                    if (res.data && res.data.msg && res.data.msg === '401') {
                         // the user need to login again
                         adminService.getAdmin();
                         $location.path('/login').search({ret: '/createEvent'});
