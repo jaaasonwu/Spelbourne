@@ -16,17 +16,13 @@
 			<input type="password" class="form-control" name="password" ng-model="password">
 		</div>
 		<button type="submit" class="btn btn-lg btn-signIn" ng-click="logIn()">Login</button>
-		<button class="googleSignIn">
-			<a target="_self" href="/auth/google?ret={{ret}}" class="signInAnchor plainAnchor">
-				<img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
-					Google
-			</a>
+		<button class="googleSignIn" ng-click="google()">
+			<img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
+				Google
 		</button>
-		<button class="facebookSignIn" >
-			<a href="/auth/facebook?ret={{ret}}" target="_self" class="signInAnchor plainAnchor">
-				<img class="facebookBrand" src="/images/FB-Logo-white.png">
-				Facebook
-			</a>
+		<button class="facebookSignIn" ng-click="facebook()">
+			<img class="facebookBrand" src="/images/FB-Logo-white.png">
+			Facebook
 		</button>
 	</form>
 
