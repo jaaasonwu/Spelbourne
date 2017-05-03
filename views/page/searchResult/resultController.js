@@ -4,7 +4,7 @@ define(['app'], function (app) {
             // configuration for date picker
             $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
             //default date
-            $scope.dateSelect = new Date();
+            $scope.dateSelect = null;
             $scope.dateOptions = {
                 formatYear: 'yy',
                 maxDate: new Date(2020, 5, 22),
@@ -21,6 +21,7 @@ define(['app'], function (app) {
 
             // What sports type we have
             $scope.types = [
+                "Any",
                 "Tennis",
                 "Basketball",
                 "Soccer",
