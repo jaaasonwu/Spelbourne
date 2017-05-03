@@ -16,6 +16,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3">
+                            <p class="eventDes">Organizer: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.organizer}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
                             <p class="eventDes">Location: </p>
                         </div>
                         <div class="col-md-9">
@@ -45,8 +55,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Participant: </p>
+                        </div>
+
+                        <div ng-repeat="participant in event.participantsName" class="col-md-9">
+                            <p>
+                                {{participant}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div id="map"></div>
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <img class="eventDesImg" src="{{event.img}}">
                 </div>
             </div>
         </div>

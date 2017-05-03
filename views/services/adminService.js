@@ -46,16 +46,30 @@ define(['angularAMD'], function () {
                 )
         };
 
-        var google = function(){
-            $window.location.href='/auth/google';
+        var google = function(ret){
+            $window.location.href='/auth/google' + '?ret=' + encodeURIComponent(ret);
         };
 
-        var facebook = function(){
-            $window.location.href='/auth/facebook';
+        var facebook = function(ret){
+            $window.location.href='/auth/facebook' + '?ret=' + encodeURIComponent(ret);
         };
 
-        var signup = function (data, success, failure) {
-            $http.post('/auth/signup', data).then(success, failure);
+        var signUp = function(profile, email, password, successCallback, failureCallback){
+            $http.post('/auth/signup', {email: email, password: password, profile: profile})
+                .then(
+                    // success callback
+                    successCallback,
+                    // failure callback
+                    failureCallback
+                )
+        };
+
+        var logIn = function(email, password, successCallback, failureCallback){
+            $http.post('/auth/login', {email: email, password: password})
+                .then(
+                    successCallback,
+                    failureCallback
+                );
         };
 
         return {
@@ -63,7 +77,8 @@ define(['angularAMD'], function () {
             logOut: logOut,
             google: google,
             facebook: facebook,
-            signup
+            signUp: signUp,
+            logIn: logIn
         }
     }])
 });
