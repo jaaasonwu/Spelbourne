@@ -36,6 +36,11 @@ define(['angularAMD', 'angular-route', 'jQuery', 'angular-ui', 'bootstrap' ,
                 controller : 'createEventController',
                 controllerUrl: 'page/createEvent/createEventController'
             }))
+            .when('/profile', angularAMD.route({
+                templateUrl : 'page/profile/profile.html',
+                controller : 'profileController',
+                controllerUrl: 'page/profile/profileController'
+            }))
             .otherwise({ redirectTo: '/' });
 
         $locationProvider.html5Mode(true);

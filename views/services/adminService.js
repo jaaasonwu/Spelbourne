@@ -45,7 +45,6 @@ define(['angularAMD'], function () {
                     }
                 )
         };
-
         var google = function(){
             $window.location.href='/auth/google';
         };
@@ -57,6 +56,7 @@ define(['angularAMD'], function () {
         var signup = function (data, success, failure) {
             $http.post('/auth/signup', data).then(success, failure);
         };
+
 
         return {
             getAdmin: getAdmin,

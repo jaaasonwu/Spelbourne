@@ -1,0 +1,101 @@
+<div id="userProfile">
+    <div  class="container-fluid">
+        <div class="navbar-header" data-spy="affix">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">My Profile</a>
+        </div>
+        <div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#section1">Subscribed Events</a></li>
+                    <li><a href="#section2">Organised Events</a></li>
+                    <li><a href="#section3">Friends</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content" data-spy="scroll">
+        <div id="myEventsList">
+            <div id="section1" class="container-fluid">
+                <br>
+                <h3>Subscribed Events</h3>
+                <div ng-repeat="event in subscribedEvents">
+                    <div class="container">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="card">
+                                <img class="card-img-top" class="eventImg"
+                                     src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{ event.sportType + ' for '+ event.skillLevel + ' skill level'
+                                        }}</h4>
+                                    <div class="meta">
+                                        <a href="#">Description</a>
+                                    </div>
+                                    <div class="card-text">
+                                        {{event.description}}
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="float-right">{{event.startDate}}</span>
+                                    <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="section2" class="container-fluid">
+                <br>
+                <h3>Organized Events</h3>
+                <div ng-repeat="event in organisedEvents">
+                    <div class="container">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="card">
+                                <img class="card-img-top" class="eventImg"
+                                     src="http://success-at-work.com/wp-content/uploads/2015/04/free-stock-photos.gif">
+                                <div class="card-block">
+                                    <h4 class="card-title">{{ event.sportType + ' for '+ event.skillLevel + ' skill level'
+                                        }}</h4>
+                                    <div class="meta">
+                                        <a href="#">Description</a>
+                                    </div>
+                                    <div class="card-text">
+                                        {{event.description}}
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="float-right">{{event.startDate}}</span>
+                                    <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="friendsDisplay">
+            <div id="section3" class="container-fluid">
+                <br>
+                <h3>Friends </h3>
+                <ul class="list-group">
+                    <div ng-repeat="friend in friendsList">
+                        <li class="list-group-item justify-content-between">
+                            {{friend.username +'  '+  friend.emailAddress}}
+                            <span class="badge badge-default badge-pill">{{'Activities ' + friend.events}}</span>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</div>
