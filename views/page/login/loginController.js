@@ -9,22 +9,14 @@ define(['app'], function (app) {
             $scope.facebook = adminService.facebook;
 
             $scope.ret = $routeParams.ret || '/';
-            $scope.logIn = function () {
-                console.log('clicked');
-                $http.post('/auth/login', {email: $scope.email, password: $scope.password})
-                    .then(
-                        // success callback
-                        function (res) {
-                            console.log(res);
-                            adminService.getAdmin(function(){
-                                $location.path($scope.ret);
-                            });
-                        },
-                        // failure callback
-                        function (res) {
-                            $scope.errMsg = res.data.msg[0];
-                        }
-                    )
+            $scope.successCallback = function(res){
+                adminService.getAdmin(function(){
+                    $location.path($scope.ret);
+                });
             };
+            $scope.failureCallback = function(res) {
+                $scope.errMsg = res.data.msg[0];
+            };
+            $scope.logIn = adminService.logIn;
         }]);
 });
