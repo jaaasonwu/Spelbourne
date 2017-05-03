@@ -3,10 +3,12 @@ define(['angularAMD'], function () {
     app.service('userService', ['$http', '$location', '$window',
                 function ($http, $location, $window) {
 
-        // var getUserProfile() 
+        var getUserProfile = function (userID, success, failure) {
+            $http.get('/user/getUserProfile/' + userID).then(success, failure);
+        }
 
         return {
-            signup: signup
+            getUserProfile: getUserProfile
         }
     }])
 });
