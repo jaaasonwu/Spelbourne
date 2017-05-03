@@ -62,7 +62,6 @@ define(['app'], function (app) {
 
             $scope.viewEvent = function (event) {
                 console.log(event._id);
-
                 $location.path("/viewEvent/" + event._id);
             };
 

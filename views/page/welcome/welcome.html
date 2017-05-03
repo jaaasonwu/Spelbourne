@@ -26,7 +26,7 @@
         <div class="welcome-panel">
             <div class="card-deck">
                 <div class="col-md-4 grow" ng-repeat="event in events">
-                    <div class="cardBox ">
+                    <div class="cardBox " ng-click="viewEvent(event)">
                         <div class="card card-block">
                             <h3 class="card-title">
                                 <img class="sports-icon" ng-src="{{event.img}}">{{event.sportType}}

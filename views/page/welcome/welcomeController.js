@@ -1,7 +1,7 @@
 define(['app', 'angular-filter'], function (app) {
     // create the controller and inject Angular's $scope
-    app.controller('welcomeController', ['$scope', '$http', 'eventService',
-            function($scope, $http, eventService) {
+    app.controller('welcomeController', ['$scope', '$http', '$location', 'eventService',
+            function($scope, $http, $location, eventService) {
         // create a message to display in our view
         $scope.message = 'How are you my friend';
 
@@ -23,6 +23,12 @@ define(['app', 'angular-filter'], function (app) {
                 console.log(res.data.msg[0]);
             }
         );
+
+        $scope.viewEvent = function (event) {
+            console.log(event._id);
+
+            $location.path("/viewEvent/" + event._id);
+        };
 
         $scope.events = [
             {
