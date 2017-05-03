@@ -54,8 +54,7 @@ define(['angularAMD'], function () {
             getEventList: getEventList,
             joinEvent: joinEvent,
             createEvent: createEvent,
-            getMyEvents: getMyEvents,
-            getMyFriends:getMyFriends
+            getMyEvents: getMyEvents
         }
     }])
 });
