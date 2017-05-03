@@ -38,13 +38,7 @@ define(['angularAMD'], function () {
                 failure
             );
         };
-        //get my friends
-        var getMyFriends = function(userID,success,failure){
-            $http.get('/user/profile/getFriends'+ userID).then(
-                success,
-                failure
-            );
-        };
+
         var createEvent = function(data, success, failure) {
             $http.post('/event/createEvent', data).then(
                 success,
