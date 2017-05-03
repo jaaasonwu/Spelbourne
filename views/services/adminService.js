@@ -46,12 +46,12 @@ define(['angularAMD'], function () {
                 )
         };
 
-        var google = function(){
-            $window.location.href='/auth/google';
+        var google = function(ret){
+            $window.location.href='/auth/google' + '?ret=' + encodeURIComponent(ret);
         };
 
-        var facebook = function(){
-            $window.location.href='/auth/facebook';
+        var facebook = function(ret){
+            $window.location.href='/auth/facebook' + '?ret=' + encodeURIComponent(ret);
         };
 
         var signUp = function(profile, email, password, successCallback, failureCallback){
