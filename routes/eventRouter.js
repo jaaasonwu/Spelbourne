@@ -9,7 +9,7 @@ route.post('/createEvent', function(req, res) {
         createEventDate = new Date();
         startDate = new Date(e.startDate);
 
-        eventService.createEvent(e.location, e.description, startDate,
+        eventService.createEvent(e.location, e.locationId, e.description, startDate,
                 organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType
                 , e.skillLevel);
         res.json({success: true});
