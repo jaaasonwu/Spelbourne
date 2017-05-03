@@ -21,7 +21,7 @@ define(['app'], function (app) {
             var dt = convertUTCDateToLocalDate(new Date(1970, 0, 1, 0, 0, 0, 0));
             date = [];
             for (i = 0; i < 12; i++) {
-                var point = dt.toLocaleTimeString('en-US');
+                var point = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 date.push(point);
                 dt.setMinutes(dt.getMinutes() + step);
             }
