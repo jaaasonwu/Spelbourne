@@ -1,6 +1,7 @@
 define(['angularAMD'], function () {
     var app = angular.module('adminService', []);
-    app.service('adminService', ['$rootScope', '$http', '$location', function ($rootScope, $http, $location) {
+    app.service('adminService', ['$rootScope', '$http', '$location', '$window',
+        function ($rootScope, $http, $location, $window) {
         var getAdmin = function (callback) {
             $http.get('/auth/admin')
                 .then(
@@ -45,9 +46,24 @@ define(['angularAMD'], function () {
                 )
         };
 
+        var google = function(){
+            $window.location.href='/auth/google';
+        };
+
+        var facebook = function(){
+            $window.location.href='/auth/facebook';
+        };
+
+        var signup = function (data, success, failure) {
+            $http.post('/auth/signup', data).then(success, failure);
+        };
+
         return {
             getAdmin: getAdmin,
-            logOut: logOut
+            logOut: logOut,
+            google: google,
+            facebook: facebook,
+            signup
         }
     }])
 });
