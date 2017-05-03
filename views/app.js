@@ -1,4 +1,4 @@
-var dependencies = [
+var imports = [
     'angularAMD',
     'angular-route',
     'jQuery',
@@ -9,11 +9,20 @@ var dependencies = [
     'services/eventService',
     'services/userService',
     'filter/resultFilters'
-]
+];
 
-define(dependencies, function (angularAMD) {
+var dependencies = [
+    'ngRoute',
+    'ui.bootstrap',
+    'ngMaterial',
+    'adminService',
+    'eventService',
+    'userService'
+];
+
+define(imports, function (angularAMD) {
     // create the module and name it scotchApp
-    var app = angular.module('mainApp', ['ngRoute', 'ui.bootstrap', 'ngMaterial', 'adminService', 'eventService', 'userService']);
+    var app = angular.module('mainApp', dependencies);
     // configure our routes
     app.config(function ($routeProvider, $locationProvider) {
         $routeProvider
