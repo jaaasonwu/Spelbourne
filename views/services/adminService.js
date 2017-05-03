@@ -10,6 +10,7 @@ define(['angularAMD'], function () {
                         console.log(res.data);
                         if (res.data.loggedIn) {
                             $rootScope.username = res.data.user.email;
+                            $rootScope.userID = res.data.user._id;
                             if (callback) {
                                 callback(true, null);
                             }

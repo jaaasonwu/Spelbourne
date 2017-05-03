@@ -10,6 +10,8 @@ route.get('/profile/:userID', function(req, res) {
     //add a logged in check
     if((userID == 'my_profile')){
         //viewing your own profile
+        console.log("getting my events");
+
         userID = req.user._id;
         eventService.getMySubscribedEvents(userID, function (err, data) {
             if(err) {
@@ -23,9 +25,8 @@ route.get('/profile/:userID', function(req, res) {
     }
     //viewing someone else's profile
     else{
-        console.log("getting my subscribed events");
-
-        eventService.getMyOrganizedEvents(userID, function (err, data) {
+        console.log("getting someone else's events");
+        eventService.getMySubscribedEvents(userID, function (err, data) {
             if(err) {
                 res.status(500).send("No such user");
                 return;
@@ -33,6 +34,15 @@ route.get('/profile/:userID', function(req, res) {
             res.send(data);
 
         });
+        /*
+        eventService.getMyOrganizedEvents(userID, function (err, data) {
+            if(err) {
+                res.status(500).send("No such user");
+                return;
+            }
+            res.send(data);
+
+        });*/
 
 
     }

@@ -1,7 +1,7 @@
 define(['app'], function (app) {
     app.controller('profileController',
-        ['$scope', '$http', '$location', '$routeParams','userService','eventService', 'adminService',
-        function ($scope, $http, $location, $routeParams, userService, eventService, adminService) {
+        ['$scope', '$http', '$location', '$rootScope','$routeParams','userService','eventService', 'adminService',
+        function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService, adminService) {
             // configuration for date picker
             $scope.format = ["dd-MM-yyyy", "dd/MM/yyyy"];
             //default date
@@ -19,8 +19,26 @@ define(['app'], function (app) {
                     this.opened = !this.opened;
                 }
             };
-            $scope.myEvents = eventService.get
-            var eventID = '5905782097017286ed070904';
+            $scope.userID = $rootScope.userID;
+            console.log($scope.userID);
+            $scope.myEvents = eventService.getMyEvents(
+                $scope.userID,
+                function(res){
+                    $scope.eventList = res.data;
+                    $scope.eventList.forEach(function(event) {
+                        eventService.getIcon(
+                            event.sportType,
+                            function(path) {
+                                event.img = path.data;
+                            }
+                        );
+                    });
+                },
+                function(res){
+                    console.log(res.data.msg[0]);
+                }
+            );
+            console.log($scope.myEvents);
             $scope.subscribedEvents = [{
                 sportType : "Tennis",
                 duration : 1800,
@@ -125,47 +143,6 @@ define(['app'], function (app) {
             ];
 
 
-            /*userService.getProfile(
-                userID,
-                function(res){
-                    console.log("running in getUserProfile");
-                    console.log(res);
-                },
-                function(res){
-                    console.log("error retrieving the data");
-                }
-            );*/
-
-            /*userService.getUserProfile(
-                userID,
-                function (res) {
-                    $scope.userProfile = res.data;
-                    $scope.userEventsList = res.events;
-                    console.log($scope.userEventsList);
-                },
-                function (res) {
-                    console.log(res.data.msg[0]);
-                }
-            );*/
-            //retrieve all associated events with the user
-            /*eventService.getEventList(
-                userID,
-                function (res) {
-                    $scope.eventList = res.data;
-                    $scope.eventList.forEach(function (event) {
-                        eventService.getIcon(
-                            event.sportType,
-                            function (path) {
-                                event.img = path.data;
-                            }
-                        );
-                    });
-                },
-                function (res) {
-                    console.log(res.data.msg[0]);
-                }
-            );
-            */
             $scope.viewEvent = function (event) {
                 console.log(event._id);
 

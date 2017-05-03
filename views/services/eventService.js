@@ -32,14 +32,19 @@ define(['angularAMD'], function () {
                 failure
             );
         };
-        //get my events
         var getMyEvents = function(userID,success,failure){
             $http.get('user/profile/'+ userID).then(
                 success,
                 failure
             );
         };
-        //get my friend
+        //get my friends
+        var getMyFriends = function(userID,success,failure){
+            $http.get('/user/profile/getFriends'+ userID).then(
+                success,
+                failure
+            );
+        };
         var createEvent = function(data, success, failure) {
             $http.post('/event/createEvent', data).then(
                 success,
@@ -55,7 +60,8 @@ define(['angularAMD'], function () {
             getEventList: getEventList,
             joinEvent: joinEvent,
             createEvent: createEvent,
-            getMyEvents: getMyEvents
+            getMyEvents: getMyEvents,
+            getMyFriends:getMyFriends
         }
     }])
 });
