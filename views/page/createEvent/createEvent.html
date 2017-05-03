@@ -108,25 +108,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div id="map"></div>
-            </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
                         <label for="locationInput">Location: </label>
                     </div>
                     <div class="col-md-9">
-                        <input id="locationInput" ng-change="change()" class="form-control controls"
-                               ng-model="data.location"
-                               type="text" placeholder="Search Box"
+                        <input id="locationInput" class="form-control controls"
+                               type="text" placeholder="Enter the location"
                                onkeypress="return event.keyCode != 13;"
                         >
-                        </input>
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div id="map"></div>
+            </div>
             <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
                     class="btn btn-lg btn-search">
                 Create

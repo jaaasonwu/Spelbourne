@@ -1,10 +1,10 @@
 define(['app'], function (app) {
-    app.controller('resultController', ['$scope', '$http', '$location', 'eventService',
+    app.controller('resultController', ['$scope', '$http', '$location', "eventService",
         function ($scope, $http, $location, eventService) {
             // configuration for date picker
             $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
             //default date
-            $scope.dateSelect = new Date();
+            $scope.dateSelect = null;
             $scope.dateOptions = {
                 formatYear: 'yy',
                 maxDate: new Date(2020, 5, 22),
@@ -21,10 +21,13 @@ define(['app'], function (app) {
 
             // What sports type we have
             $scope.types = [
-                "None",
+                "Any",
                 "Tennis",
                 "Basketball",
-                "Soccer"
+                "Soccer",
+                "Golf",
+                "Swimming",
+                "Running"
             ];
             // Default is none
             $scope.typeSelect = $scope.types[0];
@@ -40,21 +43,43 @@ define(['app'], function (app) {
                 "Master"
             ];
 
-            $scope.events = $http.get('/event/getEventList').then(
-                // success callback
+            eventService.getEventList(
                 function (res) {
                     $scope.eventList = res.data;
-                    console.log(res.data);
+                    $scope.eventList.forEach(function(event) {
+                        eventService.getIcon(
+                            event.sportType,
+                            function(path) {
+                                event.img = path.data;
+                            }
+                        );
+                    });
                 },
-                // failure callback
                 function (res) {
                     console.log(res.data.msg[0]);
                 }
             );
 
             $scope.viewEvent = function (event) {
-                eventService.setEvent(event);
-                $location.path("/event")
+                console.log(event._id);
+
+                $location.path("/viewEvent/" + event._id);
+            };
+
+            $scope.joinEvent = function (event) {
+                // Clone the data
+                var data = {"eventID": event._id}
+                console.log(data);
+
+                eventService.joinEvent(
+                    data,
+                    function (res) {
+                        console.log("SUCCESS");
+                    },
+                    function (res) {
+                        console.log(res);
+                    }
+                );
             };
         }]);
 });

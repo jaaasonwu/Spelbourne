@@ -1,9 +1,9 @@
 define(['app'], function (app) {
-    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope',
-    function($scope, $http , $location, $rootScope) {
+    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService', 'eventService',
+    function($scope, $http , $location, $rootScope, adminService, eventService) {
         // Check if the user is authenticated
-        if ($rootScope.username == undefined) {
-            $location.path('/login');
+        if ($rootScope.username === undefined) {
+            $location.path('/login').search({ret: '/createEvent'});
         }
 
         var convertUTCDateToLocalDate = function (date) {
@@ -33,7 +33,9 @@ define(['app'], function (app) {
             "Tennis",
             "Swimming",
             "Soccer",
-            "Basketball"
+            "Basketball",
+            "Golf",
+            "Running"
         ];
 
         // Different skill levels
@@ -85,6 +87,7 @@ define(['app'], function (app) {
             }
 
         };
+
         $scope.createEvent = function () {
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
@@ -92,21 +95,19 @@ define(['app'], function (app) {
             // Convert duration to seconds
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
             clone_data = JSON.stringify(clone_data);
-            $http.post('/event/createEvent', clone_data)
-            .then(
-                // success callback
+            eventService.createEvent(
+                clone_data,
                 function (res) {
                     $location.path('/');
                 },
-                // failure callback
                 function (res) {
-                    console.log(res);
+                    if (res.data && res.data.msg && res.data.msg === '401') {
+                        // the user need to login again
+                        adminService.getAdmin();
+                        $location.path('/login').search({ret: '/createEvent'});
+                    }
                 }
-            );
-        };
-
-        $scope.change = function () {
-            console.log("COME");
+            )
         };
 
         var mapOptions = {
@@ -115,16 +116,15 @@ define(['app'], function (app) {
             mapTypeId: 'roadmap'
         }
 
-        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        $scope.search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
-        $scope.search.addListener('places_changed', function() {
-            var places = $scope.search.getPlaces();
-            $scope.data.location = places[0].formatted_address;
-            console.log($scope.data);
+        let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
+        search.addListener('places_changed', function() {
+            let places = search.getPlaces();
+
             if (places.length == 0) {
                 return;
             }
-            var markers = [];
+            let markers = [];
 
             // Clear out the old markers.
             markers.forEach(function(marker) {
@@ -132,13 +132,13 @@ define(['app'], function (app) {
             });
 
             // For each place, get the icon, name and location.
-            var bounds = new google.maps.LatLngBounds();
+            let bounds = new google.maps.LatLngBounds();
             places.forEach(function(place) {
                 if (!place.geometry) {
                     console.log("Returned place contains no geometry");
                     return;
                 }
-                var icon = {
+                let icon = {
                     url: place.icon,
                     size: new google.maps.Size(71, 71),
                     origin: new google.maps.Point(0, 0),
@@ -148,12 +148,13 @@ define(['app'], function (app) {
 
                 // Create a marker for each place.
                 markers.push(new google.maps.Marker({
-                    map: $scope.map,
+                    map: map,
                     icon: icon,
                     title: place.name,
                     position: place.geometry.location
                 }));
                 $scope.data.location = place.name;
+                $scope.data.locationId = place.place_id;
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
@@ -161,7 +162,7 @@ define(['app'], function (app) {
                     bounds.extend(place.geometry.location);
                 }
             });
-            $scope.map.fitBounds(bounds);
+            map.fitBounds(bounds);
         });
     }]);
 });

@@ -3,14 +3,34 @@
         <h1 id="eventName"> {{event.type}} </h1>
         <div class="jumbotron" id="showEvent">
             <div class="container">
-                <div class="col-md-9">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Sport Type: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.sportType}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Organizer: </p>
+                        </div>
+                        <div class="col-md-9">
+                            <p>
+                                {{event.organizer}}
+                            </p>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-3">
                             <p class="eventDes">Location: </p>
                         </div>
                         <div class="col-md-9">
                             <p>
-                                {{event.place}}
+                                {{event.location}}
                             </p>
                         </div>
                     </div>
@@ -20,7 +40,7 @@
                         </div>
                         <div class="col-md-9">
                             <p>
-                                {{event.skLevel}}
+                                {{event.skillLevel}}
                             </p>
                         </div>
                     </div>
@@ -30,9 +50,23 @@
                         </div>
                         <div class="col-md-9">
                             <p>
-                                {{event.desc}}
+                                {{event.description}}
                             </p>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="eventDes">Participant: </p>
+                        </div>
+
+                        <div ng-repeat="participant in event.participantsName" class="col-md-9">
+                            <p>
+                                {{participant}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="map"></div>
                     </div>
                 </div>
                 <div class="col-md-3">

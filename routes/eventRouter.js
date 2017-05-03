@@ -9,12 +9,32 @@ route.post('/createEvent', function(req, res) {
         createEventDate = new Date();
         startDate = new Date(e.startDate);
 
-        eventService.createEvent(e.location, e.description, startDate,
+        eventService.createEvent(e.location, e.locationId, e.description, startDate,
                 organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType
                 , e.skillLevel);
-        res.end();
+        res.json({success: true});
     } else {
-        res.status(500).end();
+        // 401 means unauthorized
+        res.status(401).json({success: false, msg: '401'});
+    }
+});
+
+route.post('/joinEvent', function(req, res) {
+    if (req.isAuthenticated()) {
+        let e = req.body;
+        let eventID = e.eventID;
+        console.log(eventID);
+        userID = req.user._id;
+        eventService.joinEvent(eventID, userID, function (err) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.end();
+            }
+        });
+
+    } else {
+        res.status(401).end();
     }
 });
 
