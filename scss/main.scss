@@ -199,6 +199,7 @@ body {
         padding: 0;
     }
 
+
     .navbar-right {
         position: absolute;
         right: 5%;
@@ -372,11 +373,15 @@ body {
 
 #myEventsList {
     .card {
+        margin: 10px 10px;
         font-size: 1em;
         overflow: hidden;
+        display: inline-block;
+        float:left;
         padding: 0;
         border: none;
-        border-radius: .28571429rem;
+        height:25em;
+        border-radius: .2857429rem;
         box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
     }
 
@@ -392,10 +397,13 @@ body {
 
     .card-img-top {
         display: block;
-        width: 100%;
+        width: 50%;
         height: auto;
     }
-
+    #eventImg {
+        height: 15em;
+        width: 10em;
+    }
     .card-title {
         font-size: 1.28571429em;
         font-weight: 700;
@@ -407,7 +415,15 @@ body {
         margin-top: .5em;
         color: rgba(0, 0, 0, .68);
     }
+    #scrolly{
+        width: 70em;
+        height: 50em;
+        overflow: auto;
+        overflow-y: hidden;
+        margin: 0 auto;
+        white-space: nowrap;
 
+    }
     .card-footer {
         font-size: 1em;
         position: static;
