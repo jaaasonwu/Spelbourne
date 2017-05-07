@@ -10,18 +10,23 @@ define(['app'], function (app) {
                 userService.getUserProfile(
                     $scope.event.organizerID,
                     function (profile) {
-                        console.log(profile);
                         $scope.event.organizer = profile.data.email
                     }
                 );
+
+                utcDate = new Date($scope.event.startDate);
+                currentDate = new Date(
+                    utcDate.getUTCFullYear(),
+                    utcDate.getUTCMonth(),
+                    utcDate.getUTCDate()
+                );
+                $scope.event.startDate = currentDate.toLocaleDateString();
                 $scope.event.participantsName = [];
                 $scope.event.participants.forEach(function(id) {
-
                     var name = "";
                     userService.getUserProfile(
                         id,
                         function (profile) {
-                            console.log(profile);
                             name = profile.data.email;
                             $scope.event.participantsName.push(name);
                         }
@@ -33,7 +38,8 @@ define(['app'], function (app) {
                     function(path) {
                         $scope.event.img = path.data;
                     }
-                )
+                );
+
                 let mapOptions = {
                     zoom: 14,
                     center: new google.maps.LatLng(-37.7964, 144.9612),
