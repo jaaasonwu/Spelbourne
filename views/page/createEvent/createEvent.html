@@ -8,7 +8,6 @@
                         <label for="data.sportType">Sports Category: </label>
                     </div>
                     <div class="col-md-9">
-
                         <select id="data.sportType" class="form-control"
                                 ng-model="data.sportType"
                                 ng-options="x for x in sportsCategory" required>
@@ -38,7 +37,7 @@
                     <div class="col-md-9">
                         <div class="input-group">
                             <input type="text" id="dateSelect" class="form-control" uib-datepicker-popup="{{format[0]}}"
-                                   ng-model="myDate" is-open="dp.opened" datepicker-options="dateOptions"
+                                   ng-model="data.startDate" is-open="dp.opened" datepicker-options="dateOptions"
                                    ng-required="true"
                                    close-text="Close" alt-input-formats="format[1]"/>
                             <span class="input-group-btn">
@@ -89,9 +88,9 @@
                                   ng-model="data.description"
                                   placeholder="Enter the event description here" ng-minlength="10" ng-required="true">
                         </textarea>
-                        <span style="color:red"
-                              ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength "
-                              class="help-block">Description is too short.</span>
+                        <span class="invalidInput"
+                              ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength ">
+                            Description is too short.</span>
                     </div>
                 </div>
             </div>
@@ -114,11 +113,13 @@
                         <label for="locationInput">Location: </label>
                     </div>
                     <div class="col-md-9">
-                        <input id="locationInput" ng-change="change()" class="form-control controls"
-                               ng-model="data.location"
+                        <input id="locationInput" class="form-control controls"
                                type="text" placeholder="Enter the location"
                                onkeypress="return event.keyCode != 13;"
+                               ng-focus="locationValidation();"
                         >
+                        <span class="invalidInput" ng-show="createEventForm.$locationInvalid">
+                            Invalid location</span>
                     </div>
                 </div>
             </div>

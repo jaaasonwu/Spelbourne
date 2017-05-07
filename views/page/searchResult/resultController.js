@@ -1,10 +1,10 @@
 define(['app'], function (app) {
-    app.controller('resultController', ['$scope', '$http', '$location',
+    app.controller('resultController', ['$scope', '$http', '$location', "eventService",
         function ($scope, $http, $location, eventService) {
             // configuration for date picker
             $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
             //default date
-            $scope.dateSelect = new Date();
+            $scope.dateSelect = null;
             $scope.dateOptions = {
                 formatYear: 'yy',
                 maxDate: new Date(2020, 5, 22),
@@ -21,6 +21,7 @@ define(['app'], function (app) {
 
             // What sports type we have
             $scope.types = [
+                "Any",
                 "Tennis",
                 "Basketball",
                 "Soccer",
@@ -42,20 +43,18 @@ define(['app'], function (app) {
                 "Master"
             ];
 
-
-            $scope.events = $http.get('/event/getEventList').then(
-                // success callback
+            eventService.getEventList(
                 function (res) {
                     $scope.eventList = res.data;
                     $scope.eventList.forEach(function(event) {
-                        $http.get('/icon/' + event.sportType).then(
+                        eventService.getIcon(
+                            event.sportType,
                             function(path) {
                                 event.img = path.data;
                             }
-                        )
-                    })
+                        );
+                    });
                 },
-                // failure callback
                 function (res) {
                     console.log(res.data.msg[0]);
                 }
@@ -63,7 +62,6 @@ define(['app'], function (app) {
 
             $scope.viewEvent = function (event) {
                 console.log(event._id);
-
                 $location.path("/viewEvent/" + event._id);
             };
 
@@ -72,13 +70,11 @@ define(['app'], function (app) {
                 var data = {"eventID": event._id}
                 console.log(data);
 
-                $http.post('/event/joinEvent', data)
-                .then(
-                    // success callback
+                eventService.joinEvent(
+                    data,
                     function (res) {
                         console.log("SUCCESS");
                     },
-                    // failure callback
                     function (res) {
                         console.log(res);
                     }

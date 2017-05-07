@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"node server.js\" \"npm run watch-css\"",
+    "new-db": "mongorestore --db spelbourne --drop dump/spelbourne",
+    "restore-db": "mongorestore --db spelbourne --drop dump/local/spelbourne",
+    "backup-db": "mongodump --db spelbourne --out dump/local/",
     "build-css": "node-sass --include-path scss scss/main.scss views/stylesheets/main.css",
     "watch-css": "nodemon -e scss -x \"npm run build-css\""
   },
@@ -20,6 +23,7 @@
   },
   "homepage": "https://github.com/zhaih/web-tech#readme",
   "dependencies": {
+    "base64url": "^2.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "concurrently": "^3.4.0",

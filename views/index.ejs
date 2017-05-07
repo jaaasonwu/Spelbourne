@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/dependency/bootstrap/css/bootstrap-theme.css">
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBElRERsxK0HlYKRgZDcDFQHClGyUEGbS8&libraries=places"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBElRERsxK0HlYKRgZDcDFQHClGyUEGbS8&libraries=places&&language=en-US"
             async defer></script>
     <script src="/dependency/requireJs/require.min.js" data-main="config"></script>
     <link rel="stylesheet" href="/stylesheets/main.css">
@@ -37,18 +37,33 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-brand-centered">
+        <div  class="collapse navbar-collapse" id="navbar-brand-centered" >
+
             <ul class="nav navbar-nav">
                 <a href="/"  class="navbar-brand"><img class="logoImg" src="images/logo.png"></a>
 
             </ul>
+
             <ul class="nav navbar-nav navbar-right" ng-if="!username">
-                <li><a href="/signup">SignUp</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a href="/signup?ret={{location.path()}}">Sign Up</a></li>
+                <li><a href="/login?ret={{location.path()}}">Login</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" ng-if="username">
-                <li>{{username}}</li>
-                <li><a href="" ng-click="logOut()">Logout</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user ">
+                                <span class="glyphicon glyphicon-option-vertical "></span></span></a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#">{{username}} </a></li>
+                        <li><a href="/profile?ret={{location.path()}}">My Account <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Messages <span class="badge pull-right"> 0 </span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="/" ng-click="logOut()">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div><!-- /.navbar-collapse -->
 
