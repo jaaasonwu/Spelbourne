@@ -3,6 +3,7 @@ const route = express.Router();
 const eventService = require('../lib/events/eventService.js');
 
 route.post('/createEvent', function(req, res) {
+
     if (req.isAuthenticated()) {
         let e = req.body;
         organizerID = req.user._id;
