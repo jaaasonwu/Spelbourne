@@ -77,7 +77,8 @@ define(['app'], function (app) {
             duration: $scope.duration[0],
             visibility: "Friends",
             sportType: $scope.sportsCategory[0],
-            skillLevel: $scope.skillLevels[0]
+            skillLevel: $scope.skillLevels[0],
+            maxParticipant: "2"
         };
 
         $scope.formValidate = function(isValid){
