@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
   font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
   padding-top: 100px;
@@ -66,6 +67,66 @@ body {
     font-size: 1.8em;
     color: red;
     font-weight: bold; }
+
+.third-party-login {
+  font-size: 16px;
+  font-weight: bold; }
+  .third-party-login .googleSignIn {
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: #4285f4;
+    border: hidden;
+    border-radius: 6px;
+    padding: 0 0 0 0;
+    font-family: "Roboto", sans-serif;
+    width: 125px;
+    height: 46px;
+    text-align: left; }
+    .third-party-login .googleSignIn .googleBrand {
+      margin-right: 6px; }
+  .third-party-login .facebookSignIn {
+    color: white;
+    font-weight: normal;
+    font-size: 16px;
+    background-color: #3b579d;
+    border: hidden;
+    border-radius: 6px;
+    padding: 0 0 0 0;
+    font-family: Tahoma, sans-serif;
+    width: 125px;
+    height: 46px;
+    text-align: left; }
+    .third-party-login .facebookSignIn .facebookBrand {
+      width: 40px;
+      padding-left: 3px;
+      margin-right: 3px; }
+
+.plainAnchor {
+  color: inherit;
+  text-decoration: none; }
+
+.plainAnchor:hover {
+  color: inherit;
+  text-decoration: none; }
+
+.plainAnchor:visited {
+  color: inherit;
+  text-decoration: none; }
+
+.plainAnchor:focus {
+  color: inherit;
+  text-decoration: none; }
+
+.loginButtonArea {
+  border-bottom: solid grey;
+  margin-bottom: 10px;
+  padding-bottom: 10px; }
+  .loginButtonArea .btn-signIn {
+    background-color: #FFAF6C;
+    color: black;
+    width: 120px;
+    height: 46px; }
 
 .navbar-default {
   margin-bottom: 0;
@@ -148,7 +209,7 @@ body {
     width: 30px;
     padding-right: 10px; }
   .welcome-panel .cardBox .card-text {
-    height: 100px;
+    height: 150px;
     vertical-align: middle;
     text-align: center;
     font-size: 30px; }
@@ -175,8 +236,8 @@ body {
   font-weight: bold !important; }
 
 .eventDesImg {
-  height: 200px;
-  width: 200px; }
+  height: 100px;
+  width: 100px; }
 
 #viewBtn {
   width: 100px;
@@ -192,11 +253,75 @@ body {
   margin-right: 15px;
   margin-bottom: 15px; }
 
-.md-default-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,
-.md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,
-.md-default-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator,
-.md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator {
-  background: #f4770f; }
+.invalidInput {
+  color: red; }
 
-.md-default-theme .md-datepicker-open .md-datepicker-calendar-icon, .md-datepicker-open .md-datepicker-calendar-icon {
-  color: #f4770f; }
+#myEventsList .card {
+  margin: 10px 10px;
+  font-size: 1em;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  padding: 0;
+  border: none;
+  height: 25em;
+  border-radius: .2857429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5; }
+
+#myEventsList .card-block {
+  font-size: 1em;
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+  box-shadow: none; }
+
+#myEventsList .card-img-top {
+  display: block;
+  width: 50%;
+  height: auto; }
+
+#myEventsList #eventImg {
+  height: 15em;
+  width: 10em; }
+
+#myEventsList .card-title {
+  font-size: 1.28571429em;
+  font-weight: 700;
+  line-height: 1.2857em; }
+
+#myEventsList .card-text {
+  clear: both;
+  margin-top: .5em;
+  color: rgba(0, 0, 0, 0.68); }
+
+#myEventsList #scrolly {
+  width: 70em;
+  height: 50em;
+  overflow: auto;
+  overflow-y: hidden;
+  margin: 0 auto;
+  white-space: nowrap; }
+
+#myEventsList .card-footer {
+  font-size: 1em;
+  position: static;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  padding: .75em 1em;
+  color: rgba(0, 0, 0, 0.4);
+  border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
+  background: #fff; }
+
+#myEventsList .meta {
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.4); }
+
+#myEventsList .meta a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4); }
+
+#myEventsList .meta a:hover {
+  color: rgba(0, 0, 0, 0.87); }
