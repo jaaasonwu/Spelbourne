@@ -79,13 +79,25 @@
                             <div class="col-md-3">
                                 <p class="eventDes">Participant: </p>
                             </div>
-
                             <div ng-repeat="participant in event.participantsName" class="col-md-9">
                                 <p>
                                     {{participant}}
                                 </p>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p class="eventDes">Maximum number of participants: </p>
+                            </div>
+                            <div class="col-md-9">
+                                <p>
+                                    {{event.maxParticipant}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="map"></div>
                     </div>
                     <div class="col-md-5">
                         <div id="map" class="col-md-12"></div>

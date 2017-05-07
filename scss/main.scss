@@ -108,18 +108,23 @@ body {
 
 #loginComponent {
     padding-top: 100px;
-
+    p {
+        font-size: 16px;
+    }
     .errMsg {
-        font-size : 1.8em;
+        font-size : 29px;
         color : red;
         font-weight: bold;
     }
 
 }
 
-.third-party-login{
-    font-size: 16px;
-    font-weight: bold;
+.third-party-login {
+    .signInLabel {
+        font-weight: bold;
+        font-size: 20px;
+        margin-right: 10px;
+    }
     .googleSignIn {
         color : white;
         font-size: 16px;

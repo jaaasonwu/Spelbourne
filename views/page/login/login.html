@@ -1,12 +1,12 @@
 <div class="col-sm-6 col-sm-offset-3" id="loginComponent">
 
+    <div class="errMsg" ng-if="errMsg">
+        {{errMsg}}
+    </div>
     <h1><span class="fa fa-sign-in"></span> Login</h1>
 
     <!-- LOGIN FORM -->
     <form name="loginForm">
-        <div class="errMsg" ng-if="errMsg">
-            {{errMsg}}
-        </div>
         <div class="form-group">
             <label>Email</label>
             <input type="email" class="form-control" name="email" ng-model="email" required>
@@ -24,7 +24,7 @@
             </button>
         </div>
         <div class="third-party-login">
-            Sign In With: &nbsp &nbsp
+            <span class="signInLabel"> Sign In With: </span>
             <button class="googleSignIn" ng-click="google(ret)">
                 <img class="googleBrand" src="/images/btn_google_light_normal_ios.svg">
                 Google
