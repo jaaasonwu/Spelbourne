@@ -63,44 +63,49 @@ body {
 
 #loginComponent {
   padding-top: 100px; }
+  #loginComponent p {
+    font-size: 16px; }
   #loginComponent .errMsg {
-    font-size: 1.8em;
+    font-size: 29px;
     color: red;
     font-weight: bold; }
 
-.third-party-login {
+.third-party-login .signInLabel {
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px; }
+
+.third-party-login .googleSignIn {
+  color: white;
   font-size: 16px;
-  font-weight: bold; }
-  .third-party-login .googleSignIn {
-    color: white;
-    font-size: 16px;
-    font-weight: normal;
-    background-color: #4285f4;
-    border: hidden;
-    border-radius: 6px;
-    padding: 0 0 0 0;
-    font-family: "Roboto", sans-serif;
-    width: 125px;
-    height: 46px;
-    text-align: left; }
-    .third-party-login .googleSignIn .googleBrand {
-      margin-right: 6px; }
-  .third-party-login .facebookSignIn {
-    color: white;
-    font-weight: normal;
-    font-size: 16px;
-    background-color: #3b579d;
-    border: hidden;
-    border-radius: 6px;
-    padding: 0 0 0 0;
-    font-family: Tahoma, sans-serif;
-    width: 125px;
-    height: 46px;
-    text-align: left; }
-    .third-party-login .facebookSignIn .facebookBrand {
-      width: 40px;
-      padding-left: 3px;
-      margin-right: 3px; }
+  font-weight: normal;
+  background-color: #4285f4;
+  border: hidden;
+  border-radius: 6px;
+  padding: 0 0 0 0;
+  font-family: "Roboto", sans-serif;
+  width: 125px;
+  height: 46px;
+  text-align: left; }
+  .third-party-login .googleSignIn .googleBrand {
+    margin-right: 6px; }
+
+.third-party-login .facebookSignIn {
+  color: white;
+  font-weight: normal;
+  font-size: 16px;
+  background-color: #3b579d;
+  border: hidden;
+  border-radius: 6px;
+  padding: 0 0 0 0;
+  font-family: Tahoma, sans-serif;
+  width: 125px;
+  height: 46px;
+  text-align: left; }
+  .third-party-login .facebookSignIn .facebookBrand {
+    width: 40px;
+    padding-left: 3px;
+    margin-right: 3px; }
 
 .plainAnchor {
   color: inherit;
