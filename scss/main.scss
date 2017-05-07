@@ -10,7 +10,25 @@ $item-color: #EFEFEF;
 $google-blue: #4285f4;
 $facebook-blue: #3b579d;
 
+/* For showing the footer at the bottom */
+html, body {
+    height: 100%;
+}
+#main {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+    height: 50px; /* .push must be the same height as .footer */
+}
+
 body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
     padding-top: 100px;
     /*background-image: url("/images/women.jpg");*/
@@ -361,4 +379,9 @@ body {
 
 .invalidInput {
     color: red;
+}
+
+footer {
+    padding: 10px;
+    text-align: center;
 }
