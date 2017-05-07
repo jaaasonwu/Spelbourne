@@ -21,7 +21,7 @@ define(['app'], function (app) {
             var dt = convertUTCDateToLocalDate(new Date(1970, 0, 1, 0, 0, 0, 0));
             date = [];
             for (i = 0; i < 12; i++) {
-                var point = dt.toLocaleTimeString('en-US');
+                var point = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
                 date.push(point);
                 dt.setMinutes(dt.getMinutes() + step);
             }
@@ -86,9 +86,23 @@ define(['app'], function (app) {
                 alert('Complete form before submission');
             }
 
+
         };
 
+        $scope.locationValidation = function(){
+            if (!$scope.data.location || locationInputText != locationInput.value) {
+                $scope.createEventForm.$locationInvalid = true;
+                $scope.data.location = '';
+                return false;
+            } else {
+                return true;
+            }
+        }
         $scope.createEvent = function () {
+            // Validate the location input
+            if (!$scope.locationValidation()) {
+                return;
+            }
             // Clone the data
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 
@@ -117,6 +131,8 @@ define(['app'], function (app) {
         }
 
         let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        let locationInput = document.getElementById('locationInput');
+        let locationInputText = locationInput.value;
         let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
         search.addListener('places_changed', function() {
             let places = search.getPlaces();
@@ -155,6 +171,9 @@ define(['app'], function (app) {
                 }));
                 $scope.data.location = place.name;
                 $scope.data.locationId = place.place_id;
+                locationInputText = locationInput.value;
+                $scope.createEventForm.$locationInvalid = false;
+                $scope.$apply();
                 if (place.geometry.viewport) {
                     // Only geocodes have viewport.
                     bounds.union(place.geometry.viewport);
