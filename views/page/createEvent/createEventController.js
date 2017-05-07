@@ -94,7 +94,6 @@ define(['app'], function (app) {
 
         $scope.locationValidation = function(){
             if (!$scope.data.location || locationInputText != locationInput.value) {
-                console.log($scope.createEventForm.$locationInvalid);
                 $scope.createEventForm.$locationInvalid = true;
                 $scope.data.location = '';
                 return false;

@@ -42,3 +42,6 @@ jspm_packages
 
 # runtime compiled css
 views/stylesheets/main.css
+
+# local dumped db
+dump/local
