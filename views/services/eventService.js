@@ -2,13 +2,18 @@ define(['angularAMD'], function () {
     var app = angular.module('eventService', []);
     app.service('eventService', ['$http', '$location', '$window',
                 function ($http, $location, $window) {
-
         var getEvent = function (eventID, success, failure) {
-            $http.get('/event/getEvent/' + eventID).then(success, failure);
+            $http.get('/event/getEvent/' + eventID).then(
+                success,
+                failure
+            );
         };
 
         var getIcon = function (sportType, success, failure) {
-            $http.get('/icon/' + sportType).then(success, failure);
+            $http.get('/icon/' + sportType).then(
+                success,
+                failure
+            );
         };
 
         var getEventList = function (success, failure) {
@@ -32,13 +37,13 @@ define(['angularAMD'], function () {
                 failure
             );
         };
-        
+
         return {
             getEvent: getEvent,
             getIcon: getIcon,
             getEventList: getEventList,
-            joinEvent, joinEvent,
-            createEvent, createEvent
+            joinEvent: joinEvent,
+            createEvent: createEvent,
         }
     }])
 });
