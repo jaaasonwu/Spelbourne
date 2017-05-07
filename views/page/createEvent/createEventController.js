@@ -17,6 +17,11 @@ define(['app'], function (app) {
             return newDate;
         }
 
+        var convertLocalDateToUTC = function (date) {
+            var newDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+            return newDate;
+        }
+
         var generate_time_step = function (step) {
             var dt = convertUTCDateToLocalDate(new Date(1970, 0, 1, 0, 0, 0, 0));
             date = [];
@@ -47,8 +52,6 @@ define(['app'], function (app) {
         ];
         // configuration for date picker
         $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
-        //default date
-        $scope.myDate = new Date();
         $scope.dateOptions = {
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
@@ -108,6 +111,8 @@ define(['app'], function (app) {
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 
             // Convert duration to seconds
+            console.log(clone_data.startDate);
+            clone_data.startDate = convertLocalDateToUTC($scope.data.startDate)
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
             clone_data = JSON.stringify(clone_data);
             eventService.createEvent(

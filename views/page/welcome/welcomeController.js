@@ -11,6 +11,14 @@ define(['app', 'angular-filter'], function (app) {
                 $scope.events = res.data.slice(0, 6);
                 console.log(res.data);
                 $scope.events.forEach(function(event) {
+                    utcDate = new Date(event.startDate);
+                    currentDate = new Date(
+                        utcDate.getUTCFullYear(),
+                        utcDate.getUTCMonth(),
+                        utcDate.getUTCDate()
+                    );
+                    event.startDate = currentDate.toLocaleDateString();
+
                     eventService.getIcon(
                         event.sportType,
                         function(path) {
