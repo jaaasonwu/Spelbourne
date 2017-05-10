@@ -131,7 +131,7 @@ define(['app'], function (app) {
         };
 
         var mapOptions = {
-            zoom: 14,
+            zoom: 15,
             center: new google.maps.LatLng(-37.7964, 144.9612),
             mapTypeId: 'roadmap'
         }
