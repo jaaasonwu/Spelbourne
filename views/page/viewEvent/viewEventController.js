@@ -1,7 +1,23 @@
 define(['app'], function (app) {
-    app.controller("viewEventController", ['$scope', '$http', '$routeParams', 'eventService', 'userService',
-                function($scope, $http, $routeParams, eventService, userService) {
+    app.controller("viewEventController", ['$scope', '$http', '$window', '$routeParams', 'eventService', 'userService',
+                function($scope, $http, $window, $routeParams, eventService, userService) {
         eventID = $routeParams.eventID;
+
+        $scope.joinEvent = function () {
+            // Clone the data
+            var data = {"eventID": eventID}
+            console.log(data);
+
+            eventService.joinEvent(
+                data,
+                function (res) {
+                    $window.location.href = "/viewEvent/" + eventID;
+                },
+                function (res) {
+                    $window.location.href = "/viewEvent/" + eventID;
+                }
+            );
+        };
 
         eventService.getEvent(
             eventID,
