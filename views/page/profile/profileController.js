@@ -1,7 +1,7 @@
 define(['app'], function (app) {
     app.controller('profileController',
-        ['$scope', '$http', '$location', '$rootScope','$routeParams','userService','eventService', 'adminService',
-        function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService, adminService) {
+        ['$scope', '$http', '$location', '$rootScope','$routeParams','userService','eventService',
+        function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService) {
             //prevent access by unauthorized
 
             if($rootScope.username == null || !$rootScope.username){
