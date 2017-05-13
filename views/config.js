@@ -14,6 +14,7 @@ requirejs.config({
         'angular-animate': "/dependency/angular/angular-animate.min",
         'angular-aria': "/dependency/angular/angular-aria.min",
         'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3"
+
     },
     shim: {
         'angular' : {'exports' : 'angular'},

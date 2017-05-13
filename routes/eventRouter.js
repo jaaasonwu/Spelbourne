@@ -26,6 +26,7 @@ route.post('/joinEvent', function(req, res) {
         let eventID = e.eventID;
         console.log(eventID);
         userID = req.user._id;
+        console.log(req);
         eventService.joinEvent(eventID, userID, function (err) {
             if (err) {
                 res.status(500).send(err);

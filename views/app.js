@@ -62,6 +62,11 @@ define(imports, function (angularAMD) {
                 controller : 'profileController',
                 controllerUrl: 'page/profile/profileController'
             }))
+            .when('/test', angularAMD.route({
+                templateUrl : 'page/test/test.html',
+                controller : 'testController',
+                controllerUrl: 'page/test/testController'
+            }))
             .otherwise({redirectTo: '/'});
 
         $locationProvider.html5Mode(true);

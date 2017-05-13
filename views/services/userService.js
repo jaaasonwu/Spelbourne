@@ -5,9 +5,15 @@ define(['angularAMD'], function () {
         var getUserProfile = function (userID, success, failure) {
             $http.get('/user/getUserProfile/' + userID).then(success, failure);
         }
-
+        var updateProfileInfo = function(data, success, failure) {
+            $http.post('/user/updateProfile', data).then(
+                success,
+                failure
+            );
+        };
         return {
-            getUserProfile: getUserProfile
+            getUserProfile: getUserProfile,
+            updateProfileInfo: updateProfileInfo
         }
     }])
 });
