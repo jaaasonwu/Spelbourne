@@ -123,10 +123,17 @@ define(['app'], function (app) {
                 $scope.eventsView = $scope.eventModes.timeline;
                 $scope.navTabTimeline = "active";
                 $scope.navTabGrid = "link";
+            };
+            $scope.checkOrganizerClass = function(organizerID) {
+                if(organizerID != $rootScope.userID){
+                    return "timeline-inverted";
+                }
 
             };
+            //initialize view
             $scope.showEvents();
             $scope.showGrid();
+
             $scope.home = function(){
                 $location.path('/');
             }
