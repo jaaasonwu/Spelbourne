@@ -493,6 +493,7 @@ body > .navbar-default {
             list-style: none;
             padding: 20px 0 20px;
             position: relative;
+
             &:before {
                 top: 0;
                 bottom: 0;
@@ -526,6 +527,10 @@ body > .navbar-default {
                 }
                 > {
                     .timeline-panel {
+                        img {
+                            height: 15em;
+                            width: 10em;
+                        }
                         width: 46%;
                         float: left;
                         border: 1px solid #d4d4d4;
@@ -577,6 +582,11 @@ body > .navbar-default {
                     }
                 }
                 &.timeline-inverted > .timeline-panel {
+                    img {
+                        height: 15em;
+                        width: 10em;
+                    }
+
                     float: right;
                     &:before {
                         border-left-width: 0;
@@ -633,6 +643,10 @@ body > .navbar-default {
                 }
                 li > {
                     .timeline-panel {
+                        img {
+                            height: 15em;
+                            width: 10em;
+                        }
                         width: calc(100% - 90px);
                         width: -moz-calc(100% - 90px);
                         width: -webkit-calc(100% - 90px);
@@ -643,6 +657,10 @@ body > .navbar-default {
                         top: 16px;
                     }
                     .timeline-panel {
+                        img {
+                            height: 15em;
+                            width: 10em;
+                        }
                         float: right;
                         &:before {
                             border-left-width: 0;
@@ -700,6 +718,10 @@ body > .navbar-default {
                 }
                 li > {
                     .timeline-panel {
+                        img {
+                            height: 15em;
+                            width: 10em;
+                        }
                         width: calc(100% - 90px);
                         width: -moz-calc(100% - 90px);
                         width: -webkit-calc(100% - 90px);
@@ -710,6 +732,10 @@ body > .navbar-default {
                         top: 16px;
                     }
                     .timeline-panel {
+                        img {
+                            height: 15em;
+                            width: 10em;
+                        }
                         float: right;
                         &:before {
                             border-left-width: 0;
@@ -771,7 +797,8 @@ body > .navbar-default {
 }
 
 
-/*#testPage {
+/*
+#testPage {
     .timeline {
         list-style: none;
         padding: 20px 0 20px;
@@ -809,6 +836,11 @@ body > .navbar-default {
             }
             > {
                 .timeline-panel {
+                    img {
+                        display: block;
+                        width: 50%;
+                        height: auto;
+                    }
                     width: 46%;
                     float: left;
                     border: 1px solid #d4d4d4;
@@ -916,6 +948,11 @@ body > .navbar-default {
             }
             > li > {
                 .timeline-panel {
+                    img {
+                        display: block;
+                        width: 50%;
+                        height: auto;
+                    }
                     width: calc(100% - 90px);
                     width: -moz-calc(100% - 90px);
                     width: -webkit-calc(100% - 90px);
@@ -926,6 +963,11 @@ body > .navbar-default {
                     top: 16px;
                 }
                 .timeline-panel {
+                    img {
+                        display: block;
+                        width: 50%;
+                        height: auto;
+                    }
                     float: right;
                     &:before {
                         border-left-width: 0;
@@ -943,4 +985,5 @@ body > .navbar-default {
             }
         }
     }
-}*/
+}
+*/

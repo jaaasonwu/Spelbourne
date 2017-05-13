@@ -1,6 +1,6 @@
 define(['app'], function (app) {
-    app.controller("viewEventController", ['$scope', '$http', '$routeParams', 'eventService', 'userService',
-                function($scope, $http, $routeParams, eventService, userService) {
+    app.controller("viewEventController", ['$scope', '$rootScope', '$http', '$routeParams', 'eventService', 'userService',
+                function($scope, $http, $routeParams, $rootScope, eventService, userService) {
         eventID = $routeParams.eventID;
 
         eventService.getEvent(

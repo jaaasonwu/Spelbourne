@@ -125,9 +125,21 @@ define(['app'], function (app) {
                 $scope.navTabGrid = "link";
             };
             $scope.checkOrganizerClass = function(organizerID) {
-                if(organizerID != $rootScope.userID){
+                if(organizerID == $rootScope.userID){
                     return "timeline-inverted";
                 }
+                else{
+                    return "";
+                }
+
+            };
+            $scope.editEvent = function(event){
+
+            };
+            $scope.removeEvent = function(event){
+
+            };
+            $scope.deleteEvent = function(event){
 
             };
             //initialize view

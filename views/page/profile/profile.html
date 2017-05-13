@@ -82,7 +82,8 @@
                         <div ng-if="(event.organizerID==userID)" class="legend success"><i class="glyphicon glyphicon-user"></i></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4 class="timeline-title">{{event.sportType+ ':'+ event.skillLevel}}</h4>
+                                <img class="card-img-top" src="{{event.img}}">
+                                <h4 class="timeline-title">{{event.sportType+ ' :'+ event.skillLevel + ' level'}}</h4>
                                 <p>
                                     <small class="text-muted"><i class="glyphicon glyphicon-time"></i>
                                         Starts : {{event.startTime}} - {{event.formatDate}}
@@ -91,18 +92,21 @@
                             </div>
                             <div class="timeline-body">
                                 <p>{{event.description}}</p>
-                                <div class="btn-group">
+                                <div ng-if="(event.organizerID==userID)" class="btn-group">
                                     <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                             data-toggle="dropdown">
                                         <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
                                     </button>
                                     <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
                                         <li><a ng-click="viewEvent(event)">View</a></li>
+                                        <li class="divider"></li>
                                         <li><a href="#">Edit</a></li>
+                                        <li class="divider"></li>
                                         <li><a href="#">Delete</a></li>
                                     </ul>
                                     <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
-                                        <li><a ng-click="viewEvent(event)">view</a></li>
+                                        <li><a ng-click="viewEvent(event)">View</a></li>
+                                        <li class="divider"></li>
                                         <li><a href="#">Cancel</a></li>
                                     </ul>
                                 </div>

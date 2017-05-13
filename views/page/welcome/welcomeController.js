@@ -31,7 +31,6 @@ define(['app', 'angular-filter'], function (app) {
                 console.log(res.data.msg[0]);
             }
         );
-
         $scope.viewEvent = function (event) {
             console.log(event._id);
 
