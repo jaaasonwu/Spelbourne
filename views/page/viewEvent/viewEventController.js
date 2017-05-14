@@ -1,13 +1,14 @@
 define(['app'], function (app) {
     app.controller("viewEventController", ['$scope', '$location', '$http', '$window', '$routeParams', '$rootScope', 'eventService', 'userService',
                 function($scope, $location, $http, $window, $routeParams, $rootScope, eventService, userService) {
-        eventID = $routeParams.eventID;
+        $scope.eventID = $routeParams.eventID;
         $scope.error = "";
         $scope.success = "";
 
+        // Add isJoinedEvent to scope so front end could use it
         var getEvent = function () {
             eventService.getEvent(
-                eventID,
+                $scope.eventID,
                 function (res) {
                     $scope.event = res.data;
                     userService.getUserProfile(
@@ -39,6 +40,7 @@ define(['app'], function (app) {
                             $scope.event.img = path.data;
                         }
                     )
+                    $scope.isJoined = userService.isJoinedEvent($scope.event);
                     renderMap();
                 },
                 // failure callback
@@ -58,7 +60,7 @@ define(['app'], function (app) {
             }
 
             // Clone the data
-            var data = {"eventID": eventID}
+            var data = {"eventID": $scope.eventID}
 
             eventService.joinEvent(
                 data,

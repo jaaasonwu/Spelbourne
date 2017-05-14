@@ -106,6 +106,12 @@ body {
     background-color: $light-orange;
 }
 
+#disabledJoinBtn {
+    margin: 10px;
+    width: 100px;
+    background-color: grey;
+}
+
 #loginComponent {
     padding-top: 100px;
     p {
@@ -461,6 +467,10 @@ body {
     }
 }
 
+.alert {
+    font-size: 19px;
+}
+
 .btn-fb {
     background-color: $facebook-blue;
     color: white;
@@ -469,6 +479,12 @@ body {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.join-btn-disabled {
+    @extend .btn-fb;
+    background-color: grey;
+}
+
 .fb-img {
     margin-right: 10px;
     width: 30px;
