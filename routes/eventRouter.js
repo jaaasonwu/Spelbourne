@@ -11,7 +11,7 @@ route.post('/createEvent', function(req, res) {
         startDate = new Date(e.startDate);
 
         eventService.createEvent(e.location, e.locationId, e.description, startDate,
-                organizerID, createEventDate, e.startTime, e.duration, e.visibility, e.sportType
+                organizerID, createEventDate, e.duration, e.visibility, e.sportType
                 , e.skillLevel, e.maxParticipant);
         res.json({success: true});
     } else {

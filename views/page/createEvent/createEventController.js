@@ -6,33 +6,6 @@ define(['app'], function (app) {
             $location.path('/login').search({ret: '/createEvent'});
         }
 
-        var convertUTCDateToLocalDate = function (date) {
-            var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
-
-            var offset = date.getTimezoneOffset() / 60;
-            var hours = date.getHours();
-
-            newDate.setHours(hours - offset);
-
-            return newDate;
-        }
-
-        var convertLocalDateToUTC = function (date) {
-            var newDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-            return newDate;
-        }
-
-        var generate_time_step = function (step) {
-            var dt = convertUTCDateToLocalDate(new Date(1970, 0, 1, 0, 0, 0, 0));
-            date = [];
-            for (i = 0; i < 12; i++) {
-                var point = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                date.push(point);
-                dt.setMinutes(dt.getMinutes() + step);
-            }
-            return date;
-        };
-
         // These are mock data, will qurey from the server in the future
         $scope.sportsCategory = [
             "Tennis",
@@ -65,20 +38,30 @@ define(['app'], function (app) {
                 this.opened = !this.opened;
             }
         };
-        $scope.startTime = generate_time_step(30);
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
+
+        var defaultStartTime = new Date();
+        defaultStartTime.setHours(10);
+        defaultStartTime.setMinutes(0);
+        defaultStartTime.setSeconds(0);
 
         $scope.data = {
             location: "",
             description: "",
             startDate: new Date(),
-            startTime: $scope.startTime[0],
+            startTime:  defaultStartTime,
             duration: $scope.duration[0],
             visibility: "Friends",
             sportType: $scope.sportsCategory[0],
             skillLevel: $scope.skillLevels[0],
             maxParticipant: "2"
+        };
+
+        $scope.timePicker = {
+            hstep: 1,
+            mstep: 15,
+            ismeridian: true
         };
 
         $scope.formValidate = function(isValid){
@@ -102,6 +85,17 @@ define(['app'], function (app) {
                 return true;
             }
         }
+
+        var genearteStartDate = function (startDate, startTime) {
+            hour = startTime.getHours();
+            minute = startTime.getMinutes();
+
+            startDate.setHours(hour);
+            startDate.setMinutes(minute);
+            startDate.setSeconds(0);
+            return startDate
+        }
+
         $scope.createEvent = function () {
             // Validate the location input
             if (!$scope.locationValidation()) {
@@ -111,9 +105,13 @@ define(['app'], function (app) {
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 
             // Convert duration to seconds
-            console.log(clone_data.startDate);
-            clone_data.startDate = convertLocalDateToUTC($scope.data.startDate)
+            clone_data.startDate = genearteStartDate(
+                new Date(clone_data.startDate),
+                new Date(clone_data.startTime)
+            );
+
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
+
             clone_data = JSON.stringify(clone_data);
             eventService.createEvent(
                 clone_data,
@@ -140,6 +138,7 @@ define(['app'], function (app) {
         let locationInput = document.getElementById('locationInput');
         let locationInputText = locationInput.value;
         let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
+
         search.addListener('places_changed', function() {
             let places = search.getPlaces();
 
