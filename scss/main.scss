@@ -41,7 +41,11 @@ body {
 }
 
 #createEventBtn {
-    width: 150px;
+  width: 150px;
+}
+
+#createBtn {
+  margin-top: 10px;
 }
 
 .btn {
@@ -373,7 +377,8 @@ body {
 
 #map {
     height: 300px;
-    padding-right: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .invalidInput {
