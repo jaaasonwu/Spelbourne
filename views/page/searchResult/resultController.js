@@ -2,7 +2,7 @@ define(['app'], function (app) {
     app.controller('resultController', ['$scope', '$http', '$location', "eventService", "userService",
         function ($scope, $http, $location, eventService, userService) {
             // configuration for date picker
-            $scope.format = ["dd-MM-yyyy","dd/MM/yyyy"];
+            $scope.format = ["dd-MM-yyyy", "dd/MM/yyyy"];
             //default date
             $scope.dateSelect = null;
             $scope.dateOptions = {
@@ -14,7 +14,7 @@ define(['app'], function (app) {
 
             $scope.dp = {
                 opened: false,
-                click: function(){
+                click: function () {
                     this.opened = !this.opened;
                 }
             };
@@ -48,13 +48,22 @@ define(['app'], function (app) {
                     $scope.eventList = res.data;
                     $scope.eventList.forEach(function(event) {
                         event.isJoined = userService.isJoinedEvent(event);
-                        event.startDate = new Date(event.startDate).toLocaleString()
+                        event.startDate = new Date(event.startDate);
                         eventService.getIcon(
                             event.sportType,
-                            function(path) {
+                            function (path) {
                                 event.img = path.data;
                             }
                         );
+                    });
+                    $scope.eventList.sort(function (a, b) {
+                        if (a.startDate < b.startDate) {
+                            return -1;
+                        } else if (a.startDate > b.startDate) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
                     });
                 },
                 function (res) {
