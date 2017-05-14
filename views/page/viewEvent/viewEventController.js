@@ -1,28 +1,85 @@
 define(['app'], function (app) {
-    app.controller("viewEventController", ['$scope', '$http', '$window', '$routeParams', 'eventService', 'userService',
-                function($scope, $http, $window, $routeParams, eventService, userService) {
+    app.controller("viewEventController", ['$scope', '$location', '$http', '$window', '$routeParams', '$rootScope', 'eventService', 'userService',
+                function($scope, $location, $http, $window, $routeParams, $rootScope, eventService, userService) {
         eventID = $routeParams.eventID;
+        $scope.error = "";
+        $scope.success = "";
+
+        var getEvent = function () {
+            eventService.getEvent(
+                eventID,
+                function (res) {
+                    $scope.event = res.data;
+                    userService.getUserProfile(
+                        $scope.event.organizerID,
+                        function (profile) {
+                            $scope.event.organizer = profile.data.email
+                        }
+                    );
+
+                    startDate = new Date($scope.event.startDate);
+
+                    $scope.event.startDate = startDate.toLocaleDateString();
+                    $scope.event.startTime = startDate.toLocaleTimeString();
+                    $scope.event.participantsName = [];
+                    $scope.event.participants.forEach(function(id) {
+                        var name = "";
+                        userService.getUserProfile(
+                            id,
+                            function (profile) {
+                                name = profile.data.email;
+                                $scope.event.participantsName.push(name);
+                            }
+                        );
+                    });
+
+                    eventService.getIcon(
+                        $scope.event.sportType,
+                        function(path) {
+                            $scope.event.img = path.data;
+                        }
+                    )
+                    renderMap();
+                },
+                // failure callback
+                function (res) {
+                    console.log(res);
+                }
+            );
+        }
+
+        getEvent();
+
         $scope.joinEvent = function () {
+            // If user is not loggedIn, redirect to the front page
+            if ($rootScope.username === undefined) {
+                var path = $location.path();
+                $location.path('/login').search({ret: path});
+            }
+
             // Clone the data
             var data = {"eventID": eventID}
-            console.log(data);
 
             eventService.joinEvent(
                 data,
                 function (res) {
-                    $window.location.href = "/viewEvent/" + eventID;
+                    getEvent();
+                    $scope.success = "You joined the event successfully";
+                    $scope.error = "";
                 },
                 function (res) {
-                    $window.location.href = "/viewEvent/" + eventID;
+                    $scope.error = res.data;
                 }
             );
         };
+
 
         FB.init({
             appId      : '1357124691000611',
             xfbml      : true,
             version    : 'v2.4'
         });
+
         FB.AppEvents.logPageView();
 
         $scope.fbShare = function () {
@@ -33,46 +90,7 @@ define(['app'], function (app) {
             }, function(response){});
         }
 
-        eventService.getEvent(
-            eventID,
-            function (res) {
-                $scope.event = res.data;
-                userService.getUserProfile(
-                    $scope.event.organizerID,
-                    function (profile) {
-                        $scope.event.organizer = profile.data.email
-                    }
-                );
 
-                startDate = new Date($scope.event.startDate);
-
-                $scope.event.startDate = startDate.toLocaleDateString();
-                $scope.event.startTime = startDate.toLocaleTimeString();
-                $scope.event.participantsName = [];
-                $scope.event.participants.forEach(function(id) {
-                    var name = "";
-                    userService.getUserProfile(
-                        id,
-                        function (profile) {
-                            name = profile.data.email;
-                            $scope.event.participantsName.push(name);
-                        }
-                    );
-                });
-
-                eventService.getIcon(
-                    $scope.event.sportType,
-                    function(path) {
-                        $scope.event.img = path.data;
-                    }
-                )
-                renderMap();
-            },
-            // failure callback
-            function (res) {
-                console.log(res);
-            }
-        );
 
         let renderMap = function() {
             let mapOptions = {

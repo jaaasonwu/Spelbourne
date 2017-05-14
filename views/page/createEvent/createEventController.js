@@ -3,7 +3,8 @@ define(['app'], function (app) {
     function($scope, $http , $location, $rootScope, adminService, eventService) {
         // Check if the user is authenticated
         if ($rootScope.username === undefined) {
-            $location.path('/login').search({ret: '/createEvent'});
+            var path = $location.path();
+            $location.path('/login').search({ret: path});
         }
 
         // These are mock data, will qurey from the server in the future

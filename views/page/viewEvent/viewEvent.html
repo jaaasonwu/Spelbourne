@@ -3,6 +3,12 @@
         <h1 id="eventName"> {{event.type}} </h1>
         <div class="jumbotron" id="showEvent">
             <div class="container">
+                <div ng-show="error" class="alert alert-warning">
+                    {{error}}
+                </div>
+                <div ng-show="success" class="alert alert-success">
+                    {{success}}
+                </div>
                 <div class="row">
                     <div class="col-md-7">
                         <div class="row">
