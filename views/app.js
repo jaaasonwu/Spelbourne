@@ -5,6 +5,8 @@ var imports = [
     'angular-ui',
     'bootstrap',
     'ngMaterial',
+    'angular-animate',
+    'angular-sanitize',
     'services/adminService',
     'services/eventService',
     'services/userService',
@@ -14,6 +16,8 @@ var imports = [
 
 var dependencies = [
     'ngRoute',
+    'ngAnimate',
+    'ngSanitize',
     'ui.bootstrap',
     'ngMaterial',
     'adminService',

@@ -44,13 +44,10 @@ define(['app'], function (app) {
                     }
                 );
 
-                utcDate = new Date($scope.event.startDate);
-                currentDate = new Date(
-                    utcDate.getUTCFullYear(),
-                    utcDate.getUTCMonth(),
-                    utcDate.getUTCDate()
-                );
-                $scope.event.startDate = currentDate.toLocaleDateString();
+                startDate = new Date($scope.event.startDate);
+
+                $scope.event.startDate = startDate.toLocaleDateString();
+                $scope.event.startTime = startDate.toLocaleTimeString();
                 $scope.event.participantsName = [];
                 $scope.event.participants.forEach(function(id) {
                     var name = "";
