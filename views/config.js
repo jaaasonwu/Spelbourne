@@ -13,7 +13,8 @@ requirejs.config({
         'ngMaterial': "/dependency/angular/angular-material.min",
         'angular-animate': "/dependency/angular/angular-animate.min",
         'angular-aria': "/dependency/angular/angular-aria.min",
-        'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3"
+        'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3",
+        'fb-sdk': '//connect.facebook.net/en_US/sdk'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -26,7 +27,8 @@ requirejs.config({
         'jQuery': [],
         'ngMaterial': ["angular", 'angular-animate', 'angular-aria'],
         'angular-animate': ['angular'],
-        'angular-aria': ['angular']
+        'angular-aria': ['angular'],
+        'fb-sdk': [{exports: 'FB'}]
     },
     deps: ['app']
 });
