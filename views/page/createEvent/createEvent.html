@@ -56,10 +56,8 @@
                         <label for="startTime"> Starting Time: </label>
                     </div>
                     <div class="col-md-9">
-                        <select id="startTime" class="form-control"
-                                ng-model="data.startTime"
-                                ng-options="x for x in startTime" required>
-                        </select>
+                        <div uib-timepicker ng-model="data.startTime"  hour-step="timePicker.hstep"
+                                 minute-step="timePicker.mstep" show-meridian="timePicker.ismeridian"></div>
                     </div>
                 </div>
             </div>
