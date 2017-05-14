@@ -58,7 +58,6 @@ define(['app'], function (app) {
                     console.log(res);
                 }
             );
-
         }
         let renderMap = function() {
             let mapOptions = {
@@ -122,6 +121,7 @@ define(['app'], function (app) {
             return date;
         };
 
+
         // These are mock data, will qurey from the server in the future
         $scope.sportsCategory = [
             "Tennis",
@@ -154,7 +154,6 @@ define(['app'], function (app) {
                 this.opened = !this.opened;
             }
         };
-        $scope.startTime = generate_time_step(30);
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
         if($scope.mode == 'new'){
@@ -171,7 +170,29 @@ define(['app'], function (app) {
             };
         }
 
-       
+
+        var defaultStartTime = new Date();
+        defaultStartTime.setHours(10);
+        defaultStartTime.setMinutes(0);
+        defaultStartTime.setSeconds(0);
+
+        $scope.data = {
+            location: "",
+            description: "",
+            startDate: new Date(),
+            startTime:  defaultStartTime,
+            duration: $scope.duration[0],
+            visibility: "Friends",
+            sportType: $scope.sportsCategory[0],
+            skillLevel: $scope.skillLevels[0],
+            maxParticipant: "2"
+        };
+
+        $scope.timePicker = {
+            hstep: 1,
+            mstep: 15,
+            ismeridian: true
+        };
 
         $scope.formValidate = function(isValid){
             if($scope.createEventForm.$valid){
@@ -194,6 +215,17 @@ define(['app'], function (app) {
             }
         }
 
+        var genearteStartDate = function (startDate, startTime) {
+            hour = startTime.getHours();
+            minute = startTime.getMinutes();
+
+            startDate.setHours(hour);
+            startDate.setMinutes(minute);
+            startDate.setSeconds(0);
+            return startDate
+        }
+
+
         $scope.createEvent = function () {
             // Validate the location input
             if (!$scope.locationValidation()) {
@@ -203,8 +235,11 @@ define(['app'], function (app) {
             var clone_data = JSON.parse(JSON.stringify($scope.data));
 
             // Convert duration to seconds
-            console.log(clone_data.startDate);
-            clone_data.startDate = convertLocalDateToUTC($scope.data.startDate)
+            clone_data.startDate = genearteStartDate(
+                new Date(clone_data.startDate),
+                new Date(clone_data.startTime)
+            );
+
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
             if($scope.mode == 'new'){
                 clone_data = JSON.stringify(clone_data);
@@ -219,6 +254,7 @@ define(['app'], function (app) {
                             adminService.getAdmin();
                             $location.path('/login').search({ret: '/createEvent'});
                         }
+
                     }
                 )
             }
@@ -249,6 +285,7 @@ define(['app'], function (app) {
         let locationInput = document.getElementById('locationInput');
         let locationInputText = locationInput.value;
         let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
+
         search.addListener('places_changed', function() {
             let places = search.getPlaces();
 
