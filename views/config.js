@@ -13,6 +13,7 @@ requirejs.config({
         'ngMaterial': "/dependency/angular/angular-material.min",
         'angular-animate': "/dependency/angular/angular-animate.min",
         'angular-aria': "/dependency/angular/angular-aria.min",
+        'angular-sanitize': "/dependency/angular/angular-sanitize.min",
         'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3"
     },
     shim: {
@@ -26,6 +27,7 @@ requirejs.config({
         'jQuery': [],
         'ngMaterial': ["angular", 'angular-animate', 'angular-aria'],
         'angular-animate': ['angular'],
+        'angular-sanitize': ['angular', 'angular-animate'],
         'angular-aria': ['angular']
     },
     deps: ['app']

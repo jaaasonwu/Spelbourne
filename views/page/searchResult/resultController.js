@@ -47,6 +47,7 @@ define(['app'], function (app) {
                 function (res) {
                     $scope.eventList = res.data;
                     $scope.eventList.forEach(function(event) {
+                        event.startDate = new Date(event.startDate).toLocaleString()
                         eventService.getIcon(
                             event.sportType,
                             function(path) {
