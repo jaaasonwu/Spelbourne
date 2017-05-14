@@ -1,16 +1,8 @@
 define(['app'], function (app) {
     app.controller("viewEventController", ['$scope','$rootScope', '$http', '$window', '$routeParams', 'eventService', 'adminService','userService',
-        function($scope, $http,$rootScope, $window, $routeParams, eventService, userService,adminService) {
+        function($scope,$rootScope, $http, $window, $routeParams, eventService, adminService,userService) {
             eventID = $routeParams.eventID;
-            $scope.organizer = false;
             //find viewer
-            if($rootScope.userID){
-                console.log($rootScope.userID);
-                if($rootScope.userID == $scope.event.userID){
-                    $scope.organizer = true;
-                }
-
-            }
             $scope.joinEvent = function () {
                 // Clone the data
                 var data = {"eventID": eventID}

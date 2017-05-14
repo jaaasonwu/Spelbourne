@@ -38,15 +38,38 @@
 
             <div ng-show="eventsView=='grid'">
                 <h3> Grid view </h3>
+                <div class="col-md-2 legendIcon">
+                    <h4 class="col-md-6"> Created </h4>
+                    <div class="legend success"></div>
+
+                </div>
+                <div  class="col-md-2 legendIcon">
+                    <h4 class="col-md-6"> Attending </h4>
+                    <div class="legend info"></div>
+
+                </div>
                 <div ng-repeat="event in events">
                     <div class="card" class="col-md-3">
                         <div class="card-block">
                             <img class="card-img-top" src="{{event.img}}">
-                            <h4 class="card-title">{{ event.sportType }}</h4>
-                            <h4> {{'Skill level:' + event.skillLevel}}</h4>
-                            <button class="btn btn-secondary float-right btn-sm" ng-click="viewEvent(event)">
-                                view
+                            <h4 ng-class="getEventTextClass(event.organizer)">{{ event.sportType }}</h4>
+                            <h4 ng-class="getEventTextClass(event.organizer)"> {{'Skill level:' + event.skillLevel}}</h4>
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                    data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
                             </button>
+                            <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
+                                <li><a ng-click="viewEvent(event)">View</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="editEvent(event)">Edit</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="removeEvent(event)">Delete</a></li>
+                            </ul>
+                            <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
+                                <li><a ng-click="viewEvent(event)">View</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="removeEvent(event)">Cancel</a></li>
+                            </ul>
                         </div>
                         <div class="card-text">
                             <p>{{'Start time:' + event.startTime }} </p>
@@ -64,12 +87,14 @@
 
                 <div class="col-md-12">
                     <h3 class="col-md-2"> Timeline </h3>
-                    <div id="creationLegend" class="col-md-2">
-                        <h3 class="col-md-6"> Created </h3><div class="legend success"><i class="glyphicon glyphicon-user"></i></div>
+                    <div  class="col-md-2 legendIcon ">
+                        <h4 class="col-md-6"> Created </h4><div class="legend success">
+                        <i class="glyphicon glyphicon-user"></i></div>
 
                     </div>
-                    <div id="attendingLegend" class="col-md-2">
-                        <h3 class="col-md-6"> Attending </h3><div class="legend info"><i class="glyphicon glyphicon-floppy-disk"></i></div>
+                    <div  class="col-md-2 legendIcon">
+                        <h4 class="col-md-6"> Attending </h4><div class="legend info">
+                        <i class="glyphicon glyphicon-floppy-disk"></i></div>
 
                     </div>
                 </div>
@@ -97,17 +122,17 @@
                                             data-toggle="dropdown">
                                         <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
                                     </button>
-                                    <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
+                                    <ul ng-if="(event.organizerID==userID)" class="dropdown-menu " role="menu">
                                         <li><a ng-click="viewEvent(event)">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Edit</a></li>
+                                        <li><a ng-click="editEvent(event)">Edit</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Delete</a></li>
+                                        <li><a ng-click="removeEvent(event)">Delete</a></li>
                                     </ul>
                                     <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
                                         <li><a ng-click="viewEvent(event)">View</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="#">Cancel</a></li>
+                                        <li><a ng-click="removeEvent(event)">Cancel</a></li>
                                     </ul>
                                 </div>
                             </div>

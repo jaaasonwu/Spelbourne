@@ -464,13 +464,10 @@ body > .navbar-default {
         .meta a:hover {
             color: rgba(0, 0, 0, .87);
         }
-        #creationLegend {
+
+        legendIcon {
             border-color: grey;
-            border-width: 3px;
             display:inline-block;
-        }
-        #attendingLegend {
-            border-color: grey;
             display:inline-block;
 
         }

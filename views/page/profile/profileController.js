@@ -82,7 +82,7 @@ define(['app'], function (app) {
                         if (res.data && res.data.msg && res.data.msg === '401') {
                             // the user need to login again
                             adminService.getAdmin();
-                            $location.path('/login').search({ret: '/createEvent'});
+                            $location.path('/login').search({ret: '/profile'});
                         }
                     }
                 )
@@ -133,14 +133,33 @@ define(['app'], function (app) {
                 }
 
             };
-            $scope.editEvent = function(event){
-
+            $scope.getEventTextClass = function(organizerID) {
+                //console.log(event.organizerID + ' and ' + $rootScope.userID);
+                if(organizerID == $scope.userID){
+                    return "bg-success text-white";
+                }
+                else{
+                    return "bg-info text-white";
+                }
             };
-            $scope.removeEvent = function(event){
-
+            $scope.editEvent = function(event){
+                $location.path("/createEvent/" + event._id);
             };
             $scope.deleteEvent = function(event){
+                eventService.deleteEvent(
+                    event._id,
+                    function(res){
+                        //success
+                        console.log(res);
+                    },
+                    function(res){
+                        console.log(res);
+                    }
 
+                );
+            };
+            $scope.removeEvent = function(event){
+                $scope.events.pop();
             };
             //initialize view
             $scope.showEvents();

@@ -1,11 +1,100 @@
 define(['app'], function (app) {
-    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService', 'eventService',
-    function($scope, $http , $location, $rootScope, adminService, eventService) {
+    app.controller('createEventController', ['$scope', '$http', '$location','$routeParams', '$rootScope', 'adminService', 'eventService','userService',
+    function($scope, $http , $location,$routeParams, $rootScope, adminService, eventService,userService) {
         // Check if the user is authenticated
         if ($rootScope.username === undefined) {
             $location.path('/login').search({ret: '/createEvent'});
         }
+        $scope.mode = $routeParams.modeID;
+        $scope.event = null;
+        $scope.eventID = null;
+        if($scope.mode != 'new'){
+            $scope.eventID = $scope.mode;
+            $scope.mode = 'old';
+            //fill in form
+            eventService.getEvent(
+                $scope.eventID,
+                function (res) {
+                    $scope.event = res.data;
+                    if ($rootScope.userID != $scope.event.organizerID) {
+                        $location.path('/login');
+                    }
+                    userService.getUserProfile(
+                        $scope.event.organizerID,
+                        function (profile) {
+                            $scope.event.organizer = profile.data.email
+                        }
+                    );
 
+                    utcDate = new Date($scope.event.startDate);
+                    currentDate = new Date(
+                        utcDate.getUTCFullYear(),
+                        utcDate.getUTCMonth(),
+                        utcDate.getUTCDate()
+                    );
+                    $scope.event.startDate = currentDate.toLocaleDateString();
+                    $scope.event.participantsName = [];
+                    $scope.event.participants.forEach(function(id) {
+                        var name = "";
+                        userService.getUserProfile(
+                            id,
+                            function (profile) {
+                                name = profile.data.email;
+                                $scope.event.participantsName.push(name);
+                            }
+                        );
+                    });
+
+                    eventService.getIcon(
+                        $scope.event.sportType,
+                        function(path) {
+                            $scope.event.img = path.data;
+                        }
+                    );
+                    renderMap();
+                },
+                // failure callback
+                function (res) {
+                    console.log(res);
+                }
+            );
+
+        }
+        let renderMap = function() {
+            let mapOptions = {
+                zoom: 15,
+                center: new google.maps.LatLng(-37.7964, 144.9612),
+                mapTypeId: 'roadmap'
+            }
+            let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            let infowindow = new google.maps.InfoWindow();
+            let service = new google.maps.places.PlacesService(map);
+            let geocoder = new google.maps.Geocoder;
+            let placeId = $scope.event.locationId;
+
+            geocoder.geocode({'placeId': placeId}, function(results, status) {
+                if (status == 'OK') {
+                    if (results[0]) {
+                        map.setCenter(results[0].geometry.location);
+                    }
+                }
+            })
+            service.getDetails({
+                placeId: $scope.event.locationId
+            }, function(place, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: place.geometry.location
+                    });
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                            place.formatted_address + '</div>');
+                        infowindow.open(map, this);
+                    });
+                }
+            });
+        }
         var convertUTCDateToLocalDate = function (date) {
             var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
 
@@ -68,18 +157,21 @@ define(['app'], function (app) {
         $scope.startTime = generate_time_step(30);
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
+        if($scope.mode == 'new'){
+            $scope.data = {
+                location: "",
+                description: "",
+                startDate: new Date(),
+                startTime: $scope.startTime[0],
+                duration: $scope.duration[0],
+                visibility: "Friends",
+                sportType: $scope.sportsCategory[0],
+                skillLevel: $scope.skillLevels[0],
+                maxParticipant: "2"
+            };
+        }
 
-        $scope.data = {
-            location: "",
-            description: "",
-            startDate: new Date(),
-            startTime: $scope.startTime[0],
-            duration: $scope.duration[0],
-            visibility: "Friends",
-            sportType: $scope.sportsCategory[0],
-            skillLevel: $scope.skillLevels[0],
-            maxParticipant: "2"
-        };
+       
 
         $scope.formValidate = function(isValid){
             if($scope.createEventForm.$valid){
@@ -89,7 +181,6 @@ define(['app'], function (app) {
             else{
                 alert('Complete form before submission');
             }
-
 
         };
 
@@ -102,6 +193,7 @@ define(['app'], function (app) {
                 return true;
             }
         }
+
         $scope.createEvent = function () {
             // Validate the location input
             if (!$scope.locationValidation()) {
@@ -114,20 +206,37 @@ define(['app'], function (app) {
             console.log(clone_data.startDate);
             clone_data.startDate = convertLocalDateToUTC($scope.data.startDate)
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
-            clone_data = JSON.stringify(clone_data);
-            eventService.createEvent(
-                clone_data,
-                function (res) {
-                    $location.path('/');
-                },
-                function (res) {
-                    if (res.data && res.data.msg && res.data.msg === '401') {
-                        // the user need to login again
-                        adminService.getAdmin();
-                        $location.path('/login').search({ret: '/createEvent'});
+            if($scope.mode == 'new'){
+                clone_data = JSON.stringify(clone_data);
+                eventService.createEvent(
+                    clone_data,
+                    function (res) {
+                        $location.path('/');
+                    },
+                    function (res) {
+                        if (res.data && res.data.msg && res.data.msg === '401') {
+                            // the user need to login again
+                            adminService.getAdmin();
+                            $location.path('/login').search({ret: '/createEvent'});
+                        }
                     }
-                }
-            )
+                )
+            }
+            else {
+                clone_data.eventID = $scope.eventID;
+                clone_data = JSON.stringify(clone_data);
+                eventService.updateEvent(
+                    clone_data,
+                    function(res){
+                        alert("Successful event update");
+                    },
+                    function(res){
+                        console.log(res);
+                    }
+                );
+            }
+
+
         };
 
         var mapOptions = {

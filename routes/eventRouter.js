@@ -19,7 +19,26 @@ route.post('/createEvent', function(req, res) {
         res.status(401).json({success: false, msg: '401'});
     }
 });
+route.post('/updateEvent', function(req, res) {
 
+    if (req.isAuthenticated()) {
+        let e = req.body;
+
+        eventService.updateEvent(e.eventID,e.location, e.locationId, e.description, e.startDate,
+            e.startTime, e.duration, e.visibility, e.sportType,e.skillLevel, e.maxParticipant,
+            function (err) {
+                if (err) {
+                    res.status(500).send(err);
+                } else {
+                    res.end();
+                }
+            });
+            res.json({success: true});
+    } else {
+        // 401 means unauthorized
+        res.status(401).json({success: false, msg: '401'});
+    }
+});
 route.post('/joinEvent', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;

@@ -9,7 +9,7 @@ const mongoose     = require('mongoose');
 const passport     = require('passport');
 const flash        = require('connect-flash');
 const favicon      = require('serve-favicon')
-
+var multer  = require('multer')
 
 // Local file requirement
 const db = require('./lib/db.js');
