@@ -46,6 +46,15 @@ define(['app'], function (app) {
             eventService.getEventList(
                 function (res) {
                     $scope.eventList = res.data;
+                    $scope.eventList.forEach(function(event) {
+                        event.startDate = new Date(event.startDate).toLocaleDateString();
+                        eventService.getIcon(
+                            event.sportType,
+                            function (path) {
+                                event.img = path.data;
+                            }
+                        );
+                    });
                     $scope.eventList.sort(function (a, b) {
                         if (a.startDate < b.startDate) {
                             return -1;
@@ -54,14 +63,6 @@ define(['app'], function (app) {
                         } else {
                             return 0;
                         }
-                    });
-                    $scope.eventList.forEach(function (event) {
-                        eventService.getIcon(
-                            event.sportType,
-                            function (path) {
-                                event.img = path.data;
-                            }
-                        );
                     });
                 },
                 function (res) {

@@ -79,15 +79,15 @@
                             <div class="col-md-3">
                                 <p class="eventDes">Participant: </p>
                             </div>
-                            <div ng-repeat="participant in event.participantsName" class="col-md-9">
-                                <p>
-                                    {{participant}}
+                            <div class="col-md-9">
+                                <p ng-repeat="participant in event.participantsName">
+                                        {{participant}}
                                 </p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <p class="eventDes">Maximum number of participants: </p>
+                                <p class="eventDes">Max Participants: </p>
                             </div>
                             <div class="col-md-9">
                                 <p>
@@ -104,8 +104,10 @@
         </div>
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-lg btn-search" ng-click="joinEvent()">Join Event</button>
-        <button type="submit" class="btn btn-lg">Invite Friends</button>
+        <button class="btn btn-lg btn-search" ng-click="joinEvent()">Join Event</button>
+        <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
+            <img class="fb-img" src="../../images/FB-Logo-white.png">Share
+        </button>
         <a href="/result" class="plainAnchor">
             <button class="btn btn-lg btn-splbourne">More Events</button>
         </a>

@@ -4,7 +4,7 @@ define(['angularAMD'],function (angularAMD) {
             var result = [];
             angular.forEach(items, function(item) {
                 if (type === 'Any' || item.sportType === type) {
-                    if (date === null || date === undefined || item.startDate === date) {
+                    if (date === null || date === undefined || item.startDate === date.toLocaleDateString()) {
                         if (skill === 'Any' || item.skillLevel === skill) {
                             result.push(item);
                         }
