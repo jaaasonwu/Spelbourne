@@ -133,13 +133,13 @@ define(['app'], function (app) {
                 }
 
             };
-            $scope.getEventTextClass = function(organizerID) {
+            $scope.getEventTextClass = function(event) {
                 //console.log(event.organizerID + ' and ' + $rootScope.userID);
-                if(organizerID == $scope.userID){
-                    return "bg-success text-white";
+                if(event.organizerID == $scope.userID){
+                    return "text-primary";
                 }
-                else{
-                    return "bg-info text-white";
+                if(event.organizerID == $scope.userID){
+                    return "text-warning";
                 }
             };
             $scope.editEvent = function(event){

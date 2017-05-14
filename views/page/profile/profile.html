@@ -38,22 +38,15 @@
 
             <div ng-show="eventsView=='grid'">
                 <h3> Grid view </h3>
-                <div class="col-md-2 legendIcon">
-                    <h4 class="col-md-6"> Created </h4>
-                    <div class="legend success"></div>
+                <h4 class="text-primary"> Created </h4>
+                <h4 class="text-warning"> Attending </h4>
 
-                </div>
-                <div  class="col-md-2 legendIcon">
-                    <h4 class="col-md-6"> Attending </h4>
-                    <div class="legend info"></div>
-
-                </div>
                 <div ng-repeat="event in events">
                     <div class="card" class="col-md-3">
                         <div class="card-block">
                             <img class="card-img-top" src="{{event.img}}">
-                            <h4 ng-class="getEventTextClass(event.organizer)">{{ event.sportType }}</h4>
-                            <h4 ng-class="getEventTextClass(event.organizer)"> {{'Skill level:' + event.skillLevel}}</h4>
+                            <h4 ng-class="getEventTextClass(event)">{{ event.sportType }}</h4>
+                            <h4 ng-class="getEventTextClass(event)"> {{'Skill level:' + event.skillLevel}}</h4>
                             <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
                                     data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
