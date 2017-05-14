@@ -1,5 +1,5 @@
 <div id="profilePage">
-    <div class="col-md-3" id="profileSidebar" >
+    <div class="col-md-2" id="profileSidebar" >
         <div class="sidebar-nav">
             <div class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -17,165 +17,53 @@
                     <ul class="nav navbar-nav">
                         <li><a ng-class="eventsSidebarSelect" ng-click="showEvents()"> Events </a></li>
                         <li><a ng-class="accountSidebarSelect" ng-click="showAccount()"> Account Information </a></li>
-                        <li><a ng-class="messagesSidebarSelect" ng-click="showMessages()"> Messaging
-                            <span class="badge">18</span></a></li>
-                        <li><a ng-class="statsSidebarSelect" ng-click="showStats()"> Stats </a></li>
-                    </ul>
+                        </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div id="content" class="col-md-9">
+    <div id="content" class="col-md-10">
         <!--/active view -->
-        <div class="container" ng-show="activeView=='eventsCase'" id="eventsContent">
+        <div class="container" ng-show="activeView =='eventsCase'" id="eventsContent">
             <h2> Events </h2>
-            <div class="eventViewTabs">
-                <ul class="nav nav-tabs">
-                    <li ng-class="navTabGrid" class="active"><a ng-click="showGrid()">List View</a></li>
-                    <li ng-class="navTabTimeline"><a ng-click="showTimeline()">Timeline</a></li>
-                </ul>
-            </div>
-
-            <div ng-show="eventsView=='grid'">
-                <h3> Grid view </h3>
-                <h4 class="text-primary"> Created </h4>
-                <h4 class="text-warning"> Attending </h4>
-
-                <div ng-repeat="event in events">
-                    <div class="card" class="col-md-3">
-                        <div class="card-block">
-                            <img class="card-img-top" src="{{event.img}}">
-                            <h4 ng-class="getEventTextClass(event)">{{ event.sportType }}</h4>
-                            <h4 ng-class="getEventTextClass(event)"> {{'Skill level:' + event.skillLevel}}</h4>
-                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                    data-toggle="dropdown">
-                                <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                            </button>
-                            <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
-                                <li><a ng-click="viewEvent(event)">View</a></li>
-                                <li class="divider"></li>
-                                <li><a ng-click="editEvent(event)">Edit</a></li>
-                                <li class="divider"></li>
-                                <li><a ng-click="removeEvent(event)">Delete</a></li>
-                            </ul>
-                            <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
-                                <li><a ng-click="viewEvent(event)">View</a></li>
-                                <li class="divider"></li>
-                                <li><a ng-click="removeEvent(event)">Cancel</a></li>
-                            </ul>
-                        </div>
-                        <div class="card-text">
-                            <p>{{'Start time:' + event.startTime }} </p>
-                            <p>{{'Location: ' + event.location}}</p>
-                        </div>
-                        <div class="card-footer">
-                            <span class="float-right">{{'Date ' + event.formatDate}}</span><br>
-                            <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
-                        </div>
+            <div ng-repeat="event in events">
+                <div class="card" class="col-md-3">
+                    <div class="card-block">
+                        <img class="card-img-top" src="{{event.img}}">
+                        <h4 ng-class="getEventTextClass(event)">{{ event.sportType }}</h4>
+                        <h4 ng-class="getEventTextClass(event)"> {{'Skill level:' + event.skillLevel}}</h4>
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                data-toggle="dropdown">
+                            <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+                        </button>
+                        <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
+                            <li><a ng-click="viewEvent(event)">View</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="editEvent(event)">Edit</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="removeEvent(event)">Delete</a></li>
+                        </ul>
+                        <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
+                            <li><a ng-click="viewEvent(event)">View</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="removeEvent(event)">Cancel</a></li>
+                        </ul>
+                    </div>
+                    <div class="card-text">
+                        <p>{{'Start time:' + event.startTime }} </p>
+                        <p>{{'Location: ' + event.location}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <span class="float-right">{{'Date ' + event.formatDate}}</span><br>
+                        <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
                     </div>
                 </div>
             </div>
-
-            <div ng-show="eventsView=='timeline'">
-
-                <div class="col-md-12">
-                    <h3 class="col-md-2"> Timeline </h3>
-                    <div  class="col-md-2 legendIcon ">
-                        <h4 class="col-md-6"> Created </h4><div class="legend success">
-                        <i class="glyphicon glyphicon-user"></i></div>
-
-                    </div>
-                    <div  class="col-md-2 legendIcon">
-                        <h4 class="col-md-6"> Attending </h4><div class="legend info">
-                        <i class="glyphicon glyphicon-floppy-disk"></i></div>
-
-                    </div>
-                </div>
-
-
-                <ul class="timeline">
-
-                    <li ng-repeat="event in events" ng-class="checkOrganizerClass(event.organizer)">
-                        <div ng-if="(event.organizerID!=userID)" class="legend info"><i class="glyphicon glyphicon-floppy-disk"></i></div>
-                        <div ng-if="(event.organizerID==userID)" class="legend success"><i class="glyphicon glyphicon-user"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <img class="card-img-top" src="{{event.img}}">
-                                <h4 class="timeline-title">{{event.sportType+ ' :'+ event.skillLevel + ' level'}}</h4>
-                                <p>
-                                    <small class="text-muted"><i class="glyphicon glyphicon-time"></i>
-                                        Starts : {{event.startTime}} - {{event.formatDate}}
-                                    </small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>{{event.description}}</p>
-                                <div ng-if="(event.organizerID==userID)" class="btn-group">
-                                    <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                            data-toggle="dropdown">
-                                        <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                                    </button>
-                                    <ul ng-if="(event.organizerID==userID)" class="dropdown-menu " role="menu">
-                                        <li><a ng-click="viewEvent(event)">View</a></li>
-                                        <li class="divider"></li>
-                                        <li><a ng-click="editEvent(event)">Edit</a></li>
-                                        <li class="divider"></li>
-                                        <li><a ng-click="removeEvent(event)">Delete</a></li>
-                                    </ul>
-                                    <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
-                                        <li><a ng-click="viewEvent(event)">View</a></li>
-                                        <li class="divider"></li>
-                                        <li><a ng-click="removeEvent(event)">Cancel</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                                <p>
-                                    <small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via
-                                        Twitter
-                                    </small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá ,
-                                    depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum
-                                    </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge success"><i class="glyphicon glyphicon-thumbs-up"></i></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Mussum ipsum cacilds</h4>
-                            </div>
-                            <div class="timeline-body">
-                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá ,
-                                    </p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-            </div>
-
-
         </div>
+
         <div ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
                 <h2> Account Information </h2>
-                <div>
-                    <button class="btn btn-lg btn-default" id="addProfileInfo"
-                            ng-show="buttons.showCompleteProfileOption==true" ng-click="addProfileDetails()">
-                        Complete Profile Information
-                    </button>
-                </div>
-                <div ng-show="forms.showAdditionalInfoForm==true" id="profileInfoInput" class="container">
+                <div class="container">
                     <div>
                         <p class="userImage">Image: </p>
                     </div>
@@ -201,25 +89,12 @@
                                name="phoneNumberInput"
                                placeholder="Enter phone Number">
                     </div>
-                    <a ng-show="buttons.showCancelProfileOption==true"
-                       ng-click="closeAdditionalForm()">Cancel <span
-                            class="glyphicon glyphicon-collapse-up "></span></a>
-                    <button class="btn btn-lg btn-search" ng-show="buttons.showSubmitOption==true"
-                            ng-click="updateProfileInfo()">Submit
+
+                    <button class="btn btn-lg btn-search"> Submit
                     </button>
                 </div>
 
         </div>
-        <div ng-show="activeView=='messagesCase'" id="messageContent" class="col-md-9">
-                <h2> Messages </h2>
-                <!-- /. messages-->
-        </div>
-        <div ng-show="activeView=='statsCase'" id="statsContent" class="col-md-9">
-                <h2> Stats summary </h2>
-                <!-- /.Aggregate stats of events-->
-
-        </div>
-
     </div>
 
 </div>

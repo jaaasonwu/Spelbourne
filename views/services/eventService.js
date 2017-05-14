@@ -30,31 +30,21 @@ define(['angularAMD'], function () {
                 failure
             );
         };
+
         var createEvent = function(data, success, failure) {
             $http.post('/event/createEvent', data).then(
                 success,
                 failure
             );
         };
+
         var updateEvent = function(data, success, failure) {
             $http.post('/event/updateEvent', data).then(
                 success,
                 failure
             );
         };
-        var reverseJoin = function (data, success, failure) {
-            $http.post('/event/reverseJoinEvent', data)
-                .then(
-                    success,
-                    failure
-                );
-        };
-        var deleteEvent = function(eventID,userID, success, failure) {
-            $http.post('/event/deleteEvent', data).then(
-                success,
-                failure
-            );
-        };
+
         return {
             getEvent: getEvent,
             getIcon: getIcon,
@@ -62,8 +52,6 @@ define(['angularAMD'], function () {
             joinEvent: joinEvent,
             createEvent: createEvent,
             updateEvent: updateEvent,
-            deleteEvent: deleteEvent,
-            reverseJoin: reverseJoin
         }
     }])
 });

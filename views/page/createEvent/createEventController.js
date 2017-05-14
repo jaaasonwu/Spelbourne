@@ -1,126 +1,10 @@
 define(['app'], function (app) {
-    app.controller('createEventController', ['$scope', '$http', '$location','$routeParams', '$rootScope', 'adminService', 'eventService','userService',
-    function($scope, $http , $location,$routeParams, $rootScope, adminService, eventService,userService) {
+    app.controller('createEventController', ['$scope', '$http', '$location', '$rootScope', 'adminService', 'eventService',
+    function($scope, $http , $location, $rootScope, adminService, eventService) {
         // Check if the user is authenticated
         if ($rootScope.username === undefined) {
             $location.path('/login').search({ret: '/createEvent'});
         }
-        $scope.mode = $routeParams.modeID;
-        $scope.event = null;
-        $scope.eventID = null;
-        if($scope.mode != 'new'){
-            $scope.eventID = $scope.mode;
-            $scope.mode = 'old';
-            //fill in form
-            eventService.getEvent(
-                $scope.eventID,
-                function (res) {
-                    $scope.event = res.data;
-                    if ($rootScope.userID != $scope.event.organizerID) {
-                        $location.path('/login');
-                    }
-                    userService.getUserProfile(
-                        $scope.event.organizerID,
-                        function (profile) {
-                            $scope.event.organizer = profile.data.email
-                        }
-                    );
-
-                    utcDate = new Date($scope.event.startDate);
-                    currentDate = new Date(
-                        utcDate.getUTCFullYear(),
-                        utcDate.getUTCMonth(),
-                        utcDate.getUTCDate()
-                    );
-                    $scope.event.startDate = currentDate.toLocaleDateString();
-                    $scope.event.participantsName = [];
-                    $scope.event.participants.forEach(function(id) {
-                        var name = "";
-                        userService.getUserProfile(
-                            id,
-                            function (profile) {
-                                name = profile.data.email;
-                                $scope.event.participantsName.push(name);
-                            }
-                        );
-                    });
-
-                    eventService.getIcon(
-                        $scope.event.sportType,
-                        function(path) {
-                            $scope.event.img = path.data;
-                        }
-                    );
-                    renderMap();
-                },
-                // failure callback
-                function (res) {
-                    console.log(res);
-                }
-            );
-        }
-        let renderMap = function() {
-            let mapOptions = {
-                zoom: 15,
-                center: new google.maps.LatLng(-37.7964, 144.9612),
-                mapTypeId: 'roadmap'
-            }
-            let map = new google.maps.Map(document.getElementById('map'), mapOptions);
-            let infowindow = new google.maps.InfoWindow();
-            let service = new google.maps.places.PlacesService(map);
-            let geocoder = new google.maps.Geocoder;
-            let placeId = $scope.event.locationId;
-
-            geocoder.geocode({'placeId': placeId}, function(results, status) {
-                if (status == 'OK') {
-                    if (results[0]) {
-                        map.setCenter(results[0].geometry.location);
-                    }
-                }
-            })
-            service.getDetails({
-                placeId: $scope.event.locationId
-            }, function(place, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: place.geometry.location
-                    });
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-                            place.formatted_address + '</div>');
-                        infowindow.open(map, this);
-                    });
-                }
-            });
-        }
-        var convertUTCDateToLocalDate = function (date) {
-            var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
-
-            var offset = date.getTimezoneOffset() / 60;
-            var hours = date.getHours();
-
-            newDate.setHours(hours - offset);
-
-            return newDate;
-        }
-
-        var convertLocalDateToUTC = function (date) {
-            var newDate = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
-            return newDate;
-        }
-
-        var generate_time_step = function (step) {
-            var dt = convertUTCDateToLocalDate(new Date(1970, 0, 1, 0, 0, 0, 0));
-            date = [];
-            for (i = 0; i < 12; i++) {
-                var point = dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                date.push(point);
-                dt.setMinutes(dt.getMinutes() + step);
-            }
-            return date;
-        };
-
 
         // These are mock data, will qurey from the server in the future
         $scope.sportsCategory = [
@@ -156,20 +40,6 @@ define(['app'], function (app) {
         };
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
-        if($scope.mode == 'new'){
-            $scope.data = {
-                location: "",
-                description: "",
-                startDate: new Date(),
-                startTime: $scope.startTime[0],
-                duration: $scope.duration[0],
-                visibility: "Friends",
-                sportType: $scope.sportsCategory[0],
-                skillLevel: $scope.skillLevels[0],
-                maxParticipant: "2"
-            };
-        }
-
 
         var defaultStartTime = new Date();
         defaultStartTime.setHours(10);
@@ -203,6 +73,7 @@ define(['app'], function (app) {
                 alert('Complete form before submission');
             }
 
+
         };
 
         $scope.locationValidation = function(){
@@ -225,7 +96,6 @@ define(['app'], function (app) {
             return startDate
         }
 
-
         $scope.createEvent = function () {
             // Validate the location input
             if (!$scope.locationValidation()) {
@@ -241,38 +111,21 @@ define(['app'], function (app) {
             );
 
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
-            if($scope.mode == 'new'){
-                clone_data = JSON.stringify(clone_data);
-                eventService.createEvent(
-                    clone_data,
-                    function (res) {
-                        $location.path('/');
-                    },
-                    function (res) {
-                        if (res.data && res.data.msg && res.data.msg === '401') {
-                            // the user need to login again
-                            adminService.getAdmin();
-                            $location.path('/login').search({ret: '/createEvent'});
-                        }
 
+            clone_data = JSON.stringify(clone_data);
+            eventService.createEvent(
+                clone_data,
+                function (res) {
+                    $location.path('/');
+                },
+                function (res) {
+                    if (res.data && res.data.msg && res.data.msg === '401') {
+                        // the user need to login again
+                        adminService.getAdmin();
+                        $location.path('/login').search({ret: '/createEvent'});
                     }
-                )
-            }
-            else {
-                clone_data.eventID = $scope.eventID;
-                clone_data = JSON.stringify(clone_data);
-                eventService.updateEvent(
-                    clone_data,
-                    function(res){
-                        alert("Successful event update");
-                    },
-                    function(res){
-                        console.log(res);
-                    }
-                );
-            }
-
-
+                }
+            )
         };
 
         var mapOptions = {

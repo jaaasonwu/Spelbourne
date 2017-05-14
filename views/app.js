@@ -57,12 +57,7 @@ define(imports, function (angularAMD) {
                 controller: 'viewEventController',
                 controllerUrl: 'page/viewEvent/viewEventController'
             }))
-            .when('/editEvent/:eventID', angularAMD.route({
-                templateUrl: 'page/editEvent/editEvent.html',
-                controller: 'editEventController',
-                controllerUrl: 'page/editEvent/editEventController'
-            }))
-            .when('/createEvent/:modeID', angularAMD.route({
+            .when('/createEvent', angularAMD.route({
                 templateUrl: 'page/createEvent/createEvent.html',
                 controller: 'createEventController',
                 controllerUrl: 'page/createEvent/createEventController'

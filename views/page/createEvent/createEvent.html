@@ -1,12 +1,7 @@
 <div class="col-sm-6 col-sm-offset-3">
     <div class="form" id="createEvent">
-        <div class="col-mod-12">
-            <h1 ng-if="mode=='new'"> Create Event </h1>
-            <h1 ng-if="mode=='old'" class="col-md-12"> Update Event </h1>
-            <h4 class="text-primary col-md-12" ng-if="mode=='old'">(Previous Values)</h4>
-        </div>
-        <br>
         <form role="form" name="createEventForm" novalidate>
+            <h1> Create Event </h1>
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-3">
@@ -17,13 +12,6 @@
                                 ng-model="data.sportType"
                                 ng-options="x for x in sportsCategory" required>
                         </select>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.sportType}}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -38,13 +26,6 @@
                                 ng-model="data.skillLevel"
                                 ng-options="x for x in skillLevels">
                         </select>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.skillLevel}}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -65,13 +46,6 @@
                             </span>
 
                         </div>
-                        <div class="col-md-3">
-                        </div>
-                        <div ng-if="mode=='old'" class=" col-md-9 text-primary">
-                            <p>
-                                {{event.startDate}}
-                            </p>
-                        </div>
                     </div>
 
                 </div>
@@ -84,13 +58,6 @@
                     <div class="col-md-9">
                         <div uib-timepicker ng-model="data.startTime"  hour-step="timePicker.hstep"
                                  minute-step="timePicker.mstep" show-meridian="timePicker.ismeridian"></div>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.startTime}}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -106,13 +73,6 @@
                                 ng-options="x for x in duration" required>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.duration}}
-                        </p>
-                    </div>
                 </div>
             </div>
 
@@ -124,18 +84,11 @@
                     <div class="col-md-9">
                         <textarea id="descriptionTextarea" name="description" class="form-control"
                                   ng-model="data.description"
-                                  placeholder="Enter the event description here" ng-minlength="5" ng-required="true">
+                                  placeholder="Enter the event description here" ng-minlength="10" ng-required="true">
                         </textarea>
                         <span class="invalidInput"
                               ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength ">
                             Description is too short.</span>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.description}}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -150,13 +103,6 @@
                         <input type="radio" ng-model="data.visibility" value="Public">
                         Public<br/>
                     </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.visibility}}
-                        </p>
-                    </div>
                 </div>
             </div>
             <div class="form-group">
@@ -167,13 +113,6 @@
                     <div class="col-md-9">
                         <input type = "text" class="form-control" ng-model="data.maxParticipant">
                         </input>
-                    </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.maxParticipant}}
-                        </p>
                     </div>
                 </div>
             </div>
@@ -192,25 +131,14 @@
                         <span class="invalidInput" ng-show="createEventForm.$locationInvalid">
                             Invalid location</span>
                     </div>
-                    <div class="col-md-3">
-                    </div>
-                    <div ng-if="mode=='old'" class="col-md-9 text-primary">
-                        <p>
-                            {{event.location}}
-                        </p>
-                    </div>
                 </div>
             </div>
             <div class="row">
                 <div id="map"></div>
             </div>
-            <button ng-if="mode=='new'" ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
+            <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
                     class="btn btn-lg btn-search">
                 Create
-            </button>
-            <button ng-if="mode=='old'" ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
-                    class="btn btn-lg btn-search">
-                Update
             </button>
         </form>
     </div>
