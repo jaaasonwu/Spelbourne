@@ -11,7 +11,6 @@ define(['angularAMD'], function () {
             if (event.organizerID == $rootScope.userID) {
                 return true;
             }
-            console.log(event.participants.indexOf($rootScope.userID) >= 0);
             return event.participants.indexOf($rootScope.userID) >= 0;
         }
 
