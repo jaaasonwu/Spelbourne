@@ -2,7 +2,6 @@ define(['app'], function (app) {
     app.controller("viewEventController", ['$scope', '$http', '$window', '$routeParams', 'eventService', 'userService',
                 function($scope, $http, $window, $routeParams, eventService, userService) {
         eventID = $routeParams.eventID;
-
         $scope.joinEvent = function () {
             // Clone the data
             var data = {"eventID": eventID}
@@ -18,6 +17,21 @@ define(['app'], function (app) {
                 }
             );
         };
+
+        FB.init({
+            appId      : '1357124691000611',
+            xfbml      : true,
+            version    : 'v2.4'
+        });
+        FB.AppEvents.logPageView();
+
+        $scope.fbShare = function () {
+            FB.ui({
+                method: 'share',
+                display: 'popup',
+                href: $window.location.href,
+            }, function(response){});
+        }
 
         eventService.getEvent(
             eventID,
