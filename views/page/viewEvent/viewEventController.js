@@ -13,14 +13,16 @@ define(['app'], function (app) {
                         $scope.event.organizer = profile.data.email
                     }
                 );
-
+                console.log($scope.event);
                 utcDate = new Date($scope.event.startDate);
+                console.log(utcDate);
                 currentDate = new Date(
                     utcDate.getUTCFullYear(),
                     utcDate.getUTCMonth(),
                     utcDate.getUTCDate()
                 );
                 $scope.event.startDate = currentDate.toLocaleDateString();
+                console.log(currentDate);
                 $scope.event.participantsName = [];
                 $scope.event.participants.forEach(function(id) {
                     var name = "";
