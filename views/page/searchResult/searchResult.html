@@ -33,7 +33,7 @@
                 <div class="col-md-7 col-sm-7">
                     <h2 class="eventTitle">{{event.sportType +' @ '+event.location}}</h2>
                     <p>Skill Level: {{event.skillLevel}}</p>
-                    <p>Time: {{event.startDate}}</p>
+                    <p>Time: {{event.startDate.toLocaleString()}}</p>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <button class="btn btn-large" ng-click="viewEvent(event)" id="viewBtn">View Event</button>
