@@ -8,7 +8,8 @@ var imports = [
     'services/adminService',
     'services/eventService',
     'services/userService',
-    'filter/resultFilters'
+    'filter/resultFilters',
+    'fb-sdk'
 ];
 
 var dependencies = [
