@@ -73,10 +73,10 @@ define(['app'], function (app) {
                 eventService.joinEvent(
                     data,
                     function (res) {
-                        console.log("SUCCESS");
+                        $location.path("/viewEvent/" + event._id);
                     },
                     function (res) {
-                        console.log(res);
+                        $location.path("/viewEvent/" + event._id);
                     }
                 );
             };
