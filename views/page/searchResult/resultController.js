@@ -1,6 +1,6 @@
 define(['app'], function (app) {
-    app.controller('resultController', ['$scope', '$http', '$location', "eventService",
-        function ($scope, $http, $location, eventService) {
+    app.controller('resultController', ['$scope', '$http', '$location', "eventService", "userService",
+        function ($scope, $http, $location, eventService, userService) {
             // configuration for date picker
             $scope.format = ["dd-MM-yyyy", "dd/MM/yyyy"];
             //default date
@@ -47,6 +47,7 @@ define(['app'], function (app) {
                 function (res) {
                     $scope.eventList = res.data;
                     $scope.eventList.forEach(function(event) {
+                        event.isJoined = userService.isJoinedEvent(event);
                         event.startDate = new Date(event.startDate);
                         eventService.getIcon(
                             event.sportType,
