@@ -52,9 +52,24 @@ route.get('/getEvent/:eventID', function(req, res) {
 
 route.get('/getEventList', function(req, res) {
     eventService.getEventList(function (err, data) {
-        if (err) {
+        if (!err) {
+            let currTime= new Date();
+
+            data.forEach(function(event, index) {
+                if (event.startDate < currTime) {
+                    data.splice(index, 1);
+                } else if (event.visibility == 'Friends') {
+                    data.splice(index, 1);
+                }
+            });
+        } else {
             res.status(500).send("No such event");
             return;
+        }
+
+        let numEvents = 0;
+        if (numEvents = req.query['numEvents']) {
+            data.splice(numEvents, data.length - numEvents);
         }
         res.send(data);
     });
