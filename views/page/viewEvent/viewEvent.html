@@ -3,6 +3,12 @@
         <h1 id="eventName"> {{event.type}} </h1>
         <div class="jumbotron" id="showEvent">
             <div class="container">
+                <div ng-show="error" class="alert alert-warning">
+                    {{error}}
+                </div>
+                <div ng-show="success" class="alert alert-success">
+                    {{success}}
+                </div>
                 <div class="row">
                     <div class="col-md-7">
                         <div class="row">
@@ -104,9 +110,13 @@
         </div>
     </div>
     <div class="row">
-        <button class="btn btn-lg btn-search" ng-click="joinEvent()">Join Event</button>
+        <button class="btn btn-lg btn-search" ng-show="!isJoined" ng-click="joinEvent()">Join Event</button>
+        <button class="btn btn-lg join-btn-disabled" ng-show="isJoined" ng-disabled="true">Joined</button>
         <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
             <img class="fb-img" src="../../images/FB-Logo-white.png">Share
         </button>
+        <a href="/result" class="plainAnchor">
+            <button class="btn btn-lg btn-splbourne">More Events</button>
+        </a>
     </div>
 </div>

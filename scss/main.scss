@@ -52,6 +52,10 @@ body {
     color: black;
 }
 
+.btn-splbourne {
+    width: 150px;
+}
+
 .carousel-image {
     /*background-size: cover;*/
     width: 100%;
@@ -108,6 +112,12 @@ body {
     margin: 10px;
     width: 100px;
     background-color: $light-orange;
+}
+
+#disabledJoinBtn {
+    margin: 10px;
+    width: 100px;
+    background-color: grey;
 }
 
 #loginComponent {
@@ -466,6 +476,10 @@ body {
     }
 }
 
+.alert {
+    font-size: 19px;
+}
+
 .btn-fb {
     background-color: $facebook-blue;
     color: white;
@@ -474,6 +488,12 @@ body {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.join-btn-disabled {
+    @extend .btn-fb;
+    background-color: grey;
+}
+
 .fb-img {
     margin-right: 10px;
     width: 30px;
