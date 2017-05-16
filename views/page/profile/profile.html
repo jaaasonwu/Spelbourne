@@ -26,6 +26,20 @@
         <!--/active view -->
         <div class="container" ng-show="activeView =='eventsCase'" id="eventsContent">
             <h2> Events </h2>
+            <div ng-if="eventCount==0">
+                <h3> You have no events to display</h3>
+            </div>
+            <a href="/result" class="plainAnchor">
+                <button class="btn btn-search btn-lg" type="button" id="findEventBtn">
+                    Find an Event
+                </button>
+            </a>
+            <a href="/createEvent" class="plainAnchor">
+                <button class="btn btn-lg" type="button" id="createEventBtn">
+                    Create Event
+                </button>
+            </a>
+
             <div ng-repeat="event in events">
                 <div class="card" class="col-md-3">
                     <div class="card-block">
@@ -39,9 +53,9 @@
                         <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
                             <li><a ng-click="viewEvent(event)">View</a></li>
                             <li class="divider"></li>
-                            <li><a ng-click="editEvent(event)">Edit</a></li>
+                            <li><a ng-click="viewEvent(event)">Edit</a></li>
                             <li class="divider"></li>
-                            <li><a ng-click="removeEvent(event)">Delete</a></li>
+                            <li><a ng-click="deleteEvent(event)">Delete</a></li>
                         </ul>
                         <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
                             <li><a ng-click="viewEvent(event)">View</a></li>

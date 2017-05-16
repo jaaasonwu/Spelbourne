@@ -44,6 +44,13 @@ define(['angularAMD'], function () {
                 failure
             );
         };
+        var deleteEvent = function(eventID, success,failure) {
+            $http.get('/event/deleteEvent/' + eventID).then(
+                success,
+                failure
+            );
+        };
+
 
         return {
             getEvent: getEvent,
@@ -52,6 +59,7 @@ define(['angularAMD'], function () {
             joinEvent: joinEvent,
             createEvent: createEvent,
             updateEvent: updateEvent,
+            deleteEvent: deleteEvent
         }
     }])
 });

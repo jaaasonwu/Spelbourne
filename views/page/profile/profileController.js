@@ -15,30 +15,35 @@ define(['app'], function (app) {
             };
 
             $scope.events = [];
+            $scope.eventCount = 0;
+            $scope.getProfileData = function(){
+                userService.getUserProfile(
+                    $rootScope.userID,
+                    function(res) {
+                        $scope.eventCount = res.data.events.length;
+                        res.data.events.forEach(function (eventID) {
+                            eventService.getEvent(
+                                eventID,
+                                function (res) {
+                                    eventService.getIcon(
+                                        res.data.sportType,
+                                        function(path){
+                                            res.data.img = path.data;
+                                        }
+                                    );
+                                    res.data.formatDate = new Date(res.data.createEventDate).toDateString();
+                                    $scope.events.push(res.data);
+                                }
+                            );
+                        });
+                    },
+                    function(res) {
+                        console.log(res.data.msg[0]);
+                    }
+                );
+            };
+            $scope.getProfileData();
 
-            userService.getUserProfile(
-                $rootScope.userID,
-                function(res) {
-                    res.data.events.forEach(function (eventID) {
-                        eventService.getEvent(
-                            eventID,
-                            function (res) {
-                                eventService.getIcon(
-                                  res.data.sportType,
-                                    function(path){
-                                        res.data.img = path.data;
-                                    }
-                                );
-                                res.data.formatDate = new Date(res.data.createEventDate).toDateString();
-                                $scope.events.push(res.data);
-                            }
-                        );
-                    });
-                },
-                function(res) {
-                    console.log(res.data.msg[0]);
-                }
-            );
 
             $scope.showEvents = function(){
                 $scope.activeView = $scope.profileModes.events;
@@ -77,7 +82,18 @@ define(['app'], function (app) {
 
             //initialize view
             $scope.showEvents();
+            $scope.deleteEvent = function(event){
+                confirm('Deleting event');
+                eventService.deleteEvent(event._id,
+                    function (res) {
+                        console.log(res);
+                    },
+                    function (res) {
+                        console.log(res);
+                    }
+                );
 
+            };
             $scope.viewEvent = function (event) {
                 console.log(event._id);
                 $location.path("/viewEvent/" + event._id);

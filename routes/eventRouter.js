@@ -56,6 +56,25 @@ route.post('/joinEvent', function(req, res) {
     }
 });
 
+route.get('/deleteEvent/:eventID',function(req,res){
+    let eventID = req.params.eventID;
+
+    if (req.isAuthenticated()){
+        eventService.deleteEvent(eventID, function (err) {
+            if (err) {
+
+                res.status(500).send(err);
+                return;
+            }
+            res.end();
+        });
+    }
+    else{
+        res.status(401).json({success: false, msg: '401'});
+    }
+
+});
+
 route.get('/getEvent/:eventID', function(req, res) {
     let eventID = req.params.eventID;
     eventService.getEvent(eventID, function (err, data) {
