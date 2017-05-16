@@ -37,7 +37,8 @@
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <button class="btn btn-large" ng-click="viewEvent(event)" id="viewBtn">View Event</button>
-                    <button class="btn btn-large" ng-click="joinEvent(event)" id="joinBtn">Join Event</button>
+                    <button ng-show="!event.isJoined"  class="btn btn-large" ng-click="joinEvent(event)" id="joinBtn">Join Event</button>
+                    <button ng-show="event.isJoined"  class="btn btn-large" id="disabledJoinBtn" ng-disabled="true" >Joined</button>
                 </div>
             </div>
         </div>
