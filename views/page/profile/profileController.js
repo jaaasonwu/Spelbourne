@@ -7,6 +7,12 @@ define(['app'], function (app) {
             if($rootScope.username == null || !$rootScope.username){
                 $location.path('/');
             }
+            angular.element(document).ready(
+                function () {
+                    $("#interests").select2();
+                    $("#regions").select2();
+                });
+            $
             $scope.userID = $rootScope.userID;
 
             $scope.profileModes = {
@@ -14,6 +20,14 @@ define(['app'], function (app) {
                 accountInfo:'accountInfoCase'
             };
 
+            $scope.regions = [
+                {"name":"Swimming","code":"SW"},
+                {"name":"Tennis","code":"TN"},
+                {"name":"Soccer","code":"SC"},
+                {"name":"Golf","code":"GL"},
+                {"name":"Basketball","code":"BB"}
+            ]
+            $scope.interests;
             $scope.events = [];
             $scope.eventCount = 0;
             $scope.getProfileData = function(){

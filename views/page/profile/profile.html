@@ -103,7 +103,16 @@
                                name="phoneNumberInput"
                                placeholder="Enter phone Number">
                     </div>
+                    <div>
+                        <p class="phoneNumber">Interests: </p>
+                    </div>
+                    <div >
+                        <select multiple  id="interests" ng-options="region.code as region.name for region in regions"  ng-model="interests" >
+                            <option style="display:none" value="">Add some interests</option>
+                        </select>
+                    </div>
 
+                    <p>Interests Added: {{interests}}</p>
                     <button class="btn btn-lg btn-search"> Submit
                     </button>
                 </div>

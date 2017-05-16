@@ -16,7 +16,7 @@ define(['app'], function (app) {
             "Golf",
             "Running"
         ];
-
+        $scope.interests = [];
         // Different skill levels
         $scope.skillLevels = [
             "Any",
