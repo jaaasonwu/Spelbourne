@@ -15,13 +15,23 @@ define(['app'], function (app) {
                 }
             );
 
+            $scope.error = "";
+            $scope.success = "";
 
             $scope.userID = $rootScope.userID;
+
+            // Init user data
+            $scope.userData = {
+                name: "",
+                phone: "",
+                interests: []
+            }
 
             $scope.profileModes = {
                 events:'eventsCase',
                 accountInfo:'accountInfoCase'
             };
+
             $scope.sports = [
                 {"name":"Swimming","code":"Swimming"},
                 {"name":"Tennis","code":"Tennis"},
@@ -39,6 +49,12 @@ define(['app'], function (app) {
             userService.getUserProfile(
                 $rootScope.userID,
                 function(res) {
+                    $scope.userData.name = res.data.name;
+                    $scope.userData.phone = res.data.phone;
+                    $scope.userData.interests = res.data.interests;
+
+                    console.log($scope.userData);
+                    console.log(res.data);
                     res.data.events.forEach(function (eventID) {
                         eventService.getEvent(
                             eventID,
@@ -63,7 +79,7 @@ define(['app'], function (app) {
                                 } else {
                                     current_event.class = "card";
                                 }
-                                console.log(event);
+
                                 $scope.events.push(current_event);
                                 $scope.events.sort(function (event1, event2) {
                                     return event2.startDateTime -
@@ -111,10 +127,10 @@ define(['app'], function (app) {
                 console.log(clone_data);
                 userService.updateProfile(clone_data,
                     function(res){
-                        console.log("succesfully updated profile")
+                        $scope.success = "Succesfully updated profile";
                     },
                     function(res){
-                        console.log("error in profile update");
+                        $scope.error = "Error in profile update";
                     }
                 );
 

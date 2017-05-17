@@ -16,7 +16,7 @@
                 <div class="navbar-collapse collapse sidebar-navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a ng-class="eventsSidebarSelect" ng-click="showEvents()"> Events </a></li>
-                        <li><a ng-class="accountSidebarSelect" ng-click="showAccount()"> Account Information </a></li>
+                        <li><a ng-class="accountSidebarSelect" ng-click="showAccount()"> My Account </a></li>
                         </ul>
                 </div>
             </div>
@@ -52,44 +52,49 @@
         </div>
 
         <div class="container col-md-9" ng-show="activeView=='accountInfoCase'" id="accountInfoContent">
-                <h2> Your account </h2>
+                <h2 class="profileTitle"> Your Account </h2>
                 <div class="container">
-                    <form role="form" name="createEventForm" novalidate>
-                    <div>
-                        <p class="userName">Name: </p>
+                    <div ng-show="error" class="alert alert-warning">
+                        {{error}}
                     </div>
-                    <div>
-                        <input ng-model="userData[0].name" type="text" id="nameInput" name="name"
-                               placeholder="Enter name">
-                    </div>
-                    <div>
-                        <p class="phoneNumber">Phone number: </p>
-                    </div>
-                    <div>
-                        <input ng-model="userData[0].phone" type="text" id="phoneNumber"
-                               name="phoneNumber"
-                               placeholder="Enter phone Number">
-                    </div>
-                    <div>
-                        <p class="postcode">Postcode: </p>
-                    </div>
-                    <div>
-                        <input ng-model="userData[0].postCode" type="text" id="postCode"
-                               name="phoneNumber" maxlength="4"
-                               placeholder="Enter VIC postcode">
-                    </div>
-                    <div>
-                        <p class="interests">Interests: </p>
-                    </div>
-                    <div >
-                        <select multiple  id="interests" ng-options="sport.code as sport.name for sport in sports"  ng-model="userData[0].interests" >
-                            <option style="display:none" value="" placeholder="Add some of your interests"></option>
-                        </select>
+                    <div ng-show="success" class="alert alert-success">
+                        {{success}}
                     </div>
 
-                    <p>Interests Added: {{interests}}</p>
-                    <button  ng-click="updateProfile()"  class="btn btn-lg btn-search"> Submit
-                    </button>
+                    <form role="form" name="createEventForm" novalidate>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="username">Name: </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input class="form-control" ng-model="userData.name" type="text" id="username"
+                                placeholder="Enter name">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="phone">Phone number: </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input class="form-control" ng-model="userData.phone" type="text" id="phone"
+                                placeholder="Enter phone Number">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="interests">Interests: </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <select multiple  id="interests" ng-options="sport.code as sport.name for sport in sports"  ng-model="userData.interests" >
+                                    <option style="display:none" value="" placeholder="Add some of your interests"></option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button  ng-click="updateProfile()"  class="btn btn-lg btn-search"> Submit
+                        </button>
                     </form>
                 </div>
 
