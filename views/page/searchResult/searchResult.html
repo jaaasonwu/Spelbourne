@@ -1,3 +1,4 @@
+<!--Filter Area-->
 <div class="filter row form-group">
     <div id="searchResult" class="container">
         <div class="col-md-4 col-sm-4">
@@ -25,6 +26,8 @@
         </div>
     </div>
 </div>
+
+<!--Events Area-->
 <div class="eventList">
     <div class="container">
         <div ng-repeat="event in eventList | resultFilter:typeSelect:dateSelect:skillSelect">

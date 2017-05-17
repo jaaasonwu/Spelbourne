@@ -6,8 +6,9 @@ define(['app'], function (app) {
             $scope.error = "";
             $scope.success = "";
 
+            getEvent();
             // Add isJoinedEvent to scope so front end could use it
-            var getEvent = function () {
+            function getEvent () {
                 eventService.getEvent(
                     $scope.eventID,
                     function (res) {
@@ -40,8 +41,15 @@ define(['app'], function (app) {
                             function (path) {
                                 $scope.event.img = path.data;
                             }
-                        )
-                        $scope.isJoined = userService.isJoinedEvent($scope.event);
+                        );
+                        // Check whether the user is already joined
+                        $scope.canJoin = !userService.isJoinedEvent($scope.event);
+                        $scope.joinErr = "Joined";
+                        // Check whether the event is outdated
+                        if (new Date() > startDate) {
+                            $scope.canJoin = false;
+                            $scope.joinErr = "Outdated"
+                        }
                         renderMap();
                     },
                     // failure callback
@@ -51,7 +59,6 @@ define(['app'], function (app) {
                 );
             };
 
-            getEvent();
 
             $scope.joinEvent = function () {
                 // If user is not loggedIn, redirect to the front page

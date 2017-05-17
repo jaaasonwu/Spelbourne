@@ -56,6 +56,7 @@ define(['app'], function (app) {
                             }
                         );
                     });
+                    // Sort the event according to start date
                     $scope.eventList.sort(function (a, b) {
                         if (a.startDate < b.startDate) {
                             return -1;
