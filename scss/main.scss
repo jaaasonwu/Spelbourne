@@ -303,7 +303,7 @@ body > .navbar-default {
 .welcome-panel {
     .card {
         background-color: $white;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.05s;
         border-radius: 10px;
         border: 10px solid transparent;
@@ -389,6 +389,7 @@ body > .navbar-default {
 
 #showEvent {
     @extend .eventBox;
+    padding-top: 20px;
     font-size: 1.4em;
     .eventName {
         font-weight: bold;
@@ -427,11 +428,6 @@ body > .navbar-default {
     color: red;
 }
 
-#navigation {
-    background-color: white;
-    float: left;
-}
-
 #profileSidebar{
     .sidebar-nav .navbar .navbar-collapse {
         padding-top: 3em;
@@ -461,6 +457,7 @@ body > .navbar-default {
         opacity: 0.6;
         background-color: $fade-blue;
     }
+
     .unselected {
         background-color: transparent;
     }
@@ -483,6 +480,10 @@ body > .navbar-default {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+#createBtn {
+     margin-top: 10px;
+ }
 
 .join-btn-disabled {
     @extend .btn-fb;
