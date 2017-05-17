@@ -42,6 +42,7 @@ define(['app'], function (app) {
 
         $scope.duration = ["30 min", "60 min", "90 min", "120 min"];
 
+        // Set the default time which is 10 am
         var defaultStartTime = new Date();
         defaultStartTime.setHours(10);
         defaultStartTime.setMinutes(0);
@@ -59,12 +60,14 @@ define(['app'], function (app) {
             maxParticipant: "2"
         };
 
+        // Define the allowed step for the time picker
         $scope.timePicker = {
             hstep: 1,
             mstep: 15,
             ismeridian: true
         };
 
+        // Validate the form. Make sure every field is properly filled
         $scope.formValidate = function(isValid){
             if($scope.createEventForm.$valid){
                 $scope.createEvent();
@@ -77,9 +80,14 @@ define(['app'], function (app) {
 
         };
 
+        // Validation of the location field
         $scope.locationValidation = function(){
+            // Make sure the input is stored and the stored location is the same
+            // as that in the input field
             if (!$scope.data.location || locationInputText != locationInput.value) {
                 $scope.createEventForm.$locationInvalid = true;
+                // if the location is not valid, clear the stored location for
+                // validation next time
                 $scope.data.location = '';
                 return false;
             } else {
@@ -87,6 +95,7 @@ define(['app'], function (app) {
             }
         }
 
+        // Make a date object in database using the date and time
         var genearteStartDate = function (startDate, startTime) {
             hour = startTime.getHours();
             minute = startTime.getMinutes();
@@ -111,11 +120,13 @@ define(['app'], function (app) {
                 new Date(clone_data.startTime)
             );
 
+            // Convert the duration to seconds
             clone_data.duration = parseInt(clone_data.duration.split(" ")[0]) * 60;
 
             clone_data = JSON.stringify(clone_data);
             eventService.createEvent(
                 clone_data,
+                // Go back to home page after creating an event
                 function (res) {
                     $location.path('/');
                 },
@@ -129,15 +140,21 @@ define(['app'], function (app) {
             )
         };
 
+        // Set the default zoom and location for the map when nothing is
+        // entered
         var mapOptions = {
             zoom: 15,
             center: new google.maps.LatLng(-37.7964, 144.9612),
             mapTypeId: 'roadmap'
         }
 
+
+        // Get the map element
         let map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        // Get the location input
         let locationInput = document.getElementById('locationInput');
         let locationInputText = locationInput.value;
+        // Define the search box for auto complete
         let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
 
         search.addListener('places_changed', function() {
@@ -175,9 +192,12 @@ define(['app'], function (app) {
                     title: place.name,
                     position: place.geometry.location
                 }));
+
+                // Store the location information and
                 $scope.data.location = place.name;
                 $scope.data.locationId = place.place_id;
                 locationInputText = locationInput.value;
+                // change the validation status
                 $scope.createEventForm.$locationInvalid = false;
                 $scope.$apply();
                 if (place.geometry.viewport) {
