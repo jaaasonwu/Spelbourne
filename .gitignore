@@ -40,8 +40,6 @@ jspm_packages
 .idea
 *.iml
 
-# runtime compiled css
-views/stylesheets/main.css
 
 # local dumped db
 dump/local
