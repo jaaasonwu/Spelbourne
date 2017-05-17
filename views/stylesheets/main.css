@@ -259,8 +259,12 @@ body > .navbar-default {
 .profileTitle {
   text-align: center; }
 
-.select2-selection {
-  min-width: 200px; }
+.ui-select-match {
+  border: 0 !important;
+  background: lightgrey !important;
+  color: black !important; }
+  .ui-select-match .ui-select-match-close {
+    border: 0 !important; }
 
 .profileEvents .card, .profileEvents .expired-card {
   border: 10px solid transparent; }

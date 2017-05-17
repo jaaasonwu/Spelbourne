@@ -16,7 +16,7 @@ requirejs.config({
         'angular-aria': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min",
         'angular-ui' : "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls",
         'fb-sdk': '//connect.facebook.net/en_US/sdk',
-        'select2': '/dependency/jquery/select2/js/select2.min'
+        'ui-select': '/dependency/angular/select'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -32,7 +32,7 @@ requirejs.config({
         'angular-sanitize': ['angular', 'angular-animate'],
         'angular-aria': ['angular'],
         'fb-sdk': [{exports: 'FB'}],
-        'select2': ['jQuery']
+        'ui-select': ['angular','angular-sanitize']
 
     },
     deps: ['app']
