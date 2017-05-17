@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
 $orange: rgba(244, 119, 15, 1);
 $light-orange: #FFAF6C;
 $black: rgba(0, 0, 0, 1);
@@ -9,17 +8,20 @@ $fade-blue: rgba(109, 152, 182, 0.28);
 $item-color: #EFEFEF;
 $google-blue: #4285f4;
 $facebook-blue: #3b579d;
+$light-grey: #f5f5f5;
 
 /* For showing the footer at the bottom */
 html, body {
     height: 100%;
 }
+
 #main {
     min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
+
 footer, .push {
     height: 50px; /* .push must be the same height as .footer */
 }
@@ -27,12 +29,14 @@ footer, .push {
 body {
     font: 14px "Titillium Web", "Lucida Grande", Helvetica, Arial, sans-serif;
     padding-top: 100px;
+    overflow-x: hidden;
     /*background-image: url("/images/women.jpg");*/
 }
 
 #backgroundImg img {
     width: 10px
 }
+
 
 .btn-search {
     width: 150px;
@@ -42,10 +46,6 @@ body {
 
 #createEventBtn {
     width: 150px;
-}
-
-#createBtn {
-    margin-top: 10px;
 }
 
 .btn {
@@ -61,10 +61,10 @@ body {
     width: 100%;
 }
 
+
 .collapse {
     min-height: 100px;
 }
-
 
 .eventList {
     padding-top: 10px;
@@ -126,8 +126,8 @@ body {
         font-size: 16px;
     }
     .errMsg {
-        font-size : 29px;
-        color : red;
+        font-size: 29px;
+        color: red;
         font-weight: bold;
     }
 
@@ -140,7 +140,7 @@ body {
         margin-right: 10px;
     }
     .googleSignIn {
-        color : white;
+        color: white;
         font-size: 16px;
         font-weight: normal;
         background-color: $google-blue;
@@ -151,13 +151,13 @@ body {
         width: 125px;
         height: 46px;
         text-align: left;
-        .googleBrand{
+        .googleBrand {
             margin-right: 6px;
         }
     }
 
-    .facebookSignIn{
-        color : white;
+    .facebookSignIn {
+        color: white;
         font-weight: normal;
         font-size: 16px;
         background-color: $facebook-blue;
@@ -168,7 +168,7 @@ body {
         width: 125px;
         height: 46px;
         text-align: left;
-        .facebookBrand{
+        .facebookBrand {
             width: 40px;
             padding-left: 3px;
             margin-right: 3px;
@@ -176,25 +176,28 @@ body {
     }
 }
 
-.plainAnchor{
-    color: inherit;
-    text-decoration: none;
-}
-.plainAnchor:hover{
-    color: inherit;
-    text-decoration: none;
-}
-.plainAnchor:visited{
-    color: inherit;
-    text-decoration: none;
-}
-.plainAnchor:focus{
+.plainAnchor {
     color: inherit;
     text-decoration: none;
 }
 
-.loginButtonArea{
-    .btn-signIn{
+.plainAnchor:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.plainAnchor:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.plainAnchor:focus {
+    color: inherit;
+    text-decoration: none;
+}
+
+.loginButtonArea {
+    .btn-signIn {
         background-color: $light-orange;
         color: black;
         width: 120px;
@@ -205,7 +208,7 @@ body {
     padding-bottom: 10px;
 }
 
-.navbar-default {
+body > .navbar-default {
     margin-bottom: 0;
     background-color: $orange;
     border: 0;
@@ -215,7 +218,7 @@ body {
     .logoImg {
         height: 88px;
         width: 88px;
-        transition:all cubic-bezier(0.4, 0.460, 0.450, 0.940) 0.5s;
+        transition: all cubic-bezier(0.4, 0.460, 0.450, 0.940) 0.5s;
         left: 10%;
         position: absolute;
     }
@@ -235,17 +238,15 @@ body {
     .navbar-right {
         position: absolute;
         right: 5%;
-        >li > a {
+        > li > a {
             color: $black;
             font-size: 20px;
         }
     }
 
     .navbar-brand-centered {
-        position: absolute;
-        left: 40%;
-        display: block;
-        width: 300px;
+        margin: 0 auto;
+        width: 100%;
         min-height: 100px;
         text-align: center;
         font-size: 55px;
@@ -282,12 +283,18 @@ body {
     }
 
     @media screen and (max-width: 800px) {
-      .navbar-brand-centered{
-        visibility: hidden;
-      }
+        .navbar-brand-centered {
+            visibility: hidden;
+        }
     }
 }
 
+.carousel-inner {
+    background: url("/images/banner.jpg") no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    height: 250px;
+}
 
 .welcomeTitle {
     vertical-align: middle;
@@ -300,26 +307,23 @@ body {
     margin-bottom: 0px;
     // bottom: 100%;
 }
+
 .welcome-panel {
     .card {
         background-color: $white;
-        //height: 180px;
-        //width: 400px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         transition: 0.05s;
         border-radius: 10px;
         border: 10px solid transparent;
-        // transition:all cubic-bezier(0.4, 0.460, 0.450, 0.940) 0.5s;
     }
 
     .cardBox {
-        //height: 180px;
-        //width: 400px;
-        padding: 15px;
-        .card-block {
-            //height: 150px;
-            //width: 275px;
+        h4, p, span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+        padding: 15px;
         .sports-icon {
             height: 30px;
             width: 30px;
@@ -342,9 +346,40 @@ body {
     }
 }
 
+.profileTitle {
+    text-align: center;
+}
+
+.profileEvents {
+    @extend .welcome-panel;
+
+    .card {
+        // width: 17em;
+        border: 10px solid transparent;
+    }
+
+    .cardBox {
+        padding: 10px;
+        .card-text {
+            height: 180px;
+            font-size: 19px;
+        }
+
+        .card-title {
+            font-size: 19px;
+        }
+    }
+
+    .expired-card {
+        @extend .card;
+        background-color: $light-grey;
+    }
+}
+
 .grow {
     transition: all .2s ease-in-out;
 }
+
 .grow:hover {
     transform: scale(1.1);
 }
@@ -355,8 +390,11 @@ body {
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
+
 #showEvent {
     @extend .eventBox;
+    padding-top: 20px;
+    font-size: 1.4em;
     .eventName {
         font-weight: bold;
     }
@@ -366,6 +404,7 @@ body {
     }
 
 }
+
 .eventDesImg {
     height: 100px;
     width: 100px;
@@ -387,93 +426,51 @@ body {
 
 #map {
     height: 300px;
-    margin-right: 15px;
-    margin-left: 15px;
+    padding-right: 10px;
 }
 
 .invalidInput {
     color: red;
 }
 
-#myEventsList {
-    .card {
-        margin: 10px 10px;
-        font-size: 1em;
-        overflow: hidden;
-        display: inline-block;
-        float:left;
-        padding: 0;
-        border: none;
-        height:25em;
-        border-radius: .2857429rem;
-        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+#profileSidebar{
+    .sidebar-nav .navbar .navbar-collapse {
+        padding-top: 3em;
+        max-height: none;
     }
 
-    .card-block {
-        font-size: 1em;
-        position: relative;
-        margin: 0;
-        padding: 1em;
-        border: none;
-        border-top: 1px solid rgba(34, 36, 38, .1);
-        box-shadow: none;
-    }
-
-    .card-img-top {
+    .sidebar-nav .navbar ul {
+        float: none;
         display: block;
-        width: 50%;
-        height: auto;
-    }
-    #eventImg {
-        height: 15em;
-        width: 10em;
-    }
-    .card-title {
-        font-size: 1.28571429em;
-        font-weight: 700;
-        line-height: 1.2857em;
     }
 
-    .card-text {
-        clear: both;
-        margin-top: .5em;
-        color: rgba(0, 0, 0, .68);
-    }
-    #scrolly{
-        width: 70em;
-        height: 50em;
-        overflow: auto;
-        overflow-y: hidden;
-        margin: 0 auto;
-        white-space: nowrap;
-
-    }
-    .card-footer {
-        font-size: 1em;
-        position: static;
-        top: 0;
-        left: 0;
-        max-width: 100%;
-        padding: .75em 1em;
-        color: rgba(0, 0, 0, .4);
-        border-top: 1px solid rgba(0, 0, 0, .05) !important;
-        background: #fff;
+    .sidebar-nav .navbar li {
+        float: none;
+        display: block;
     }
 
-
-    .meta {
-        font-size: 1em;
-        color: rgba(0, 0, 0, .4);
+    .sidebar-nav .navbar li a {
+        padding-top: 1em;
+        padding-bottom: 1em;
     }
 
-    .meta a {
-        text-decoration: none;
-        color: rgba(0, 0, 0, .4);
+    ul li a:hover, ul li a:focus {
+        opacity: 0.6;
+        background-color: $orange;
+    }
+    .selected {
+        opacity: 0.6;
+        background-color: $fade-blue;
     }
 
-    .meta a:hover {
-        color: rgba(0, 0, 0, .87);
+    .unselected {
+        background-color: transparent;
     }
+
+}
+
+#addProfileInfoButton {
+    width: 150px;
 }
 
 .alert {
@@ -489,6 +486,10 @@ body {
     padding-bottom: 0;
 }
 
+#createBtn {
+     margin-top: 10px;
+ }
+
 .join-btn-disabled {
     @extend .btn-fb;
     background-color: grey;
@@ -499,6 +500,7 @@ body {
     width: 30px;
     height: 30px
 }
+
 
 footer {
     padding: 10px;
