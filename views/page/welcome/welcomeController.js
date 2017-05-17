@@ -7,10 +7,8 @@ define(['app', 'angular-filter'], function (app) {
                 // success callback
                 function (res) {
                     events = res.data;
-                    // $scope.events = res.data.slice(0, 6);
                     events.forEach(function (event) {
                         startDate = new Date(event.startDate);
-
                         event.startDate = startDate.toLocaleDateString();
                         event.startTime = startDate.toLocaleTimeString();
                         eventService.getIcon(
@@ -75,7 +73,5 @@ define(['app', 'angular-filter'], function (app) {
                     }
                 )
             }
-
-
         }]);
 });
