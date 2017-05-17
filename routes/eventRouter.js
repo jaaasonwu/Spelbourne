@@ -1,3 +1,5 @@
+// Define the APIs for operations regarding to events.
+
 const express = require('express');
 const route = express.Router();
 // Import the services of the database
@@ -7,7 +9,6 @@ route.post('/createEvent', function(req, res) {
     // Check if the user is logged in
     if (req.isAuthenticated()) {
         let e = req.body;
-        console.log(e);
         organizerID = req.user._id;
         createEventDate = new Date();
         startDate = new Date(e.startDate);
@@ -39,24 +40,6 @@ route.post('/joinEvent', function(req, res) {
     } else {
         res.status(401).end();
     }
-});
-
-route.get('/deleteEvent/:eventID',function(req,res){
-    let eventID = req.params.eventID;
-    if (req.isAuthenticated()){
-        eventService.deleteEvent(eventID, function (err) {
-            if (err) {
-
-                res.status(500).send(err);
-                return;
-            }
-            res.end();
-        });
-    }
-    else{
-        res.status(401).json({success: false, msg: '401'});
-    }
-
 });
 
 // Get a single event by id

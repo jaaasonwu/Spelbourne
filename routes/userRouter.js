@@ -14,7 +14,7 @@ route.get('/getUserProfile/:userID', function(req, res) {
     });
 });
 route.post('/updateUserProfile/', function(req, res) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user._id == e[0]._id) {
         let e = req.body;
 
         // Only allow user to modify the following field
