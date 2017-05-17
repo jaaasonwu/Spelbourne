@@ -16,16 +16,17 @@ route.get('/getUserProfile/:userID', function(req, res) {
 route.post('/updateUserProfile/', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;
-        console.log(e);
+
+        // Only allow user to modify the following field
         const increment = {
             name: e[0].name,
             imagePath: e[0].imagePath,
-            phone:e[0].phone,
-            postCode:e[0].postCode,
-            interests:e[0].interests
+            phone: e[0].phone,
+            postCode: e[0].postCode,
+            interests: e[0].interests
 
         };
-        /*e.postcode, e.interests*/
+
         userProfileService.updateProfile(e[0]._id, increment, function (err) {
             if (err) {
                 res.status(500).send(err);

@@ -38,12 +38,6 @@ define(['angularAMD'], function () {
             );
         };
 
-        var updateEvent = function(data, success, failure) {
-            $http.post('/event/updateEvent', data).then(
-                success,
-                failure
-            );
-        };
         var deleteEvent = function(eventID, success,failure) {
             $http.get('/event/deleteEvent/' + eventID).then(
                 success,
