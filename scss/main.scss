@@ -208,7 +208,7 @@ body {
     padding-bottom: 10px;
 }
 
-body > .navbar-default {
+.navbar-default {
     margin-bottom: 0;
     background-color: $orange;
     border: 0;
@@ -431,11 +431,6 @@ body > .navbar-default {
 
 .invalidInput {
     color: red;
-}
-
-#navigation {
-    background-color: white;
-    float: left;
 }
 
 #profileSidebar{
