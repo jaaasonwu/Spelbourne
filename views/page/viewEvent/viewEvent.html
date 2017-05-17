@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" id="event">
         <h1 id="eventName"> {{event.type}} </h1>
-        <div class="jumbotron" id="showEvent">
+        <div id="showEvent">
             <div class="container">
                 <div ng-show="error" class="alert alert-warning">
                     {{error}}
@@ -10,7 +10,7 @@
                     {{success}}
                 </div>
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6 col-md-offset-1">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="eventDes">Sport Type: </p>
@@ -101,22 +101,22 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="row">
+                            <button class="btn btn-lg btn-search" ng-show="!isJoined" ng-click="joinEvent()">Join Event</button>
+                            <button class="btn btn-lg join-btn-disabled" ng-show="isJoined" ng-disabled="true">Joined</button>
+                            <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
+                                <img class="fb-img" src="../../images/FB-Logo-white.png">Share
+                            </button>
+                            <a href="/result" class="plainAnchor">
+                                <button class="btn btn-lg btn-splbourne">More Events</button>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div id="map" class="col-md-12"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <button class="btn btn-lg btn-search" ng-show="!isJoined" ng-click="joinEvent()">Join Event</button>
-        <button class="btn btn-lg join-btn-disabled" ng-show="isJoined" ng-disabled="true">Joined</button>
-        <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
-            <img class="fb-img" src="../../images/FB-Logo-white.png">Share
-        </button>
-        <a href="/result" class="plainAnchor">
-            <button class="btn btn-lg btn-splbourne">More Events</button>
-        </a>
     </div>
 </div>
