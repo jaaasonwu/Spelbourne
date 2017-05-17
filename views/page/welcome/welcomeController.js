@@ -6,7 +6,7 @@ define(['app', 'angular-filter'], function (app) {
         eventService.getEventList(
             // success callback
             function (res) {
-                $scope.events = res.data.slice(0, 6);
+                $scope.events = res.data;
                 $scope.events.forEach(function(event) {
                     startDate = new Date(event.startDate);
 
@@ -23,7 +23,8 @@ define(['app', 'angular-filter'], function (app) {
             // failure callback
             function (res) {
                 console.log(res.data.msg[0]);
-            }
+            },
+            6
         );
         $scope.viewEvent = function (event) {
             $location.path("/viewEvent/" + event._id);
