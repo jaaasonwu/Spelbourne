@@ -89,9 +89,12 @@
                                 <label for="interests">Interests: </label>
                             </div>
                             <div class="col-sm-9">
-                                <select multiple  id="interests" ng-options="sport.code as sport.name for sport in sports"  ng-model="userData.interests" >
-                                    <option style="display:none" value="" placeholder="Add some of your interests"></option>
-                                </select>
+                                <ui-select ng-model="userData.interests" multiple theme="selectize">
+                                    <ui-select-match>{{$item}}</ui-select-match>
+                                    <ui-select-choices repeat="item in sports | filter: $select.search">
+                                        <div ng-bind-html="item | highlight: $select.search"></div>
+                                    </ui-select-choices>
+                                </ui-select>
                             </div>
                         </div>
                         <button  ng-click="updateProfile()"  class="btn btn-lg btn-search" ng-disabled="updateForm.$invalid"> Submit

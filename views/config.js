@@ -16,7 +16,7 @@ requirejs.config({
         'angular-sanitize': "/dependency/angular/angular-sanitize.min",
         'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3",
         'fb-sdk': '//connect.facebook.net/en_US/sdk',
-        'select2': '/dependency/jquery/select2/js/select2.min'
+        'ui-select': '/dependency/angular/select'
 
     },
     shim: {
@@ -33,7 +33,7 @@ requirejs.config({
         'angular-sanitize': ['angular', 'angular-animate'],
         'angular-aria': ['angular'],
         'fb-sdk': [{exports: 'FB'}],
-        'select2': ['jQuery']
+        'ui-select': ['angular','angular-sanitize']
 
     },
     deps: ['app']

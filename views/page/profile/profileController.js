@@ -11,13 +11,6 @@ define(['app'], function (app) {
             // phone number pattern
             $scope.phonePattern = '\\+?[\\d]*';
 
-            angular.element(document).ready(
-                function () {
-                    $("#interests").select2();
-                    $("#regions").select2();
-                }
-            );
-
             $scope.error = "";
             $scope.success = "";
 
@@ -36,12 +29,12 @@ define(['app'], function (app) {
             };
 
             $scope.sports = [
-                {"name":"Swimming","code":"Swimming"},
-                {"name":"Tennis","code":"Tennis"},
-                {"name":"Soccer","code":"Soccer"},
-                {"name":"Golf","code":"Golf"},
-                {"name":"Basketball","code":"Basketball"},
-                {"name":"Running","code":"Running"},
+                "Swimming",
+                "Tennis",
+                "Soccer",
+                "Golf",
+                "Basketball",
+                "Running",
             ]
 
             $scope.events = [];

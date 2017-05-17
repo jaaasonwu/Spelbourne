@@ -12,13 +12,14 @@ var imports = [
     'services/userService',
     'filter/resultFilters',
     'fb-sdk',
-    'select2'
+    'ui-select'
 ];
 
 var dependencies = [
     'ngRoute',
     'ngAnimate',
     'ngSanitize',
+    'ui.select',
     'ui.bootstrap',
     'ngMaterial',
     'adminService',
