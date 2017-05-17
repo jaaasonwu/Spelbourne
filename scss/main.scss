@@ -71,6 +71,9 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: $item-color;
+    p {
+        margin-left: 10px;
+    }
 
     .eventBody {
         margin: 10px;
