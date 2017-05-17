@@ -4,18 +4,44 @@ define(['app'], function (app) {
         function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService) {
             //prevent access by unauthorized
 
-            if($rootScope.username == null || !$rootScope.username){
+            if ($rootScope.username == null || !$rootScope.username) {
                 $location.path('/');
             }
+
+            angular.element(document).ready(
+                function () {
+                    $("#interests").select2();
+                    $("#regions").select2();
+                }
+            );
+
+            $scope.error = "";
+            $scope.success = "";
+
             $scope.userID = $rootScope.userID;
+
+            // Init user data
+            $scope.userData = {
+                name: "",
+                phone: "",
+                interests: []
+            }
 
             $scope.profileModes = {
                 events:'eventsCase',
                 accountInfo:'accountInfoCase'
             };
 
-            $scope.events = [];
+            $scope.sports = [
+                {"name":"Swimming","code":"Swimming"},
+                {"name":"Tennis","code":"Tennis"},
+                {"name":"Soccer","code":"Soccer"},
+                {"name":"Golf","code":"Golf"},
+                {"name":"Basketball","code":"Basketball"},
+                {"name":"Running","code":"Running"},
+            ]
 
+            $scope.events = [];
 
             currentDate = new Date();
 
@@ -23,6 +49,12 @@ define(['app'], function (app) {
             userService.getUserProfile(
                 $rootScope.userID,
                 function(res) {
+                    $scope.userData.name = res.data.name;
+                    $scope.userData.phone = res.data.phone;
+                    $scope.userData.interests = res.data.interests;
+
+                    console.log($scope.userData);
+                    console.log(res.data);
                     res.data.events.forEach(function (eventID) {
                         eventService.getEvent(
                             eventID,
@@ -47,7 +79,7 @@ define(['app'], function (app) {
                                 } else {
                                     current_event.class = "card";
                                 }
-                                console.log(event);
+
                                 $scope.events.push(current_event);
                                 $scope.events.sort(function (event1, event2) {
                                     return event2.startDateTime -
@@ -76,17 +108,6 @@ define(['app'], function (app) {
 
             };
 
-
-            $scope.checkOrganizerClass = function(organizerID) {
-                if(organizerID == $rootScope.userID){
-                    return "timeline-inverted";
-                }
-                else{
-                    return "";
-                }
-
-            };
-
             $scope.getEventTextClass = function(event) {
                 //console.log(event.organizerID + ' and ' + $rootScope.userID);
                 if(event.organizerID == $scope.userID){
@@ -101,10 +122,25 @@ define(['app'], function (app) {
             //initialize view
             $scope.showEvents();
 
+            $scope.updateProfile = function(){
+                var clone_data = JSON.stringify($scope.userData);
+                console.log(clone_data);
+                userService.updateProfile(clone_data,
+                    function(res){
+                        $scope.success = "Succesfully updated profile";
+                    },
+                    function(res){
+                        $scope.error = "Error in profile update";
+                    }
+                );
+
+            };
+
             $scope.viewEvent = function (event) {
                 console.log(event._id);
                 $location.path("/viewEvent/" + event._id);
             };
 
-        }]);
+        }]
+    );
 });

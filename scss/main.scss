@@ -350,6 +350,10 @@ body > .navbar-default {
     text-align: center;
 }
 
+.select2-selection {
+    min-width: 200px;
+}
+
 .profileEvents {
     @extend .welcome-panel;
 

@@ -11,7 +11,8 @@ var imports = [
     'services/eventService',
     'services/userService',
     'filter/resultFilters',
-    'fb-sdk'
+    'fb-sdk',
+    'select2'
 ];
 
 var dependencies = [
