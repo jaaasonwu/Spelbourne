@@ -1,3 +1,4 @@
+// Define the APIs to link other accounts besides the account you sign up with
 const express = require('express');
 const route = express.Router();
 
