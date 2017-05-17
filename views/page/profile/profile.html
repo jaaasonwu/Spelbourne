@@ -22,74 +22,39 @@
             </div>
         </div>
     </div>
-    <div id="content" class="col-md-10">
+
+    <div class="col-md-10">
         <!--/active view -->
         <div class="container" ng-show="activeView =='eventsCase'" id="eventsContent">
-            <h2> Events </h2>
-            <div ng-if="eventCount==0">
-                <h3> You have no events to display</h3>
-            </div>
-            <a href="/result" class="plainAnchor">
-                <button class="btn btn-search btn-lg" type="button" id="findEventBtn">
-                    Find an Event
-                </button>
-            </a>
-            <a href="/createEvent" class="plainAnchor">
-                <button class="btn btn-lg" type="button" id="createEventBtn">
-                    Create Event
-                </button>
-            </a>
-
-            <div ng-repeat="event in events">
-                <div class="card" class="col-md-3">
-                    <div class="card-block">
-                        <img class="card-img-top" src="{{event.img}}">
-                        <h4 ng-class="getEventTextClass(event)">{{ event.sportType }}</h4>
-                        <h4 ng-class="getEventTextClass(event)"> {{'Skill level:' + event.skillLevel}}</h4>
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                        </button>
-                        <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
-                            <li><a ng-click="viewEvent(event)">View</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="viewEvent(event)">Edit</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="deleteEvent(event)">Delete</a></li>
-                        </ul>
-                        <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
-                            <li><a ng-click="viewEvent(event)">View</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="removeEvent(event)">Cancel</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-text">
-                        <p>{{'Start time:' + event.startTime }} </p>
-                        <p>{{'Location: ' + event.location}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="float-right">{{'Date ' + event.formatDate}}</span><br>
-                        <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
+            <h2 class="profileTitle"> Your Events </h2>
+            <div class="profileEvents">
+                <div class="card-deck">
+                    <div class="col-md-3 col-sm-12 grow" ng-repeat="event in events">
+                        <div class="cardBox " ng-click="viewEvent(event)">
+                            <div class="card-block" ng-class="event.class">
+                                <h3 class="card-title">
+                                    <img class="sports-icon" ng-src="{{event.img}}">{{event.sportType}}
+                                </h3>
+                                <div class="card-text">
+                                    <p> {{event.location}} </p>
+                                    <p> {{event.startDate}} </p>
+                                    <p> {{event.startTime}} </p>
+                                    <p ng-if="!event.expired"> {{event.timeLeft}} </p>
+                                    <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
+                                </div>
+                                <div class="card-footer">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
-                <h2> Account Information </h2>
+        <div class="container col-md-9" ng-show="activeView=='accountInfoCase'" id="accountInfoContent">
+                <h2> Your account </h2>
                 <div class="container">
                     <form role="form" name="createEventForm" novalidate>
-
-                    <div>
-                        <p class="userImage">Image: </p>
-                    </div>
-                    <div>
-                        <input type="file" id="file" name="file" accept="image"/>
-                    </div>
-                    <div>
-                        <img src="{{user.img}}">
-                    </div>
-
                     <div>
                         <p class="userName">Name: </p>
                     </div>
@@ -126,7 +91,6 @@
                     <button  ng-click="updateProfile()"  class="btn btn-lg btn-search"> Submit
                     </button>
                     </form>
-
                 </div>
 
         </div>
