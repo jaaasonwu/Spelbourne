@@ -70,6 +70,9 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: $item-color;
+    p {
+        margin-left: 10px;
+    }
 
     .eventBody {
         margin: 10px;
@@ -505,6 +508,9 @@ body > .navbar-default {
     height: 30px
 }
 
+.warning {
+    color: red;
+}
 
 footer {
     padding: 10px;
