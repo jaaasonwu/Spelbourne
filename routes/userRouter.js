@@ -1,7 +1,7 @@
+// Defines the APIs to get user profile
 const express = require('express');
 const route = express.Router();
 const userProfileService = require('../lib/user/userProfileService.js');
-
 
 route.get('/getUserProfile/:userID', function(req, res) {
     let userID = req.params.userID;

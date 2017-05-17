@@ -1,3 +1,4 @@
+// Defines all the routers that are being used
 const auth = require('./authRouter.js');
 const connect = require('./connectRouter.js');
 const unlink = require('./linkingRouter.js');

@@ -56,6 +56,7 @@ define(['app'], function (app) {
                             }
                         );
                     });
+                    // Sort the event according to start date
                     $scope.eventList.sort(function (a, b) {
                         if (a.startDate < b.startDate) {
                             return -1;
@@ -72,14 +73,12 @@ define(['app'], function (app) {
             );
 
             $scope.viewEvent = function (event) {
-                console.log(event._id);
                 $location.path("/viewEvent/" + event._id);
             };
 
             $scope.joinEvent = function (event) {
                 // Clone the data
                 var data = {"eventID": event._id}
-                console.log(data);
 
                 eventService.joinEvent(
                     data,

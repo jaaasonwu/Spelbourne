@@ -10,11 +10,14 @@ define(['app'], function (app) {
 
             $scope.ret = $routeParams.ret || '/';
             $scope.successCallback = function(res){
+                // Go back to the page you were on after logging in, or home
+                // page if you are not from any page
                 adminService.getAdmin(function(){
                     $location.path($scope.ret);
                 });
             };
             $scope.failureCallback = function(res) {
+                // Update the error message to show on the page if login failed
                 $scope.errMsg = res.data.msg[0];
             };
             $scope.logIn = adminService.logIn;
