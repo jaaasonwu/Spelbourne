@@ -19,8 +19,7 @@ define(['app'], function (app) {
                 events:'eventsCase',
                 accountInfo:'accountInfoCase'
             };
-
-            $scope.regions = [
+            $scope.sports = [
                 {"name":"Swimming","code":"SW"},
                 {"name":"Tennis","code":"TN"},
                 {"name":"Soccer","code":"SC"},
@@ -29,11 +28,13 @@ define(['app'], function (app) {
             ]
             $scope.interests;
             $scope.events = [];
+            $scope.userData = [];
             $scope.eventCount = 0;
             $scope.getProfileData = function(){
                 userService.getUserProfile(
                     $rootScope.userID,
                     function(res) {
+                        $scope.userData.push(res.data);
                         $scope.eventCount = res.data.events.length;
                         res.data.events.forEach(function (eventID) {
                             eventService.getEvent(
@@ -57,8 +58,7 @@ define(['app'], function (app) {
                 );
             };
             $scope.getProfileData();
-
-
+            $scope.userProfile = $scope.userData[0];
             $scope.showEvents = function(){
                 $scope.activeView = $scope.profileModes.events;
                 $scope.eventsSidebarSelect = "selected";
@@ -104,6 +104,19 @@ define(['app'], function (app) {
                     },
                     function (res) {
                         console.log(res);
+                    }
+                );
+
+            };
+            $scope.updateProfile = function(){
+                var clone_data = JSON.stringify($scope.userData);
+                console.log(clone_data);
+                userService.updateProfile(clone_data,
+                    function(res){
+                        console.log("succesfully updated profile")
+                    },
+                    function(res){
+                        console.log("error in profile update");
                     }
                 );
 

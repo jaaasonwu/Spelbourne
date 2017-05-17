@@ -13,5 +13,30 @@ route.get('/getUserProfile/:userID', function(req, res) {
         res.send(data);
     });
 });
+route.post('/updateUserProfile/', function(req, res) {
+    if (req.isAuthenticated()) {
+        let e = req.body;
+        console.log(e);
+        const increment = {
+            name: e[0].name,
+            imagePath: e[0].imagePath,
+            phone:e[0].phone,
+            postCode:e[0].postCode,
+            interests:e[0].interests
 
+        };
+        /*e.postcode, e.interests*/
+        userProfileService.updateProfile(e[0]._id, increment, function (err) {
+            if (err) {
+                res.status(500).send(err);
+            } else {
+                res.end();
+            }
+        });
+
+    } else {
+        // 401 means unauthorized
+        res.status(401).json({success: false, msg: '401'});
+    }
+});
 module.exports = route;

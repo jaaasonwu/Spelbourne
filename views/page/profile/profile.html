@@ -78,6 +78,8 @@
         <div ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
                 <h2> Account Information </h2>
                 <div class="container">
+                    <form role="form" name="createEventForm" novalidate>
+
                     <div>
                         <p class="userImage">Image: </p>
                     </div>
@@ -92,29 +94,39 @@
                         <p class="userName">Name: </p>
                     </div>
                     <div>
-                        <input ng-model="profileInfo.name" type="text" id="nameInput" name="nameInput"
+                        <input ng-model="userData[0].name" type="text" id="nameInput" name="name"
                                placeholder="Enter name">
                     </div>
                     <div>
                         <p class="phoneNumber">Phone number: </p>
                     </div>
                     <div>
-                        <input ng-model="profileInfo.phoneNumber" type="text" id="phoneNumberInput"
-                               name="phoneNumberInput"
+                        <input ng-model="userData[0].phone" type="text" id="phoneNumber"
+                               name="phoneNumber"
                                placeholder="Enter phone Number">
                     </div>
                     <div>
-                        <p class="phoneNumber">Interests: </p>
+                        <p class="postcode">Postcode: </p>
+                    </div>
+                    <div>
+                        <input ng-model="userData[0].postCode" type="text" id="postCode"
+                               name="phoneNumber" maxlength="4"
+                               placeholder="Enter VIC postcode">
+                    </div>
+                    <div>
+                        <p class="interests">Interests: </p>
                     </div>
                     <div >
-                        <select multiple  id="interests" ng-options="region.code as region.name for region in regions"  ng-model="interests" >
-                            <option style="display:none" value="">Add some interests</option>
+                        <select multiple  id="interests" ng-options="sport.code as sport.name for sport in sports"  ng-model="userData[0].interests" >
+                            <option style="display:none" value="" placeholder="Add some of your interests"></option>
                         </select>
                     </div>
 
                     <p>Interests Added: {{interests}}</p>
-                    <button class="btn btn-lg btn-search"> Submit
+                    <button  ng-click="updateProfile()"  class="btn btn-lg btn-search"> Submit
                     </button>
+                    </form>
+
                 </div>
 
         </div>

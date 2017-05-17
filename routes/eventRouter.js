@@ -6,6 +6,7 @@ route.post('/createEvent', function(req, res) {
 
     if (req.isAuthenticated()) {
         let e = req.body;
+        console.log(e);
         organizerID = req.user._id;
         createEventDate = new Date();
         startDate = new Date(e.startDate);
@@ -23,7 +24,6 @@ route.post('/createEvent', function(req, res) {
 route.post('/updateEvent', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;
-
         eventService.updateEvent(e.eventID, e.increment, function (err) {
             if (err) {
                 res.status(500).send(err);
@@ -41,7 +41,6 @@ route.post('/joinEvent', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;
         let eventID = e.eventID;
-        console.log(eventID);
         userID = req.user._id;
         eventService.joinEvent(eventID, userID, function (err) {
             if (err) {
@@ -58,7 +57,6 @@ route.post('/joinEvent', function(req, res) {
 
 route.get('/deleteEvent/:eventID',function(req,res){
     let eventID = req.params.eventID;
-
     if (req.isAuthenticated()){
         eventService.deleteEvent(eventID, function (err) {
             if (err) {
