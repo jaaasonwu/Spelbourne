@@ -113,6 +113,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Visibility:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.visibility}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
                             <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
                             <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
                             <button class="btn btn-lg btn-fb" ng-click='fbShare()'>

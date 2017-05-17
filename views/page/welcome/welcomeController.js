@@ -20,48 +20,8 @@ define(['app', 'angular-filter'], function (app) {
                             }
                         );
                     });
-                    /*
-                     * Get the recommendations
-                     * For user not logged in, we only the the first 6 events in the databases
-                     * For those who logged in, the preferred sports will be in first order
-                     */
                     if ($rootScope.userID) {
-                        userService.getUserProfile($rootScope.userID,
-                            // success callback
-                            function (res) {
-                                var pref = res.data;
-                                // if the user has some preference
-                                if (pref.interests && pref.interests !== []) {
-                                    var interested = [];
-                                    var notInterested = [];
-                                    // classify the events
-                                    events.forEach(function (e) {
-                                        if (pref.interests.indexOf(e.sportType) >= 0) {
-                                            interested.push(e);
-                                        } else {
-                                            notInterested.push(e);
-                                        }
-                                    });
-                                    console.log(events)
-                                    console.log(interested)
-                                    console.log(notInterested)
-                                    // make the event list
-                                    if (interested.length < 6) {
-                                        $scope.events = interested.concat(notInterested.slice(0, 6 - interested.length));
-                                    } else {
-                                        $scope.events = interested.slice(0, 6);
-                                    }
-                                } else {
-                                    // if no preference
-                                    $scope.events = events.slice(0, 6);
-                                }
-                            },
-                            // failure callback
-                            function (res) {
-                                console.log(res);
-                                $scope.events = events.slice(0, 6);
-                            }
-                        )
+                        recommend();
                     } else {
                         $scope.events = events.slice(0, 6);
                     }
@@ -74,6 +34,47 @@ define(['app', 'angular-filter'], function (app) {
             $scope.viewEvent = function (event) {
                 $location.path("/viewEvent/" + event._id);
             };
+
+            /*
+             * Get the recommendations
+             * For user not logged in, we only the the first 6 events in the databases
+             * For those who logged in, the preferred sports will be in first order
+             */
+            function recommend(){
+                userService.getUserProfile($rootScope.userID,
+                    // success callback
+                    function (res) {
+                        var pref = res.data;
+                        // if the user has some preference
+                        if (pref.interests && pref.interests !== []) {
+                            var interested = [];
+                            var notInterested = [];
+                            // classify the events
+                            events.forEach(function (e) {
+                                if (pref.interests.indexOf(e.sportType) >= 0) {
+                                    interested.push(e);
+                                } else {
+                                    notInterested.push(e);
+                                }
+                            });
+                            // make the event list
+                            if (interested.length < 6) {
+                                $scope.events = interested.concat(notInterested.slice(0, 6 - interested.length));
+                            } else {
+                                $scope.events = interested.slice(0, 6);
+                            }
+                        } else {
+                            // if no preference
+                            $scope.events = events.slice(0, 6);
+                        }
+                    },
+                    // failure callback
+                    function (res) {
+                        console.log(res);
+                        $scope.events = events.slice(0, 6);
+                    }
+                )
+            }
 
 
         }]);
