@@ -16,8 +16,10 @@ define(['angularAMD'], function () {
             );
         };
 
-        var getEventList = function (success, failure) {
-            $http.get('/event/getEventList').then(
+        var getEventList = function (success, failure, numEvents) {
+            var query;
+            numEvents == undefined ? query = '' : query = '?numEvents=' + numEvents;
+            $http.get('/event/getEventList' + query).then(
                 success,
                 failure
             );

@@ -44,6 +44,10 @@ body {
     width: 150px;
 }
 
+#createBtn {
+    margin-top: 10px;
+}
+
 .btn {
     color: black;
 }
@@ -383,7 +387,8 @@ body {
 
 #map {
     height: 300px;
-    padding-right: 10px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
 .invalidInput {
