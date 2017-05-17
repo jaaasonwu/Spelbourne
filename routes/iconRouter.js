@@ -1,3 +1,5 @@
+// Define the APIs for getting the paths of icons
+
 const express = require('express');
 const route = express.Router();
 const icon = require('../lib/icon/iconService');

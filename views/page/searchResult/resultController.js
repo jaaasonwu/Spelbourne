@@ -73,14 +73,12 @@ define(['app'], function (app) {
             );
 
             $scope.viewEvent = function (event) {
-                console.log(event._id);
                 $location.path("/viewEvent/" + event._id);
             };
 
             $scope.joinEvent = function (event) {
                 // Clone the data
                 var data = {"eventID": event._id}
-                console.log(data);
 
                 eventService.joinEvent(
                     data,
