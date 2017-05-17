@@ -6,6 +6,7 @@ define(['app'], function (app) {
                 $location.path('/');
             }
             $scope.ret = $routeParams.ret || '/';
+            // Dummy profile
             $scope.profile = {
                 phone: "1234",
                 imagePath: "img/",
