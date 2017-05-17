@@ -20,12 +20,16 @@ define(['app'], function (app) {
                 accountInfo:'accountInfoCase'
             };
             $scope.sports = [
-                {"name":"Swimming","code":"SW"},
-                {"name":"Tennis","code":"TN"},
-                {"name":"Soccer","code":"SC"},
-                {"name":"Golf","code":"GL"},
-                {"name":"Basketball","code":"BB"}
+                {"name":"Swimming","code":"Swimming"},
+                {"name":"Tennis","code":"Tennis"},
+                {"name":"Soccer","code":"Soccer"},
+                {"name":"Golf","code":"Golf"},
+                {"name":"Basketball","code":"Basketball"},
+                {"name":"Running","code":"Running"},
+
+
             ]
+
             $scope.interests;
             $scope.events = [];
             $scope.userData = [];
