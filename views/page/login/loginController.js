@@ -9,6 +9,10 @@ define(['app'], function (app) {
             $scope.facebook = adminService.facebook;
 
             $scope.ret = $routeParams.ret || '/';
+            // Should not be return to login and signUp anymore
+            if ($scope.ret === '/login' || $scope.ret === '/signup') {
+                $scope.ret = '/';
+            }
             $scope.successCallback = function(res){
                 // Go back to the page you were on after logging in, or home
                 // page if you are not from any page

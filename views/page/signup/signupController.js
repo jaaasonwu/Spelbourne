@@ -6,6 +6,10 @@ define(['app'], function (app) {
                 $location.path('/');
             }
             $scope.ret = $routeParams.ret || '/';
+            // Should not be return to login and signUp anymore
+            if ($scope.ret === '/login' || $scope.ret === '/signup') {
+                $scope.ret = '/';
+            }
             // Dummy profile
             $scope.profile = {
                 phone: "",
