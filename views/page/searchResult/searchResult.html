@@ -30,6 +30,7 @@
 <!--Events Area-->
 <div class="eventList">
     <div class="container">
+        <p>Sorted By: Date</p>
         <div ng-repeat="event in eventList | resultFilter:typeSelect:dateSelect:skillSelect">
             <div class="row eventBody">
                 <div class="col-md-2 col-sm-2"><img class="eventImg" src="{{event.img}}"></div>

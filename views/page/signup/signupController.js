@@ -8,9 +8,9 @@ define(['app'], function (app) {
             $scope.ret = $routeParams.ret || '/';
             // Dummy profile
             $scope.profile = {
-                phone: "1234",
-                imagePath: "img/",
-                name: "YOLO"
+                phone: "",
+                imagePath: "",
+                name: ""
             };
             $scope.successCallback = function(res) {
                 adminService.getAdmin(function () {
