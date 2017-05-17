@@ -1,3 +1,7 @@
+/*
+ * This filter is used to filter the event in the search result page
+ */
+
 define(['angularAMD'],function (angularAMD) {
     angularAMD.filter('resultFilter', function() {
         return function(items, type, date, skill) {
