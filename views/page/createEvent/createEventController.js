@@ -166,7 +166,6 @@ define(['app'], function (app) {
         });
 
         search.addListener('place_changed', function() {
-            console.log("Enter");
             let place = search.getPlace();
 
             if (place.length == 0) {

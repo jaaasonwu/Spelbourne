@@ -28,7 +28,6 @@ route.post('/joinEvent', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;
         let eventID = e.eventID;
-        console.log(eventID);
         userID = req.user._id;
         eventService.joinEvent(eventID, userID, function (err) {
             if (err) {
