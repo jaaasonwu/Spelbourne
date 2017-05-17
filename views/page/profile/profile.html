@@ -1,100 +1,43 @@
-<div id="profilePage">
-    <div class="col-md-2" id="profileSidebar" >
-        <div class="sidebar-nav">
-            <div class="navbar navbar-default" role="navigation">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target=".sidebar-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Profile</a>
-                    <span class="visible-xs navbar-brand"></span>
+<div id="userProfile">
+    <div  class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a ng-click="home()">Home</a></li>
+            <li class="active">My profile</li>
+        </ol>
+
+    </div>
+    <div id="eventsContent">
+        <div id="myEventsList">
+            <div id="allEvents" class="container-fluid">
+                <br>
+                <h3>My Events</h3>
+                <ul>
+                <p ng-bind="eventsMessage"></p>
+                <div id='scrolly'>
+                    <div ng-repeat="event in events">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+                            <div class="card">
+                                <div class="card-block">
+                                    <img class="card-img-top" src="{{event.img}}">
+                                    <h4 class="card-title">{{ event.sportType + ' for '+
+                                        event.skillLevel + ' skill level'}}</h4>
+                                    <button class="btn btn-secondary float-right btn-sm" ng-click="viewEvent(event)">
+                                        view</button>
+                                </div>
+                                <div class="card-text">
+                                    <p>{{'Start time:' + event.startTime }} </p>
+                                    <p>{{'Location: ' + event.location}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <span class="float-right">{{'Date ' + event.formatDate}}</span><br>
+                                    <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a ng-class="eventsSidebarSelect" ng-click="showEvents()"> Events </a></li>
-                        <li><a ng-class="accountSidebarSelect" ng-click="showAccount()"> Account Information </a></li>
-                        </ul>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
-    <div id="content" class="col-md-10">
-        <!--/active view -->
-        <div class="container" ng-show="activeView =='eventsCase'" id="eventsContent">
-            <h2> Events </h2>
-            <div ng-repeat="event in events">
-                <div class="card" class="col-md-3">
-                    <div class="card-block">
-                        <img class="card-img-top" src="{{event.img}}">
-                        <h4 ng-class="getEventTextClass(event)">{{ event.sportType }}</h4>
-                        <h4 ng-class="getEventTextClass(event)"> {{'Skill level:' + event.skillLevel}}</h4>
-                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
-                                data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                        </button>
-                        <ul ng-if="(event.organizerID==userID)" class="dropdown-menu" role="menu">
-                            <li><a ng-click="viewEvent(event)">View</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="editEvent(event)">Edit</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="removeEvent(event)">Delete</a></li>
-                        </ul>
-                        <ul ng-if="(event.organizerID!=userID)" class="dropdown-menu" role="menu">
-                            <li><a ng-click="viewEvent(event)">View</a></li>
-                            <li class="divider"></li>
-                            <li><a ng-click="removeEvent(event)">Cancel</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-text">
-                        <p>{{'Start time:' + event.startTime }} </p>
-                        <p>{{'Location: ' + event.location}}</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="float-right">{{'Date ' + event.formatDate}}</span><br>
-                        <span><i class=""></i>{{event.participants.length+ ' participants'}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
-                <h2> Account Information </h2>
-                <div class="container">
-                    <div>
-                        <p class="userImage">Image: </p>
-                    </div>
-                    <div>
-                        <input type="file" id="file" name="file" accept="image"/>
-                    </div>
-                    <div>
-                        <img src="{{user.img}}">
-                    </div>
-
-                    <div>
-                        <p class="userName">Name: </p>
-                    </div>
-                    <div>
-                        <input ng-model="profileInfo.name" type="text" id="nameInput" name="nameInput"
-                               placeholder="Enter name">
-                    </div>
-                    <div>
-                        <p class="phoneNumber">Phone number: </p>
-                    </div>
-                    <div>
-                        <input ng-model="profileInfo.phoneNumber" type="text" id="phoneNumberInput"
-                               name="phoneNumberInput"
-                               placeholder="Enter phone Number">
-                    </div>
-
-                    <button class="btn btn-lg btn-search"> Submit
-                    </button>
-                </div>
-
-        </div>
-    </div>
-
 </div>

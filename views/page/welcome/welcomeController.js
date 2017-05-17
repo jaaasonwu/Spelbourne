@@ -27,12 +27,51 @@ define(['app', 'angular-filter'], function (app) {
                 console.log(res.data.msg[0]);
             }
         );
+
         $scope.viewEvent = function (event) {
             console.log(event._id);
 
             $location.path("/viewEvent/" + event._id);
         };
 
+        $scope.events = [
+            {
+                sport: "Tennis",
+                location: "Melbourne park",
+                time: "7 am",
+                icon: "images/sportsicon/tennisball.svg"
+            },
+            {
+                sport: "Swimming",
+                location: "Melbourne park",
+                time: "7 am",
+                icon: "images/sportsicon/swimming.svg"
 
+            },
+            {
+                sport: "Golf",
+                location: "Melbourne park",
+                time: "7 am",
+                icon: "images/sportsicon/golf.svg"
+            },
+            {
+                sport: "Running",
+                location: "Melbourne park",
+                time: "7 am",
+                icon: "images/sportsicon/running.svg"
+            },
+            {
+                sport: "Tennis",
+                location: "Melbourne park",
+                time: "7 am",
+                icon: "images/sportsicon/tennisball.svg"
+            },
+            {
+               sport: "BasketBall",
+               location: "Lygon Street",
+               time: "8 pm",
+               icon: "images/sportsicon/basketball.svg"
+           }
+        ];
     }]);
 });
