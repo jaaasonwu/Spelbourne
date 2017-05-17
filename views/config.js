@@ -15,7 +15,7 @@ requirejs.config({
         'angular-aria': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min",
         'angular-ui' : "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls",
         'fb-sdk': '//connect.facebook.net/en_US/sdk',
-        'select2': 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/en'
+        'select2': '//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2'
     },
     shim: {
         'angular' : {'exports' : 'angular'},
