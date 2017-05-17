@@ -491,6 +491,10 @@ body > .navbar-default {
     padding-bottom: 0;
 }
 
+#createBtn {
+     margin-top: 10px;
+ }
+
 .join-btn-disabled {
     @extend .btn-fb;
     background-color: grey;
