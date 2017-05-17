@@ -26,7 +26,7 @@
     <div class="col-md-10">
         <!--/active view -->
         <div class="container" ng-show="activeView =='eventsCase'" id="eventsContent">
-            <h2> Your Events </h2>
+            <h2 class="profileTitle"> Your Events </h2>
             <div class="profileEvents">
                 <div class="card-deck">
                     <div class="col-md-3 col-sm-12 grow" ng-repeat="event in events">
@@ -51,18 +51,9 @@
             </div>
         </div>
 
-        <div ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
-                <h2> Account Information </h2>
+        <div class="container" ng-show="activeView=='accountInfoCase'" id="accountInfoContent" class="col-md-9">
+                <h2 class=profileTitle> Your Account </h2>
                 <div class="container">
-                    <div>
-                        <p class="userImage">Image: </p>
-                    </div>
-                    <div>
-                        <input type="file" id="file" name="file" accept="image"/>
-                    </div>
-                    <div>
-                        <img src="{{user.img}}">
-                    </div>
 
                     <div>
                         <p class="userName">Name: </p>

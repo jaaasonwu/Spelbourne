@@ -338,6 +338,10 @@ body > .navbar-default {
     }
 }
 
+.profileTitle {
+    text-align: center;
+}
+
 .profileEvents {
     @extend .welcome-panel;
 
