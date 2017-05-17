@@ -1,10 +1,9 @@
 define(['app'], function (app) {
     app.controller('profileController',
-        ['$scope', '$http', '$location', '$rootScope','$routeParams','userService','eventService',
-        function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService) {
+        ['$scope', '$http', '$location', '$rootScope','$routeParams','userService','eventService', 'adminService',
+        function ($scope, $http, $location,$rootScope ,$routeParams, userService, eventService, adminService) {
             //prevent access by unauthorized
-
-            if($rootScope.username == null || !$rootScope.username){
+            if(!$rootScope.username){
                 $location.path('/');
             }
             angular.element(document).ready(
@@ -119,6 +118,7 @@ define(['app'], function (app) {
                         console.log("error in profile update");
                     }
                 );
+
 
             };
             $scope.viewEvent = function (event) {

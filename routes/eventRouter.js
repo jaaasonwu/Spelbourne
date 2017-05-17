@@ -21,22 +21,6 @@ route.post('/createEvent', function(req, res) {
     }
 });
 
-route.post('/updateEvent', function(req, res) {
-    if (req.isAuthenticated()) {
-        let e = req.body;
-        eventService.updateEvent(e.eventID, e.increment, function (err) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.end();
-            }
-        });
-    } else {
-        // 401 means unauthorized
-        res.status(401).json({success: false, msg: '401'});
-    }
-});
-
 route.post('/joinEvent', function(req, res) {
     if (req.isAuthenticated()) {
         let e = req.body;
@@ -86,11 +70,26 @@ route.get('/getEvent/:eventID', function(req, res) {
 
 route.get('/getEventList', function(req, res) {
     eventService.getEventList(function (err, data) {
-        if (err) {
+        if (!err) {
+            let currTime= new Date();
+            let result = [];
+            let numEvents = req.query['numEvents'];
+
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].startDate > currTime && data[i].visibility == 'Public') {
+                    result.push(data[i]);
+                }
+                if (numEvents != undefined) {
+                    if (result.length >= numEvents) {
+                        res.send(result);
+                        return;
+                    }
+                }
+            }
+            res.send(result);
+        } else {
             res.status(500).send("No such event");
-            return;
         }
-        res.send(data);
     });
 });
 
