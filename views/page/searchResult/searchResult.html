@@ -1,3 +1,4 @@
+<!--Filter Area-->
 <div class="filter row form-group">
     <div id="searchResult" class="container">
         <div class="col-md-4 col-sm-4">
@@ -10,7 +11,7 @@
             <div class="input-group">
                 <input type="text" id="dateSelect" class="form-control" uib-datepicker-popup="{{format[0]}}"
                        ng-model="dateSelect" is-open="dp.opened" datepicker-options="dateOptions" ng-required="true"
-                       close-text="Close" alt-input-formats="format[1]"/>
+                       close-text="Close" alt-input-formats="format"/>
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="dp.click()"><i
                             class="glyphicon glyphicon-calendar"></i></button>
@@ -25,18 +26,23 @@
         </div>
     </div>
 </div>
+
+<!--Events Area-->
 <div class="eventList">
     <div class="container">
+        <p>Sorted By: Date</p>
         <div ng-repeat="event in eventList | resultFilter:typeSelect:dateSelect:skillSelect">
             <div class="row eventBody">
                 <div class="col-md-2 col-sm-2"><img class="eventImg" src="{{event.img}}"></div>
                 <div class="col-md-7 col-sm-7">
                     <h2 class="eventTitle">{{event.sportType +' @ '+event.location}}</h2>
                     <p>Skill Level: {{event.skillLevel}}</p>
+                    <p>Time: {{event.startDate.toLocaleString()}}</p>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <button class="btn btn-large" ng-click="viewEvent(event)" id="viewBtn">View Event</button>
-                    <button class="btn btn-large" ng-click="joinEvent(event)" id="joinBtn">Join Event</button>
+                    <button ng-show="!event.isJoined"  class="btn btn-large" ng-click="joinEvent(event)" id="joinBtn">Join Event</button>
+                    <button ng-show="event.isJoined"  class="btn btn-large" id="disabledJoinBtn" ng-disabled="true" >Joined</button>
                 </div>
             </div>
         </div>

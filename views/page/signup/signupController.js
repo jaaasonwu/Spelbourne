@@ -6,10 +6,15 @@ define(['app'], function (app) {
                 $location.path('/');
             }
             $scope.ret = $routeParams.ret || '/';
+            // Should not be return to login and signUp anymore
+            if ($scope.ret === '/login' || $scope.ret === '/signup') {
+                $scope.ret = '/';
+            }
+            // Dummy profile
             $scope.profile = {
-                phone: "1234",
-                imagePath: "img/",
-                name: "YOLO"
+                phone: "",
+                imagePath: "",
+                name: ""
             };
             $scope.successCallback = function(res) {
                 adminService.getAdmin(function () {

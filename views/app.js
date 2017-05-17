@@ -5,15 +5,20 @@ var imports = [
     'angular-ui',
     'bootstrap',
     'ngMaterial',
+    'angular-animate',
+    'angular-sanitize',
     'services/adminService',
     'services/eventService',
     'services/userService',
     'filter/resultFilters',
-    'fb-sdk'
+    'fb-sdk',
+    'select2'
 ];
 
 var dependencies = [
     'ngRoute',
+    'ngAnimate',
+    'ngSanitize',
     'ui.bootstrap',
     'ngMaterial',
     'adminService',

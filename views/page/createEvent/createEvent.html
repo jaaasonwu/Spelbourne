@@ -1,147 +1,147 @@
-<div class="col-sm-6 col-sm-offset-3">
-    <div class="form" id="createEvent">
-        <form role="form" name="createEventForm" novalidate>
-            <h1> Create Event </h1>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="data.sportType">Sports Category: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <select id="data.sportType" class="form-control"
-                                ng-model="data.sportType"
-                                ng-options="x for x in sportsCategory" required>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="data.skillLevel">Skill Level: </label>
-                    </div>
-                    <div class="col-md-9">
-
-                        <select id="data.skillLevel" class="form-control"
-                                ng-model="data.skillLevel"
-                                ng-options="x for x in skillLevels">
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="dateSelect">Date: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="input-group">
-                            <input type="text" id="dateSelect" class="form-control" uib-datepicker-popup="{{format[0]}}"
-                                   ng-model="data.startDate" is-open="dp.opened" datepicker-options="dateOptions"
-                                   ng-required="true"
-                                   close-text="Close" alt-input-formats="format[1]"/>
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="dp.click()"><i
-                                        class="glyphicon glyphicon-calendar"></i></button>
-                            </span>
-
+<div class="container">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form" id="createEvent">
+            <form role="form" name="createEventForm" novalidate>
+                <h1> Create Event </h1>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="data.sportType">Sports Category: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select id="data.sportType" class="form-control"
+                                    ng-model="data.sportType"
+                                    ng-options="x for x in sportsCategory" required>
+                            </select>
                         </div>
                     </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="data.skillLevel">Skill Level: </label>
+                        </div>
+                        <div class="col-sm-9">
 
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="startTime"> Starting Time: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <select id="startTime" class="form-control"
-                                ng-model="data.startTime"
-                                ng-options="x for x in startTime" required>
-                        </select>
+                            <select id="data.skillLevel" class="form-control"
+                                    ng-model="data.skillLevel"
+                                    ng-options="x for x in skillLevels">
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="dateSelect">Date: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" id="dateSelect" class="form-control" uib-datepicker-popup="{{format[0]}}"
+                                       ng-model="data.startDate" is-open="dp.opened" datepicker-options="dateOptions"
+                                       ng-required="true"
+                                       close-text="Close" alt-input-formats="format"/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="dp.click()"><i
+                                            class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="duration"> Duration: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <select id="duration" class="form-control"
-                                ng-model="data.duration"
-                                ng-options="x for x in duration" required>
-                        </select>
-                    </div>
-                </div>
-            </div>
+                            </div>
+                        </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="descriptionTextarea">Description: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <textarea id="descriptionTextarea" name="description" class="form-control"
-                                  ng-model="data.description"
-                                  placeholder="Enter the event description here" ng-minlength="10" ng-required="true">
-                        </textarea>
-                        <span class="invalidInput"
-                              ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength ">
-                            Description is too short.</span>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label>Visibility: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="radio" ng-model="data.visibility" value="Friends">
-                        Friends Only<br/>
-                        <input type="radio" ng-model="data.visibility" value="Public">
-                        Public<br/>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="startTime"> Starting Time: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <div uib-timepicker ng-model="data.startTime"  hour-step="timePicker.hstep"
+                                     minute-step="timePicker.mstep" show-meridian="timePicker.ismeridian"></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="maxParticipant"> Maximum number of participant: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <input type = "text" class="form-control" ng-model="data.maxParticipant">
-                        </input>
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="locationInput">Location: </label>
-                    </div>
-                    <div class="col-md-9">
-                        <input id="locationInput" class="form-control controls"
-                               type="text" placeholder="Enter the location"
-                               onkeypress="return event.keyCode != 13;"
-                               ng-focus="locationValidation();"
-                        >
-                        <span class="invalidInput" ng-show="createEventForm.$locationInvalid">
-                            Invalid location</span>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="duration"> Duration: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <select id="duration" class="form-control"
+                                    ng-model="data.duration"
+                                    ng-options="x for x in duration" required>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div id="map"></div>
-            </div>
-            <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
-                    class="btn btn-lg btn-search">
-                Create
-            </button>
-        </form>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="descriptionTextarea">Description: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <textarea id="descriptionTextarea" name="description" class="form-control"
+                                      ng-model="data.description"
+                                      placeholder="Enter the event description here" ng-minlength="10" ng-required="true">
+                            </textarea>
+                            <span class="invalidInput"
+                                  ng-show="createEventForm.description.$dirty && createEventForm.description.$error.minlength ">
+                                Description is too short.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>Visibility: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="radio" ng-model="data.visibility" value="Friends">
+                            Friends Only<br/>
+                            <input type="radio" ng-model="data.visibility" value="Public">
+                            Public<br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="maxParticipant"> Maximum number of participant: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type = "text" class="form-control" ng-model="data.maxParticipant">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label for="locationInput">Location: </label>
+                        </div>
+                        <div class="col-sm-9">
+                            <input id="locationInput" class="form-control controls"
+                                   type="text" placeholder="Enter the location"
+                                   onkeypress="return event.keyCode != 13;"
+                                   ng-focus="locationValidation();"
+                            >
+                            <span class="invalidInput" ng-show="createEventForm.$locationInvalid">
+                                Invalid location</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="map"></div>
+                </div>
+                <button ng-click="createEvent()" type="submit" ng-disabled="createEventForm.$invalid"
+                        class="btn btn-lg btn-search" id="createBtn">
+                    Create
+                </button>
+            </form>
+        </div>
     </div>
 </div>

@@ -1,7 +1,18 @@
+/*
+ * Services for those action related to administration
+ */
 define(['angularAMD'], function () {
     var app = angular.module('adminService', []);
     app.service('adminService', ['$rootScope', '$http', '$location', '$window',
         function ($rootScope, $http, $location, $window) {
+            /**
+             * To hit the endpoint /auth/admin to retrieve user's information
+             * mainly designed to tell the front end whether the user is logged in
+             * it will set the username and userID in the rootScope automatically
+             *
+             * @param callback(loggedIn, errMsg) a callback with two params, first tell
+             * whether the user is logged in, second show the error message if exists
+             */
         var getAdmin = function (callback) {
             $http.get('/auth/admin')
                 .then(
@@ -33,6 +44,9 @@ define(['angularAMD'], function () {
                 );
         };
 
+            /**
+             * Function used to hit the logout endpoint
+             */
         var logOut = function () {
             $http.get('/auth/logout')
                 .then(
@@ -48,14 +62,23 @@ define(['angularAMD'], function () {
                 )
         };
 
+            /**
+             * Function used to let user login with google account
+             * @param ret The return redirect url
+             */
         var google = function(ret) {
             $window.location.href='/auth/google' + '?ret=' + encodeURIComponent(ret);
         };
-
+            /**
+             * Similar to google, let user login with facebook account
+             * @param ret
+             */
         var facebook = function(ret) {
             $window.location.href='/auth/facebook' + '?ret=' + encodeURIComponent(ret);
         };
-
+            /**
+             * used to hit the local signUp endpoint
+             */
         var signUp = function(profile, email, password, successCallback, failureCallback) {
             $http.post('/auth/signup', {email: email, password: password, profile: profile})
                 .then(
@@ -65,7 +88,9 @@ define(['angularAMD'], function () {
                     failureCallback
                 )
         };
-
+            /**
+             * used to hit the local login endpoint
+             */
         var logIn = function(email, password, successCallback, failureCallback) {
             $http.post('/auth/login', {email: email, password: password})
                 .then(
@@ -73,7 +98,6 @@ define(['angularAMD'], function () {
                     failureCallback
                 );
         };
-
 
         return {
             getAdmin: getAdmin,

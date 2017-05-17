@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/zhaih/web-tech#readme",
   "dependencies": {
+    "angular-sanitize": "^1.5.5",
     "base64url": "^2.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
