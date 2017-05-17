@@ -154,59 +154,64 @@ define(['app'], function (app) {
         // Get the location input
         let locationInput = document.getElementById('locationInput');
         let locationInputText = locationInput.value;
+
+        var options = {
+            componentRestrictions: {country: "au"}
+        };
         // Define the search box for auto complete
-        let search = new google.maps.places.SearchBox(document.getElementById('locationInput'));
+        let search = new google.maps.places.Autocomplete(locationInput, options);
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
 
-        search.addListener('places_changed', function() {
-            let places = search.getPlaces();
+        search.addListener('place_changed', function() {
+            console.log("Enter");
+            let place = search.getPlace();
 
-            if (places.length == 0) {
+            if (place.length == 0) {
                 return;
             }
-            let markers = [];
 
-            // Clear out the old markers.
-            markers.forEach(function(marker) {
-                marker.setMap(null);
-            });
+            marker.setVisible(false);
 
-            // For each place, get the icon, name and location.
+            // Set the center of the map
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+
+            // Set the icon shown on the map
+            let icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Set the marker on the map
+            marker.setIcon(icon);
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            // Store the location information and
+            $scope.data.location = place.name;
+            $scope.data.locationId = place.place_id;
+            locationInputText = locationInput.value;
+            // change the validation status
+            $scope.createEventForm.$locationInvalid = false;
+            $scope.$apply();
+
             let bounds = new google.maps.LatLngBounds();
-            places.forEach(function(place) {
-                if (!place.geometry) {
-                    console.log("Returned place contains no geometry");
-                    return;
-                }
-                let icon = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
-
-                // Create a marker for each place.
-                markers.push(new google.maps.Marker({
-                    map: map,
-                    icon: icon,
-                    title: place.name,
-                    position: place.geometry.location
-                }));
-
-                // Store the location information and
-                $scope.data.location = place.name;
-                $scope.data.locationId = place.place_id;
-                locationInputText = locationInput.value;
-                // change the validation status
-                $scope.createEventForm.$locationInvalid = false;
-                $scope.$apply();
-                if (place.geometry.viewport) {
-                    // Only geocodes have viewport.
-                    bounds.union(place.geometry.viewport);
-                } else {
-                    bounds.extend(place.geometry.location);
-                }
-            });
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
             map.fitBounds(bounds);
         });
     }]);
