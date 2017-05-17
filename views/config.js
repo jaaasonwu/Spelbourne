@@ -13,7 +13,11 @@ requirejs.config({
         'ngMaterial': "/dependency/angular/angular-material.min",
         'angular-animate': "/dependency/angular/angular-animate.min",
         'angular-aria': "/dependency/angular/angular-aria.min",
-        'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3"
+        'angular-sanitize': "/dependency/angular/angular-sanitize.min",
+        'angular-ui' : "/dependency/angular/ui-bootstrap-tpls-1.3.3",
+        'fb-sdk': '//connect.facebook.net/en_US/sdk',
+        'select2': '/dependency/jquery/select2/js/select2.min'
+
     },
     shim: {
         'angular' : {'exports' : 'angular'},
@@ -26,7 +30,11 @@ requirejs.config({
         'jQuery': [],
         'ngMaterial': ["angular", 'angular-animate', 'angular-aria'],
         'angular-animate': ['angular'],
-        'angular-aria': ['angular']
+        'angular-sanitize': ['angular', 'angular-animate'],
+        'angular-aria': ['angular'],
+        'fb-sdk': [{exports: 'FB'}],
+        'select2': ['jQuery']
+
     },
     deps: ['app']
 });

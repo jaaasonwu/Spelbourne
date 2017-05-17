@@ -1,10 +1,14 @@
+/*
+ * This filter is used to filter the event in the search result page
+ */
+
 define(['angularAMD'],function (angularAMD) {
     angularAMD.filter('resultFilter', function() {
         return function(items, type, date, skill) {
             var result = [];
             angular.forEach(items, function(item) {
                 if (type === 'Any' || item.sportType === type) {
-                    if (date === null || item.startDate === date) {
+                    if (date === null || date === undefined || item.startDate.toLocaleDateString() === date.toLocaleDateString()) {
                         if (skill === 'Any' || item.skillLevel === skill) {
                             result.push(item);
                         }

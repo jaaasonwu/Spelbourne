@@ -1,102 +1,143 @@
 <div class="container">
     <div class="row" id="event">
-        <h1 id="eventName"> {{event.type}} </h1>
-        <div class="jumbotron" id="showEvent">
+        <div id="showEvent">
             <div class="container">
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Sport Type: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.sportType}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Organizer: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.organizer}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Start Date: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.startDate}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Start Time: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.startTime}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Location: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.location}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Skill Level: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.skillLevel}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Description: </p>
-                        </div>
-                        <div class="col-md-9">
-                            <p>
-                                {{event.description}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <p class="eventDes">Participant: </p>
-                        </div>
-
-                        <div ng-repeat="participant in event.participantsName" class="col-md-9">
-                            <p>
-                                {{participant}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div id="map"></div>
-                    </div>
+                <!--Area to show whether join event is success-->
+                <div ng-show="error" class="alert alert-warning">
+                    {{error}}
                 </div>
-                <div class="col-md-3">
-                    <img class="eventDesImg" src="{{event.img}}">
+                <div ng-show="success" class="alert alert-success">
+                    {{success}}
+                </div>
+                <div class="row">
+                    <!--The overall layout is 1-6-4-1-->
+                    <div class="col-md-6 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Sport Type: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.sportType}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Organizer: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.organizer}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Start Date: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.startDate}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Start Time: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.startTime}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes"> Duration: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.duration}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Location: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.location}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Skill Level: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.skillLevel}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Description: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.description}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Participant: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p ng-repeat="participant in event.participantsName">
+                                        {{participant}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Max Participants: </p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.maxParticipant}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="eventDes">Visibility:</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p>
+                                    {{event.visibility}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
+                            <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
+                            <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
+                                <img class="fb-img" src="../../images/FB-Logo-white.png">Share
+                            </button>
+                            <a href="/result" class="plainAnchor">
+                                <button class="btn btn-lg btn-splbourne">More Events</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="map" class="col-md-12"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <button type="submit" class="btn btn-lg btn-search">Join Event</button>
-        <button type="submit" class="btn btn-lg">Invite Friends</button>
     </div>
 </div>

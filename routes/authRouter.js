@@ -1,3 +1,5 @@
+// Defines the router for logging in, signing up etc.
+
 const express = require('express');
 const base64url = require('base64url');
 const configAuth = require('../lib/auth/auth');

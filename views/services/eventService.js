@@ -1,7 +1,10 @@
+/*
+ * Event service is a serial of services to help hit the endpoint related to event
+ */
 define(['angularAMD'], function () {
     var app = angular.module('eventService', []);
     app.service('eventService', ['$http', '$location', '$window',
-                function ($http, $location, $window) {
+                function ($http) {
         var getEvent = function (eventID, success, failure) {
             $http.get('/event/getEvent/' + eventID).then(
                 success,
@@ -16,8 +19,10 @@ define(['angularAMD'], function () {
             );
         };
 
-        var getEventList = function (success, failure) {
-            $http.get('/event/getEventList').then(
+        var getEventList = function (success, failure, numEvents) {
+            var query;
+            numEvents == undefined ? query = '' : query = '?numEvents=' + numEvents;
+            $http.get('/event/getEventList' + query).then(
                 success,
                 failure
             );
