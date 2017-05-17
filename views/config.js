@@ -12,6 +12,7 @@ requirejs.config({
         'angularAMD':"//cdn.jsdelivr.net/angular.amd/0.2/angularAMD.min",
         'ngMaterial': "//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min",
         'angular-animate': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min",
+        'angular-sanitize': "//cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.5/angular-sanitize",
         'angular-aria': "//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min",
         'angular-ui' : "//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls",
         'fb-sdk': '//connect.facebook.net/en_US/sdk',
