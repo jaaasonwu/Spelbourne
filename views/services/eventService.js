@@ -38,12 +38,20 @@ define(['angularAMD'], function () {
             );
         };
 
+        var updateEvent = function(data, success, failure) {
+            $http.post('/event/updateEvent', data).then(
+                success,
+                failure
+            );
+        };
+
         return {
             getEvent: getEvent,
             getIcon: getIcon,
             getEventList: getEventList,
             joinEvent: joinEvent,
             createEvent: createEvent,
+            updateEvent: updateEvent,
         }
     }])
 });
