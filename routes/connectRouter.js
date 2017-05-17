@@ -1,11 +1,10 @@
+// Authorize (logged in, connect other social account) with google, facebook
+// etc. to check if the user is logged in
+
 const express = require('express');
-
 module.exports = function (passport) {
+
     let route = express.Router();
-
-    // Authorize (logged in, connect other social account)
-
-    // Locally
     route.get('/local', function (req, res) {
         res.render('connect-local.ejs', {message: req.flash('loginMessage')});
     });

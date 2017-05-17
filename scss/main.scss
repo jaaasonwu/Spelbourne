@@ -355,6 +355,7 @@ body > .navbar-default {
 }
 #showEvent {
     @extend .eventBox;
+    font-size: 1.4em;
     .eventName {
         font-weight: bold;
     }
