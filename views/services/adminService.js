@@ -74,7 +74,6 @@ define(['angularAMD'], function () {
                 );
         };
 
-
         return {
             getAdmin: getAdmin,
             logOut: logOut,

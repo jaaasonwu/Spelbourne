@@ -16,10 +16,8 @@ define(['angularAMD'], function () {
             );
         };
 
-        var getEventList = function (success, failure, numEvents) {
-            var query;
-            numEvents == undefined ? query = '' : query = '?numEvents=' + numEvents;
-            $http.get('/event/getEventList' + query).then(
+        var getEventList = function (success, failure) {
+            $http.get('/event/getEventList').then(
                 success,
                 failure
             );
@@ -39,18 +37,28 @@ define(['angularAMD'], function () {
                 failure
             );
         };
+
+        var updateEvent = function(data, success, failure) {
+            $http.post('/event/updateEvent', data).then(
+                success,
+                failure
+            );
+        };
         var deleteEvent = function(eventID, success,failure) {
             $http.get('/event/deleteEvent/' + eventID).then(
                 success,
                 failure
             );
         };
+
+
         return {
             getEvent: getEvent,
             getIcon: getIcon,
             getEventList: getEventList,
             joinEvent: joinEvent,
             createEvent: createEvent,
+            updateEvent: updateEvent,
             deleteEvent: deleteEvent
         }
     }])
