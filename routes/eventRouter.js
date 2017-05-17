@@ -54,24 +54,24 @@ route.get('/getEventList', function(req, res) {
     eventService.getEventList(function (err, data) {
         if (!err) {
             let currTime= new Date();
+            let result = [];
+            let numEvents = req.query['numEvents'];
 
-            data.forEach(function(event, index) {
-                if (event.startDate < currTime) {
-                    data.splice(index, 1);
-                } else if (event.visibility == 'Friends') {
-                    data.splice(index, 1);
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].startDate > currTime && data[i].visibility == 'Public') {
+                    result.push(data[i]);
                 }
-            });
+                if (numEvents != undefined) {
+                    if (result.length >= numEvents) {
+                        res.send(result);
+                        return;
+                    }
+                }
+            }
+            res.send(result);
         } else {
             res.status(500).send("No such event");
-            return;
         }
-
-        let numEvents = 0;
-        if (numEvents = req.query['numEvents']) {
-            data.splice(numEvents, data.length - numEvents);
-        }
-        res.send(data);
     });
 });
 
