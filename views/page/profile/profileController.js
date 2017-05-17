@@ -8,6 +8,9 @@ define(['app'], function (app) {
                 $location.path('/');
             }
 
+            // phone number pattern
+            $scope.phonePattern = '\\+?[\\d]*';
+
             angular.element(document).ready(
                 function () {
                     $("#interests").select2();
