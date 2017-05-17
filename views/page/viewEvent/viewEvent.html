@@ -103,8 +103,8 @@
                             </div>
                         </div>
                         <div class="row">
-                            <button class="btn btn-lg btn-search" ng-show="!isJoined" ng-click="joinEvent()">Join Event</button>
-                            <button class="btn btn-lg join-btn-disabled" ng-show="isJoined" ng-disabled="true">Joined</button>
+                            <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
+                            <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
                             <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
                                 <img class="fb-img" src="../../images/FB-Logo-white.png">Share
                             </button>
