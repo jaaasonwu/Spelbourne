@@ -122,19 +122,19 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="row">
-                            <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
-                            <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
-                            <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
-                                <img class="fb-img" src="../../images/FB-Logo-white.png">Share
-                            </button>
-                            <a href="/result" class="plainAnchor">
-                                <button class="btn btn-lg btn-splbourne">More Events</button>
-                            </a>
+                        <div class="col-md-4">
+                            <div id="map" class="col-md-12"></div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div id="map" class="col-md-12"></div>
+                    <div class="row" id="viewEventBtns">
+                        <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
+                        <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
+                        <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
+                            <img class="fb-img" src="../../images/FB-Logo-white.png">Share
+                        </button>
+                        <a href="/result" class="plainAnchor">
+                            <button class="btn btn-lg btn-splbourne">More Events</button>
+                        </a>
                     </div>
                 </div>
             </div>

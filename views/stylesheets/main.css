@@ -377,6 +377,10 @@ body > .navbar-default {
 .warning {
   color: red; }
 
+#viewEventBtns {
+  padding-top: 10px;
+  padding-left: 10px; }
+
 footer {
   padding: 10px;
   text-align: center; }
