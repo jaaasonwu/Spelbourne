@@ -122,11 +122,13 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div id="map" class="col-md-12"></div>
-                        </div>
                     </div>
-                    <div class="row" id="viewEventBtns">
+                    <div class="col-md-4">
+                        <div id="map" class="col-md-12"></div>
+                    </div>
+                </div>
+                <div class="row" id="viewEventBtns">
+                    <div class="col-md-offset-1 col-md-10">
                         <button class="btn btn-lg btn-search" ng-show="canJoin" ng-click="joinEvent()">Join Event</button>
                         <button class="btn btn-lg join-btn-disabled" ng-show="!canJoin" ng-disabled="true">{{joinErr}}</button>
                         <button class="btn btn-lg btn-fb" ng-click='fbShare()'>
