@@ -11,13 +11,6 @@ define(['app'], function (app) {
             // phone number pattern
             $scope.phonePattern = '\\+?[\\d]*';
 
-            // angular.element(document).ready(
-            //     function () {
-            //         $("#interests").select2();
-            //         $("#regions").select2();
-            //     }
-            // );
-
             $scope.error = "";
             $scope.success = "";
 
